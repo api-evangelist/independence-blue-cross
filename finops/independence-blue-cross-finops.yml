@@ -1,0 +1,92 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Independence Blue Cross
+providerId: independence-blue-cross
+created: '2026-05-23'
+modified: '2026-05-23'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - FHIR
+  - Healthcare
+  - CMS
+  - Medicare Advantage
+  - Patient Access
+description: >-
+  FOCUS-aligned FinOps view for the Independence Blue Cross FHIR APIs:
+  regulatory free access (no vendor invoice). The cost surface is the
+  consumer's own infrastructure (request volume, data egress, identity
+  / consent flow, member outreach) rather than per-call API charges
+  from Independence Blue Cross. This FinOps file does not attempt to
+  model the underlying health-plan economics (commercial premiums,
+  Medicare Advantage CMS payments, CHIP capitation, dental/vision
+  premiums) — those are commercial contracts with employers, CMS, and
+  the Pennsylvania CHIP program rather than API-level charges.
+sources:
+  - https://devportal.ibx.com/
+  - https://devportal.ibx.com/documentation/
+  - https://www.cms.gov/priorities/key-initiatives/burden-reduction/interoperability
+  - https://news.ibx.com/2025-financial-performance/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Independence Blue Cross
+serviceCategory: Healthcare Interoperability
+billingModel:
+  pricingCategory: Regulatory Free Access (no fee)
+  billingFrequency: N/A
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+focusColumns:
+  ServiceName: Independence Blue Cross FHIR APIs
+  ServiceCategory: Healthcare Interoperability
+  ProviderName: Independence Blue Cross
+  PublisherName: Independence Blue Cross
+  InvoiceIssuerName: N/A (no IBX invoice for API access)
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: patient_access_requests
+    description: Member-authorized FHIR R4 queries against the Patient Access endpoint; not billed but tracked for capacity and rate-limit purposes.
+    unit: request
+    aggregation: sum
+    dimensions:
+      - resource_type
+      - app_client_id
+      - http_status
+  - name: provider_directory_requests
+    description: Public FHIR R4 queries against the Provider Directory endpoint; not billed.
+    unit: request
+    aggregation: sum
+    dimensions:
+      - resource_type
+      - http_status
+  - name: formulary_requests
+    description: Public FHIR R4 queries against the Drug Formulary endpoint; not billed.
+    unit: request
+    aggregation: sum
+    dimensions:
+      - resource_type
+      - http_status
+  - name: tic_downloads
+    description: Bulk Transparency in Coverage JSON downloads per carrier brand (KHPE, QCC, IAC); not billed.
+    unit: file
+    aggregation: sum
+    dimensions:
+      - carrier_brand
+      - file_type
+costNotes: >-
+  No vendor-side cost is incurred by API consumers. Plan for
+  consumer-side infrastructure cost (egress bandwidth for FHIR Bundle
+  responses, TLS termination, identity flows, audit logging, PHI
+  storage), and pace traffic in line with the reasonable-use posture
+  described in the rate-limits document.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,36 @@
+{
+  "_example": {
+    "description": "Search MedicationKnowledge entries in the IBX Drug Formulary by name. Public endpoint; no authentication required.",
+    "request": {
+      "method": "GET",
+      "url": "https://eapics.ibx.com/formulary/v1/fhir/MedicationKnowledge?drug-name=atorvastatin",
+      "headers": {"Accept": "application/fhir+json"}
+    },
+    "response_status": 200
+  },
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 1,
+  "link": [
+    {"relation": "self", "url": "https://eapics.ibx.com/formulary/v1/fhir/MedicationKnowledge?drug-name=atorvastatin"}
+  ],
+  "entry": [
+    {
+      "fullUrl": "https://eapics.ibx.com/formulary/v1/fhir/MedicationKnowledge/example-mk-1",
+      "resource": {
+        "resourceType": "MedicationKnowledge",
+        "id": "example-mk-1",
+        "meta": {"profile": ["http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyDrug"]},
+        "status": "active",
+        "code": {
+          "coding": [
+            {"system": "http://www.nlm.nih.gov/research/umls/rxnorm", "code": "617314", "display": "atorvastatin 20 MG Oral Tablet"}
+          ]
+        },
+        "doseForm": {
+          "coding": [{"system": "http://snomed.info/sct", "code": "385055001", "display": "Tablet"}]
+        }
+      }
+    }
+  ]
+}

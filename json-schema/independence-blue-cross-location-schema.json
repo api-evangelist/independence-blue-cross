@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/independence-blue-cross/refs/heads/main/json-schema/independence-blue-cross-location-schema.json",
+  "title": "IBX Location (Da Vinci Plan-Net subset)",
+  "description": "Operational subset of the FHIR R4 Location resource as published by Independence Blue Cross at https://eapics.ibx.com/provider/v1/fhir/Location under the Da Vinci PDex Plan-Net Implementation Guide.",
+  "type": "object",
+  "required": ["resourceType", "id"],
+  "properties": {
+    "resourceType": {"type": "string", "const": "Location"},
+    "id": {"type": "string"},
+    "identifier": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "status": {"type": "string", "enum": ["active", "suspended", "inactive"]},
+    "name": {"type": "string"},
+    "alias": {"type": "array", "items": {"type": "string"}},
+    "description": {"type": "string"},
+    "type": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "telecom": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "use": {"type": "string"},
+        "line": {"type": "array", "items": {"type": "string"}},
+        "city": {"type": "string"},
+        "state": {"type": "string"},
+        "postalCode": {"type": "string"},
+        "country": {"type": "string"}
+      }
+    },
+    "position": {
+      "type": "object",
+      "properties": {
+        "latitude": {"type": "number"},
+        "longitude": {"type": "number"}
+      }
+    },
+    "managingOrganization": {"type": "object"},
+    "hoursOfOperation": {
+      "type": "array",
+      "items": {"type": "object"}
+    }
+  },
+  "x-fhir-version": "4.0.1",
+  "x-source-profile": "http://hl7.org/fhir/us/davinci-pdex-plan-net/StructureDefinition/plannet-Location",
+  "x-source-capability-statement": "https://eapics.ibx.com/provider/v1/fhir/metadata"
+}

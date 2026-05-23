@@ -1,0 +1,39 @@
+{
+  "_example": {
+    "description": "Search Organizations in the IBX Provider Directory by name (e.g. Penn Medicine).",
+    "request": {
+      "method": "GET",
+      "url": "https://eapics.ibx.com/provider/v1/fhir/Organization?name=Penn",
+      "headers": {"Accept": "application/fhir+json"}
+    },
+    "response_status": 200
+  },
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 1,
+  "link": [
+    {"relation": "self", "url": "https://eapics.ibx.com/provider/v1/fhir/Organization?name=Penn"}
+  ],
+  "entry": [
+    {
+      "fullUrl": "https://eapics.ibx.com/provider/v1/fhir/Organization/example-org-1",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "example-org-1",
+        "meta": {"profile": ["http://hl7.org/fhir/us/davinci-pdex-plan-net/StructureDefinition/plannet-Organization"]},
+        "identifier": [
+          {"system": "http://hl7.org/fhir/sid/us-npi", "value": "1112223334"}
+        ],
+        "active": true,
+        "type": [
+          {"coding": [{"system": "http://terminology.hl7.org/CodeSystem/organization-type", "code": "prov", "display": "Healthcare Provider"}]}
+        ],
+        "name": "Penn Medicine Internal Medicine - Center City",
+        "telecom": [{"system": "phone", "value": "215-555-0101"}],
+        "address": [
+          {"line": ["1500 Market Street, Suite 1000"], "city": "Philadelphia", "state": "PA", "postalCode": "19102", "country": "US"}
+        ]
+      }
+    }
+  ]
+}

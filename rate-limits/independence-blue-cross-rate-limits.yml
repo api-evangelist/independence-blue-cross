@@ -1,0 +1,68 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Independence Blue Cross
+providerId: independence-blue-cross
+created: '2026-05-23'
+modified: '2026-05-23'
+reconciled: false
+tags:
+  - Rate Limiting
+  - FHIR
+  - Healthcare
+  - CMS
+  - SMART On FHIR
+description: >-
+  The Independence Blue Cross developer portal does not publish
+  numeric rate limits for its FHIR R4 APIs. Limits are administered
+  behind the scenes consistent with CMS Patient Access expectations
+  and reasonable-use protections, scoped per registered application
+  and per member token. Production apps that exceed fair-use
+  thresholds are contacted directly. The public Provider Directory
+  and Drug Formulary endpoints share the same `eapics.ibx.com`
+  gateway and are similarly governed by reasonable-use limits.
+notes: >-
+  Specific per-second / per-minute numbers are not publicly
+  disclosed. SMART access-token lifetimes are not published in the
+  well-known SMART configuration document; assume short-lived tokens
+  (one hour is typical for SMART deployments) and use refresh tokens
+  via the `offline_access` scope. The IBX dev portal advertises both
+  `client-public` and `client-confidential-symmetric` capabilities,
+  so PKCE is supported.
+sources:
+  - https://devportal.ibx.com/
+  - https://devportal.ibx.com/documentation/
+  - https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json
+  - https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration
+  - https://eapics.ibx.com/patient/v1/fhir/metadata
+  - https://eapics.ibx.com/provider/v1/fhir/metadata
+  - https://eapics.ibx.com/formulary/v1/fhir/metadata
+limits:
+  - name: Patient Access FHIR requests (production)
+    scope: app + member_token
+    metric: requests_per_second
+    limit: not publicly published; reasonable-use enforcement
+    notes: Member-authorized FHIR queries; throttled to protect the platform but no public RPS number.
+  - name: Provider Directory FHIR requests
+    scope: app
+    metric: requests_per_second
+    limit: not publicly published; reasonable-use enforcement
+    notes: Cache-friendly; aggressive client caching recommended.
+  - name: Drug Formulary FHIR requests
+    scope: app
+    metric: requests_per_second
+    limit: not publicly published; reasonable-use enforcement
+    notes: Cache-friendly; aggressive client caching recommended.
+  - name: Sandbox FHIR requests
+    scope: ip
+    metric: requests_per_second
+    limit: not publicly published; reasonable-use enforcement
+    notes: Sandbox uses synthetic data but the same fair-use posture.
+  - name: SMART Access Token Lifetime
+    scope: token
+    metric: seconds
+    limit: not_published
+    notes: Use `offline_access` to obtain refresh tokens. SMART configuration confirms `permission-offline` capability.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

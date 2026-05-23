@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/independence-blue-cross/refs/heads/main/json-structure/independence-blue-cross-health-plan-structure.json",
+  "title": "Independence Blue Cross Health Plan Structure",
+  "description": "JSON Structure describing how Independence Blue Cross is organized for API consumers: parent holding company, underwriting carriers, lines of business, member populations covered by each FHIR surface, and the developer-portal contact surface.",
+  "type": "object",
+  "properties": {
+    "provider": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string", "const": "independence-blue-cross"},
+        "name": {"type": "string", "const": "Independence Blue Cross"},
+        "parent": {"type": "string", "const": "Independence Health Group, Inc."},
+        "license": {"type": "string", "const": "Independent licensee of the Blue Cross Blue Shield Association"},
+        "headquarters": {"type": "string", "const": "Philadelphia, Pennsylvania"},
+        "founded": {"type": "string", "const": "more than 85 years (as of 2026)"},
+        "membership_self": {"type": "string", "const": "approximately 3 million members"},
+        "membership_group": {"type": "string", "const": "approximately 9 million covered lives across Independence Health Group"},
+        "revenue_group_2025": {"type": "string", "const": "$36.3 billion (Independence Health Group consolidated, FY2025)"}
+      }
+    },
+    "carriers": {
+      "type": "array",
+      "description": "Underwriting carrier brands publishing Transparency in Coverage files.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "brand": {"type": "string"},
+          "code": {"type": "string"},
+          "tic_url": {"type": "string", "format": "uri"}
+        }
+      },
+      "default": [
+        {"brand": "Keystone Health Plan East", "code": "khpe", "tic_url": "https://www.ibx.com/cmstic/?brand=khpe"},
+        {"brand": "QCC Insurance Company", "code": "qcc", "tic_url": "https://www.ibx.com/cmstic/?brand=qcc"},
+        {"brand": "Independence Assurance Co, Inc.", "code": "iac", "tic_url": "https://www.ibx.com/cmstic/?brand=iac"}
+      ]
+    },
+    "affiliates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "role": {"type": "string"},
+          "ownership": {"type": "string"}
+        }
+      },
+      "default": [
+        {"name": "AmeriHealth", "role": "Commercial health plans, TPA services", "ownership": "Independence Health Group subsidiary"},
+        {"name": "AmeriHealth Administrators", "role": "National third-party administrator for self-funded plans", "ownership": "Independence Health Group subsidiary"},
+        {"name": "AmeriHealth New Jersey (AmeriHealth Insurance Company of NJ)", "role": "Commercial payer for New Jersey (~209,000 members)", "ownership": "Independence Health Group subsidiary"},
+        {"name": "AmeriHealth Caritas", "role": "Medicaid managed care, CHIP, D-SNP, LTSS, Marketplace in 13 states + DC", "ownership": "Independence Health Group 61.3% / Blue Cross Blue Shield of Michigan 38.7%"},
+        {"name": "Tandigm Health", "role": "Value-based primary care enablement", "ownership": "Independence-affiliated"}
+      ]
+    },
+    "service_area": {
+      "type": "object",
+      "properties": {
+        "counties": {
+          "type": "array",
+          "items": {"type": "string"},
+          "default": ["Bucks", "Chester", "Delaware", "Montgomery", "Philadelphia"]
+        },
+        "state": {"type": "string", "const": "Pennsylvania"}
+      }
+    },
+    "lines_of_business": {
+      "type": "array",
+      "items": {"type": "string"},
+      "default": [
+        "Commercial (individual, group, large employer)",
+        "Medicare Advantage (Keystone 65 HMO, Personal Choice 65 PPO)",
+        "Children's Health Insurance Program (Keystone HMO CHIP)",
+        "Dental (IBX Dental)",
+        "Vision",
+        "Behavioral Health",
+        "Pharmacy Benefits"
+      ]
+    },
+    "fhir_apis": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "base_url": {"type": "string"},
+          "auth": {"type": "string"},
+          "in_scope_population": {"type": "string"},
+          "implementation_guide": {"type": "string"}
+        }
+      },
+      "default": [
+        {
+          "name": "Patient Access FHIR API",
+          "base_url": "https://eapics.ibx.com/patient/v1/fhir",
+          "auth": "SMART on FHIR / OAuth 2.0 with PKCE",
+          "in_scope_population": "Medicare Advantage + Keystone HMO CHIP members",
+          "implementation_guide": "US Core 3.1.1 + CARIN BB + Da Vinci PDex"
+        },
+        {
+          "name": "Provider Directory FHIR API",
+          "base_url": "https://eapics.ibx.com/provider/v1/fhir",
+          "auth": "None (public)",
+          "in_scope_population": "All members and the public",
+          "implementation_guide": "Da Vinci PDex Plan-Net"
+        },
+        {
+          "name": "Drug Formulary FHIR API",
+          "base_url": "https://eapics.ibx.com/formulary/v1/fhir",
+          "auth": "None (public)",
+          "in_scope_population": "All members and the public",
+          "implementation_guide": "Da Vinci US Drug Formulary (USDF)"
+        }
+      ]
+    },
+    "developer_contacts": {
+      "type": "object",
+      "properties": {
+        "portal": {"type": "string", "const": "https://devportal.ibx.com/"},
+        "documentation": {"type": "string", "const": "https://devportal.ibx.com/documentation/"},
+        "swagger": {"type": "string", "const": "https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json"},
+        "registration": {"type": "string", "const": "https://devportal.ibx.com/cmssignin/"},
+        "support_email": {"type": "string", "const": "AppOnboardingSupport@ibx.com"},
+        "terms": {"type": "string", "const": "https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf"}
+      }
+    }
+  }
+}

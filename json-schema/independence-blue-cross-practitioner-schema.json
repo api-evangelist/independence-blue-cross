@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/independence-blue-cross/refs/heads/main/json-schema/independence-blue-cross-practitioner-schema.json",
+  "title": "IBX Practitioner (Da Vinci Plan-Net subset)",
+  "description": "Operational subset of the FHIR R4 Practitioner resource as published by Independence Blue Cross at https://eapics.ibx.com/provider/v1/fhir/Practitioner under the Da Vinci PDex Plan-Net Implementation Guide.",
+  "type": "object",
+  "required": ["resourceType", "id"],
+  "properties": {
+    "resourceType": {"type": "string", "const": "Practitioner"},
+    "id": {"type": "string"},
+    "identifier": {
+      "type": "array",
+      "description": "Includes NPI and other clinician identifiers.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": {"type": "string", "format": "uri"},
+          "value": {"type": "string"}
+        }
+      }
+    },
+    "active": {"type": "boolean"},
+    "name": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "family": {"type": "string"},
+          "given": {"type": "array", "items": {"type": "string"}},
+          "prefix": {"type": "array", "items": {"type": "string"}},
+          "suffix": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "telecom": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "address": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "gender": {"type": "string", "enum": ["male", "female", "other", "unknown"]},
+    "qualification": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "identifier": {"type": "array"},
+          "code": {"type": "object"},
+          "issuer": {"type": "object"}
+        }
+      }
+    }
+  },
+  "x-fhir-version": "4.0.1",
+  "x-source-profile": "http://hl7.org/fhir/us/davinci-pdex-plan-net/StructureDefinition/plannet-Practitioner",
+  "x-source-capability-statement": "https://eapics.ibx.com/provider/v1/fhir/metadata"
+}

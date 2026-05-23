@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/independence-blue-cross/refs/heads/main/json-schema/independence-blue-cross-organization-schema.json",
+  "title": "IBX Organization (Da Vinci Plan-Net subset)",
+  "description": "Operational subset of the FHIR R4 Organization resource as published by Independence Blue Cross at https://eapics.ibx.com/provider/v1/fhir/Organization. Two supported profiles per the Plan-Net CapabilityStatement (provider organization and payer organization).",
+  "type": "object",
+  "required": ["resourceType", "id"],
+  "properties": {
+    "resourceType": {"type": "string", "const": "Organization"},
+    "id": {"type": "string"},
+    "identifier": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": {"type": "string", "format": "uri"},
+          "value": {"type": "string"}
+        }
+      }
+    },
+    "active": {"type": "boolean"},
+    "type": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "name": {"type": "string"},
+    "alias": {"type": "array", "items": {"type": "string"}},
+    "telecom": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "address": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "partOf": {
+      "type": "object",
+      "description": "Reference to parent organization."
+    },
+    "contact": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "endpoint": {
+      "type": "array",
+      "items": {"type": "object"}
+    }
+  },
+  "x-fhir-version": "4.0.1",
+  "x-source-profiles": [
+    "http://hl7.org/fhir/us/davinci-pdex-plan-net/StructureDefinition/plannet-Organization",
+    "http://hl7.org/fhir/us/davinci-pdex-plan-net/StructureDefinition/plannet-Payer"
+  ],
+  "x-source-capability-statement": "https://eapics.ibx.com/provider/v1/fhir/metadata"
+}

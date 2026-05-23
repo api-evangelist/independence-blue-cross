@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Independence Blue Cross Claims & Explanation Of Benefit
+  description: >-
+    Naftiko capability surfacing claims-adjacent FHIR R4 resources from
+    the Independence Blue Cross Patient Access API: Coverage,
+    ExplanationOfBenefit, and MedicationRequest. Modeled against the
+    CARIN for Blue Button (CARIN BB) and CPCDS profiles. Read-only;
+    requires a SMART on FHIR bearer token bound to a single member
+    context.
+  tags:
+    - Independence Blue Cross
+    - Claims
+    - Explanation Of Benefit
+    - CARIN Blue Button
+    - FHIR
+    - SMART On FHIR
+  created: '2026-05-23'
+  modified: '2026-05-23'
+binds:
+  - namespace: env
+    keys:
+      IBX_PATIENT_BEARER_TOKEN: IBX_PATIENT_BEARER_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: ibx-claims
+      baseUri: https://eapics.ibx.com/patient/v1/fhir
+      description: >-
+        Independence Blue Cross Patient Access FHIR R4 endpoint, used
+        for claims/EOB-adjacent queries. Shares the same SMART on FHIR
+        access token used for clinical Patient Access calls.
+      resources:
+        - name: Coverage
+          path: /Coverage
+          operations:
+            - name: searchCoverage
+              method: GET
+              description: Search Coverage records for a member (CARIN BB Coverage profile)
+              outputRawFormat: json
+              inputParameters:
+                - name: patient
+                  in: query
+                  type: string
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: ExplanationOfBenefit
+          path: /ExplanationOfBenefit
+          operations:
+            - name: searchExplanationOfBenefit
+              method: GET
+              description: Search ExplanationOfBenefit (claims) for a member; supports CARIN BB inpatient, outpatient, pharmacy, and oral profiles
+              outputRawFormat: json
+              inputParameters:
+                - name: patient
+                  in: query
+                  type: string
+                  required: true
+                - name: service-date
+                  in: query
+                  type: string
+                  required: false
+                - name: type
+                  in: query
+                  type: string
+                  required: false
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+            - name: readExplanationOfBenefit
+              method: GET
+              path: /ExplanationOfBenefit/{id}
+              description: Read a single ExplanationOfBenefit by id
+              outputRawFormat: json
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: MedicationRequest
+          path: /MedicationRequest
+          operations:
+            - name: searchMedicationRequest
+              method: GET
+              description: Search MedicationRequest resources for a member
+              outputRawFormat: json
+              inputParameters:
+                - name: patient
+                  in: query
+                  type: string
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+      authentication:
+        type: bearer
+        token: '{{env.IBX_PATIENT_BEARER_TOKEN}}'
+  exposes:
+    - type: rest
+      namespace: ibx-claims-rest
+      port: 8081
+      description: REST adapter exposing CARIN BB EOB and Coverage as conventional REST resources.
+      resources:
+        - path: /v1/coverage
+          name: coverage
+          description: Search member coverage
+          operations:
+            - method: GET
+              name: searchCoverage
+              description: Search Coverage
+              call: ibx-claims.searchCoverage
+              with:
+                patient: rest.patient
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/eob
+          name: eob
+          description: Search ExplanationOfBenefit
+          operations:
+            - method: GET
+              name: searchEob
+              description: Search EOB
+              call: ibx-claims.searchExplanationOfBenefit
+              with:
+                patient: rest.patient
+                service-date: rest.service_date
+                type: rest.type
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/medication-requests
+          name: medication-requests
+          description: Search MedicationRequest
+          operations:
+            - method: GET
+              name: searchMedicationRequests
+              description: Search MedicationRequest
+              call: ibx-claims.searchMedicationRequest
+              with:
+                patient: rest.patient
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: ibx-claims-mcp
+      port: 9091
+      transport: http
+      description: MCP adapter exposing CARIN BB / EOB tooling for governed agents. All read-only.
+      tools:
+        - name: search-coverage
+          description: Search Coverage records for a member
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-claims.searchCoverage
+          with:
+            patient: tools.patient
+        - name: search-eob
+          description: Search ExplanationOfBenefit (claims) for a member
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-claims.searchExplanationOfBenefit
+          with:
+            patient: tools.patient
+            service-date: tools.service_date
+            type: tools.type
+        - name: read-eob
+          description: Read a single ExplanationOfBenefit by id
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-claims.readExplanationOfBenefit
+          with:
+            id: tools.id
+        - name: search-medication-requests
+          description: Search MedicationRequest resources for a member
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-claims.searchMedicationRequest
+          with:
+            patient: tools.patient

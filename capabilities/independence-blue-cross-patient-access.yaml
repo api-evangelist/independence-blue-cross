@@ -1,0 +1,404 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Independence Blue Cross Patient Access FHIR
+  description: >-
+    Naftiko capability wrapping the Independence Blue Cross Patient
+    Access FHIR R4 API. Read-only access to a member's clinical,
+    demographic, encounter, allergy, immunization, observation,
+    condition, and care plan resources, exposed both as a REST adapter
+    and an MCP tool surface suitable for governed AI agents. Requires
+    a SMART on FHIR / OAuth 2.0 bearer token bound to a single patient
+    context (Medicare Advantage or Keystone HMO CHIP member).
+  tags:
+    - Independence Blue Cross
+    - Patient Access
+    - FHIR
+    - SMART On FHIR
+    - Medicare Advantage
+    - CHIP
+  created: '2026-05-23'
+  modified: '2026-05-23'
+binds:
+  - namespace: env
+    keys:
+      IBX_PATIENT_BEARER_TOKEN: IBX_PATIENT_BEARER_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: ibx-patient-access
+      baseUri: https://eapics.ibx.com/patient/v1/fhir
+      description: >-
+        Independence Blue Cross Patient Access FHIR R4 endpoint.
+        Requires a SMART on FHIR bearer token issued from
+        `https://eapics.ibx.com/oauth2/v2/token` after authorization
+        at `https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize`.
+      resources:
+        - name: Patient
+          path: /Patient/{id}
+          operations:
+            - name: readPatient
+              method: GET
+              description: Read a Patient resource by id
+              outputRawFormat: json
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: AllergyIntolerance
+          path: /AllergyIntolerance
+          operations:
+            - name: searchAllergyIntolerance
+              method: GET
+              description: Search AllergyIntolerance for a patient
+              outputRawFormat: json
+              inputParameters:
+                - name: patient
+                  in: query
+                  type: string
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: Condition
+          path: /Condition
+          operations:
+            - name: searchCondition
+              method: GET
+              description: Search Condition resources for a patient
+              outputRawFormat: json
+              inputParameters:
+                - name: patient
+                  in: query
+                  type: string
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: Encounter
+          path: /Encounter
+          operations:
+            - name: searchEncounter
+              method: GET
+              description: Search Encounter resources for a patient
+              outputRawFormat: json
+              inputParameters:
+                - name: patient
+                  in: query
+                  type: string
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: Observation
+          path: /Observation
+          operations:
+            - name: searchObservation
+              method: GET
+              description: Search Observation resources for a patient (optionally filtered by category)
+              outputRawFormat: json
+              inputParameters:
+                - name: patient
+                  in: query
+                  type: string
+                  required: true
+                - name: category
+                  in: query
+                  type: string
+                  required: false
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: Immunization
+          path: /Immunization
+          operations:
+            - name: searchImmunization
+              method: GET
+              description: Search Immunization resources for a patient
+              outputRawFormat: json
+              inputParameters:
+                - name: patient
+                  in: query
+                  type: string
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: Procedure
+          path: /Procedure
+          operations:
+            - name: searchProcedure
+              method: GET
+              description: Search Procedure resources for a patient
+              outputRawFormat: json
+              inputParameters:
+                - name: patient
+                  in: query
+                  type: string
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: CarePlan
+          path: /CarePlan
+          operations:
+            - name: searchCarePlan
+              method: GET
+              description: Search CarePlan resources for a patient
+              outputRawFormat: json
+              inputParameters:
+                - name: patient
+                  in: query
+                  type: string
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: Goal
+          path: /Goal
+          operations:
+            - name: searchGoal
+              method: GET
+              description: Search Goal resources for a patient
+              outputRawFormat: json
+              inputParameters:
+                - name: patient
+                  in: query
+                  type: string
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+      authentication:
+        type: bearer
+        token: '{{env.IBX_PATIENT_BEARER_TOKEN}}'
+  exposes:
+    - type: rest
+      namespace: ibx-patient-access-rest
+      port: 8080
+      description: >-
+        REST adapter for Independence Blue Cross Patient Access. One
+        Spectral-compliant resource per consumed operation, prefixed
+        with /v1.
+      resources:
+        - path: /v1/patient
+          name: patient
+          description: Read patient
+          operations:
+            - method: GET
+              name: readPatient
+              description: Read patient by id
+              call: ibx-patient-access.readPatient
+              with:
+                id: rest.id
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/allergies
+          name: allergies
+          description: Search AllergyIntolerance for a patient
+          operations:
+            - method: GET
+              name: searchAllergies
+              description: Search AllergyIntolerance
+              call: ibx-patient-access.searchAllergyIntolerance
+              with:
+                patient: rest.patient
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/conditions
+          name: conditions
+          description: Search Condition for a patient
+          operations:
+            - method: GET
+              name: searchConditions
+              description: Search Condition
+              call: ibx-patient-access.searchCondition
+              with:
+                patient: rest.patient
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/encounters
+          name: encounters
+          description: Search Encounter for a patient
+          operations:
+            - method: GET
+              name: searchEncounters
+              description: Search Encounter
+              call: ibx-patient-access.searchEncounter
+              with:
+                patient: rest.patient
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/observations
+          name: observations
+          description: Search Observation for a patient
+          operations:
+            - method: GET
+              name: searchObservations
+              description: Search Observation
+              call: ibx-patient-access.searchObservation
+              with:
+                patient: rest.patient
+                category: rest.category
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/immunizations
+          name: immunizations
+          description: Search Immunization for a patient
+          operations:
+            - method: GET
+              name: searchImmunizations
+              description: Search Immunization
+              call: ibx-patient-access.searchImmunization
+              with:
+                patient: rest.patient
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/procedures
+          name: procedures
+          description: Search Procedure for a patient
+          operations:
+            - method: GET
+              name: searchProcedures
+              description: Search Procedure
+              call: ibx-patient-access.searchProcedure
+              with:
+                patient: rest.patient
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/care-plans
+          name: care-plans
+          description: Search CarePlan for a patient
+          operations:
+            - method: GET
+              name: searchCarePlans
+              description: Search CarePlan
+              call: ibx-patient-access.searchCarePlan
+              with:
+                patient: rest.patient
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/goals
+          name: goals
+          description: Search Goal for a patient
+          operations:
+            - method: GET
+              name: searchGoals
+              description: Search Goal
+              call: ibx-patient-access.searchGoal
+              with:
+                patient: rest.patient
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: ibx-patient-access-mcp
+      port: 9090
+      transport: http
+      description: >-
+        MCP adapter for Independence Blue Cross Patient Access. One
+        tool per consumed operation, all read-only; PHI hygiene is
+        the agent's responsibility.
+      tools:
+        - name: read-patient
+          description: Read Patient by id
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-patient-access.readPatient
+          with:
+            id: tools.id
+        - name: search-allergy-intolerance
+          description: Search AllergyIntolerance for a patient
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-patient-access.searchAllergyIntolerance
+          with:
+            patient: tools.patient
+        - name: search-condition
+          description: Search Condition for a patient
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-patient-access.searchCondition
+          with:
+            patient: tools.patient
+        - name: search-encounter
+          description: Search Encounter for a patient
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-patient-access.searchEncounter
+          with:
+            patient: tools.patient
+        - name: search-observation
+          description: Search Observation for a patient
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-patient-access.searchObservation
+          with:
+            patient: tools.patient
+            category: tools.category
+        - name: search-immunization
+          description: Search Immunization for a patient
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-patient-access.searchImmunization
+          with:
+            patient: tools.patient
+        - name: search-procedure
+          description: Search Procedure for a patient
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-patient-access.searchProcedure
+          with:
+            patient: tools.patient
+        - name: search-care-plan
+          description: Search CarePlan for a patient
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-patient-access.searchCarePlan
+          with:
+            patient: tools.patient
+        - name: search-goal
+          description: Search Goal for a patient
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-patient-access.searchGoal
+          with:
+            patient: tools.patient

@@ -1,0 +1,59 @@
+{
+  "_example": {
+    "description": "Read a Patient resource from the Independence Blue Cross Patient Access FHIR API. Requires a SMART on FHIR bearer token bound to a single patient context.",
+    "request": {
+      "method": "GET",
+      "url": "https://eapics.ibx.com/patient/v1/fhir/Patient/example-ibx-member-1",
+      "headers": {
+        "Accept": "application/fhir+json",
+        "Authorization": "Bearer eyJhbGciOiJSUzI1NiIs...<member access token>..."
+      }
+    },
+    "response_status": 200
+  },
+  "resourceType": "Patient",
+  "id": "example-ibx-member-1",
+  "meta": {
+    "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"]
+  },
+  "identifier": [
+    {
+      "system": "https://www.ibx.com/identifiers/member",
+      "value": "IBX-MA-000000001"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Member",
+      "given": ["Example", "M."]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1948-04-12",
+  "address": [
+    {
+      "use": "home",
+      "line": ["1901 Market Street"],
+      "city": "Philadelphia",
+      "state": "PA",
+      "postalCode": "19103",
+      "country": "US"
+    }
+  ],
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "urn:ietf:bcp:47",
+            "code": "en-US",
+            "display": "English (United States)"
+          }
+        ]
+      },
+      "preferred": true
+    }
+  ]
+}

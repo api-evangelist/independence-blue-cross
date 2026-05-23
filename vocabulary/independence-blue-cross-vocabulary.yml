@@ -1,0 +1,104 @@
+name: Independence Blue Cross Vocabulary
+description: >-
+  Operational vocabulary that maps the Independence Blue Cross surface
+  area (commercial, Medicare Advantage, Keystone HMO CHIP, dental,
+  vision, behavioral health, pharmacy benefits) and its FHIR-based
+  developer surface to the API Evangelist taxonomy. Aligns concepts,
+  services, tools, and standards used across Independence Blue Cross
+  and the Independence Health Group corporate family.
+modified: '2026-05-23'
+provider: Independence Blue Cross
+providerId: independence-blue-cross
+concepts:
+  - name: Blue Cross Blue Shield Licensee
+    description: Independence is an independent licensee of the Blue Cross Blue Shield Association.
+  - name: Commercial Health Insurance
+    description: Group commercial coverage for individuals, families, small/mid/large employers in southeastern PA.
+  - name: Medicare Advantage
+    description: Independence Keystone 65 HMO and Personal Choice 65 PPO Medicare Advantage products.
+  - name: Children's Health Insurance Program (CHIP)
+    description: Keystone HMO CHIP covers eligible Pennsylvania children.
+  - name: Medicaid Managed Care
+    description: Delivered through the AmeriHealth Caritas subsidiary family (Keystone First, etc.).
+  - name: Dental Insurance
+    description: IBX Dental coverage including Keystone and United Concordia network options.
+  - name: Vision Insurance
+    description: Vision benefits offered alongside commercial and Medicare products.
+  - name: Behavioral Health
+    description: Behavioral health benefits embedded in commercial, MA, and Medicaid lines.
+  - name: Pharmacy Benefits
+    description: Drug coverage including the IBX-published Drug Formulary FHIR API.
+  - name: Patient Access API
+    description: CMS-mandated FHIR R4 read API for member clinical, claims, and coverage data.
+  - name: Provider Directory API
+    description: CMS-mandated FHIR R4 public directory of contracted Practitioners, Organizations, and Locations.
+  - name: Drug Formulary API
+    description: CMS-mandated FHIR R4 public drug formulary surface.
+  - name: SMART on FHIR / OAuth 2.0
+    description: Authorization framework securing the Patient Access surface.
+  - name: PKCE Flow
+    description: Authorization Code with Proof Key for Code Exchange for mobile/SPA clients.
+  - name: CARIN Blue Button
+    description: Implementation guide for consumer-directed payer data exchange (ExplanationOfBenefit).
+  - name: Common Payer Consumer Data Set (CPCDS)
+    description: CARIN BB underlying data set for adjudicated claim and encounter data.
+  - name: Da Vinci PDex
+    description: Payer Data Exchange implementation guide for clinical payer-to-payer data sharing.
+  - name: Da Vinci PDex Plan-Net
+    description: Implementation guide for FHIR R4 payer provider directories; IBX Provider Directory conforms.
+  - name: Da Vinci US Drug Formulary (USDF)
+    description: Implementation guide for FHIR R4 drug formulary publication; IBX Formulary conforms.
+  - name: USCDI v1 / US Core 3.1.1
+    description: Core data set referenced by the IBX Patient Access CapabilityStatement.
+  - name: Transparency In Coverage Machine-Readable Files
+    description: Monthly JSON files of in-network rates, allowed amounts, and prescription drug pricing per carrier brand.
+services:
+  - name: IBX Member Portal
+    url: https://www.ibx.com/login
+  - name: IBX Provider Resources
+    url: https://www.ibx.com/resources/for-providers/index.html
+  - name: IBX Developer Portal
+    url: https://devportal.ibx.com/
+  - name: IBX Newsroom
+    url: https://news.ibx.com/
+  - name: IBX Transparency In Coverage Index (KHPE)
+    url: https://www.ibx.com/cmstic/?brand=khpe
+  - name: IBX Transparency In Coverage Index (QCC)
+    url: https://www.ibx.com/cmstic/?brand=qcc
+  - name: IBX Transparency In Coverage Index (IAC)
+    url: https://www.ibx.com/cmstic/?brand=iac
+tools:
+  - name: SMART App Launcher (HL7)
+    url: https://hl7.org/fhir/smart-app-launch/1.0.0/
+  - name: HAPI FHIR Validator
+    url: https://hapifhir.io/
+  - name: Inferno (ONC) FHIR test harness
+    url: https://inferno.healthit.gov/
+  - name: Postman
+    url: https://www.postman.com/
+  - name: Spectral (linting)
+    url: https://stoplight.io/open-source/spectral
+standards:
+  - name: HL7 FHIR R4 (4.0.1)
+    url: https://hl7.org/fhir/R4/
+  - name: SMART App Launch 1.0.0
+    url: https://hl7.org/fhir/smart-app-launch/1.0.0/
+  - name: US Core 3.1.1
+    url: https://hl7.org/fhir/us/core/STU3.1.1/
+  - name: CARIN Blue Button
+    url: https://hl7.org/fhir/us/carin-bb/history.html
+  - name: Da Vinci PDex
+    url: https://hl7.org/fhir/us/davinci-pdex/history.html
+  - name: Da Vinci PDex Plan-Net
+    url: http://hl7.org/fhir/us/davinci-pdex-plan-net/ImplementationGuide/hl7.fhir.us.davinci-pdex-plan-net
+  - name: Da Vinci US Drug Formulary
+    url: http://hl7.org/fhir/us/davinci-drug-formulary/ImplementationGuide/hl7.fhir.us.davinci-drug-formulary
+  - name: USCDI v1
+    url: https://www.healthit.gov/isp/united-states-core-data-interoperability-uscdi#uscdi-v1
+  - name: CMS Interoperability and Patient Access Final Rule (CMS-9115-F)
+    url: https://www.cms.gov/priorities/key-initiatives/burden-reduction/interoperability
+  - name: HIPAA Privacy & Security Rules
+    url: https://www.hhs.gov/hipaa/for-professionals/index.html
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

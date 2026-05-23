@@ -1,0 +1,52 @@
+{
+  "_example": {
+    "description": "Search Coverage records for an IBX member.",
+    "request": {
+      "method": "GET",
+      "url": "https://eapics.ibx.com/patient/v1/fhir/Coverage?patient=example-ibx-member-1",
+      "headers": {
+        "Accept": "application/fhir+json",
+        "Authorization": "Bearer eyJhbGciOiJSUzI1NiIs...<member access token>..."
+      }
+    },
+    "response_status": 200
+  },
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 1,
+  "link": [
+    {"relation": "self", "url": "https://eapics.ibx.com/patient/v1/fhir/Coverage?patient=example-ibx-member-1"}
+  ],
+  "entry": [
+    {
+      "fullUrl": "https://eapics.ibx.com/patient/v1/fhir/Coverage/example-coverage-1",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "example-coverage-1",
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MA",
+              "display": "Medicare Advantage"
+            }
+          ]
+        },
+        "subscriberId": "IBX-MA-000000001",
+        "beneficiary": {"reference": "Patient/example-ibx-member-1"},
+        "period": {"start": "2025-01-01"},
+        "payor": [
+          {"display": "Keystone Health Plan East", "identifier": {"value": "IBX-PAYER-KHPE"}}
+        ],
+        "class": [
+          {
+            "type": {"coding": [{"code": "plan", "system": "http://terminology.hl7.org/CodeSystem/coverage-class"}]},
+            "value": "Keystone 65 HMO",
+            "name": "Keystone 65 HMO Select"
+          }
+        ]
+      }
+    }
+  ]
+}

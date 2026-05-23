@@ -1,0 +1,189 @@
+aid: independence-blue-cross
+name: Independence Blue Cross Rules
+description: >-
+  Operational rules and Spectral-style guardrails for working with the
+  Independence Blue Cross FHIR R4 Patient Access, Provider Directory,
+  and Drug Formulary APIs. Codifies the CMS-9115-F regulatory frame,
+  SMART on FHIR / OAuth 2.0 authentication, HIPAA handling, the
+  shared `eapics.ibx.com` gateway routing convention, and the
+  read-only posture expected from agents and integrations.
+modified: '2026-05-23'
+rules:
+  - id: ibx-fhir-r4-conformance
+    name: FHIR R4 (4.0.1) Conformance
+    description: >-
+      All three IBX APIs (Patient Access, Provider Directory, Drug
+      Formulary) implement HL7 FHIR 4.0.1. Discover the live supported
+      resources, search parameters, and operations from each CapabilityStatement
+      (`/{patient|provider|formulary}/v1/fhir/metadata`) before issuing
+      queries. Patient Access aligns with US Core 3.1.1; Provider
+      Directory implements Da Vinci PDex Plan-Net; Drug Formulary
+      implements Da Vinci US Drug Formulary (USDF).
+    applies_to:
+      - independence-blue-cross:patient-access-api
+      - independence-blue-cross:provider-directory-api
+      - independence-blue-cross:formulary-api
+    severity: required
+  - id: ibx-shared-gateway
+    name: Shared eapics.ibx.com Gateway Routing
+    description: >-
+      All three FHIR APIs share the `eapics.ibx.com` API gateway and
+      are differentiated by base path: `/patient/v1/fhir`,
+      `/provider/v1/fhir`, and `/formulary/v1/fhir`. Treat the host as
+      shared infrastructure; cache and rate-limit policies should be
+      coordinated across the three surfaces.
+    applies_to:
+      - independence-blue-cross:patient-access-api
+      - independence-blue-cross:provider-directory-api
+      - independence-blue-cross:formulary-api
+    severity: required
+  - id: ibx-smart-on-fhir-oauth
+    name: SMART on FHIR OAuth 2.0 Authentication
+    description: >-
+      Patient Access requires SMART App Launch 1.0.0 over OAuth 2.0 /
+      OpenID Connect. The published SMART configuration advertises
+      `client-public`, `sso-openid-connect`, `launch-standalone`,
+      `client-confidential-symmetric`, `context-standalone-patient`,
+      `permission-offline`, and `permission-patient`. Register apps at
+      `https://devportal.ibx.com/cmssignin/`, authorize at
+      `https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize`,
+      and exchange code for token at
+      `https://eapics.ibx.com/oauth2/v2/token`. Use PKCE
+      (`code_challenge_method=S256`) for public clients.
+    applies_to:
+      - independence-blue-cross:patient-access-api
+    severity: required
+  - id: ibx-smart-scopes
+    name: Minimum SMART Scope Set
+    description: >-
+      Request only the SMART scopes the app needs. Typical scopes are
+      `openid`, `fhirUser`, `launch/patient`, `patient/*.read`, and
+      `offline_access`. The Patient Access surface is read-only for
+      members; do not request wildcard write scopes.
+    applies_to:
+      - independence-blue-cross:patient-access-api
+    severity: required
+  - id: ibx-public-directory-formulary
+    name: Provider Directory & Formulary Are Public
+    description: >-
+      The Provider Directory and Drug Formulary FHIR APIs do not
+      require OAuth. Do not attach member bearer tokens or PHI when
+      calling these endpoints. Treat them as cache-friendly reference
+      data sources.
+    applies_to:
+      - independence-blue-cross:provider-directory-api
+      - independence-blue-cross:formulary-api
+    severity: required
+  - id: ibx-hipaa-phi-handling
+    name: HIPAA / PHI Handling
+    description: >-
+      Patient Access responses contain Protected Health Information for
+      Medicare Advantage and CHIP members. Encrypt in transit and at
+      rest, narrow retention windows, restrict access via least
+      privilege, and never log raw FHIR bodies in shared observability
+      sinks. Members can revoke consent at any time; honor revocations
+      immediately.
+    applies_to:
+      - independence-blue-cross:patient-access-api
+    severity: required
+  - id: ibx-read-only-posture
+    name: Read-Only Agent Posture
+    description: >-
+      All IBX FHIR APIs surfaced through Naftiko capabilities are
+      read-only (GET only). Agents must not attempt POST/PUT/PATCH/DELETE
+      against patient, claim, coverage, directory, or formulary
+      resources. Treat them as reporting and decision-support inputs
+      only.
+    applies_to:
+      - independence-blue-cross:patient-access-api
+      - independence-blue-cross:provider-directory-api
+      - independence-blue-cross:formulary-api
+    severity: required
+  - id: ibx-cms-9115-attestation
+    name: CMS-9115-F Attestation Required
+    description: >-
+      Production access for Patient Access apps requires completing
+      the Independence Blue Cross developer-portal attestation that
+      aligns with CMS privacy and data-use expectations. Sandbox
+      testing may proceed with developer-portal sandbox credentials
+      prior to attestation. The portal Terms & Conditions are at
+      https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf.
+    applies_to:
+      - independence-blue-cross:patient-access-api
+    severity: required
+  - id: ibx-population-scope
+    name: Member Population Scope
+    description: >-
+      The IBX Patient Access API is in scope only for Independence
+      Medicare Advantage (MA) and Keystone HMO Children's Health
+      Insurance Program (CHIP) members per the public developer
+      portal. Commercial / group members are out of scope for this
+      surface; Medicaid populations served by the AmeriHealth Caritas
+      family of plans live on their own developer portal
+      (developer.amerihealthcaritas.com).
+    applies_to:
+      - independence-blue-cross:patient-access-api
+    severity: required
+  - id: ibx-pdex-plannet-usdf-alignment
+    name: CARIN BB, Da Vinci PDex / Plan-Net / USDF Alignment
+    description: >-
+      Model consumption against the relevant CMS-blessed IGs: CARIN
+      Blue Button and Da Vinci PDex for Patient Access
+      (ExplanationOfBenefit and clinical data); Da Vinci PDex Plan-Net
+      for Provider Directory; Da Vinci US Drug Formulary (USDF) for
+      Drug Formulary. CapabilityStatements explicitly reference these
+      implementation guides.
+    applies_to:
+      - independence-blue-cross:patient-access-api
+      - independence-blue-cross:provider-directory-api
+      - independence-blue-cross:formulary-api
+    severity: recommended
+  - id: ibx-fhir-bundle-pagination
+    name: FHIR Bundle Pagination
+    description: >-
+      FHIR search responses are paginated Bundles. Follow the `next`
+      link relation to walk full result sets; do not assume single-page
+      responses for any clinical, claim, directory, or formulary query.
+    applies_to:
+      - independence-blue-cross:patient-access-api
+      - independence-blue-cross:provider-directory-api
+      - independence-blue-cross:formulary-api
+    severity: required
+  - id: ibx-no-public-rate-limits
+    name: Reasonable-Use Rate Limits
+    description: >-
+      Independence Blue Cross does not publish numeric per-second or
+      per-minute rate limits for its FHIR APIs. Implement exponential
+      backoff, honor `Retry-After` headers, cache public Provider
+      Directory and Formulary responses aggressively, and pace
+      member-token traffic conservatively.
+    applies_to:
+      - independence-blue-cross:patient-access-api
+      - independence-blue-cross:provider-directory-api
+      - independence-blue-cross:formulary-api
+    severity: recommended
+  - id: ibx-prefer-summary-elements
+    name: Use _summary and _elements to Limit Payload
+    description: >-
+      For directory and formulary queries where full FHIR bodies are
+      unnecessary, request `_summary=true` or use `_elements` to reduce
+      payload size and downstream egress cost.
+    applies_to:
+      - independence-blue-cross:provider-directory-api
+      - independence-blue-cross:formulary-api
+    severity: recommended
+  - id: ibx-tic-machine-readable-files
+    name: Transparency In Coverage Files Are Out-Of-Band
+    description: >-
+      Monthly Transparency in Coverage machine-readable files are
+      separate from the FHIR APIs and are served from
+      `www.ibx.com/cmstic/?brand={khpe|qcc|iac}` per carrier brand
+      (Keystone Health Plan East, QCC Insurance Company, Independence
+      Assurance Co, Inc.). Consume them as bulk JSON downloads, not
+      via FHIR search.
+    applies_to:
+      - independence-blue-cross:transparency-in-coverage
+    severity: required
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

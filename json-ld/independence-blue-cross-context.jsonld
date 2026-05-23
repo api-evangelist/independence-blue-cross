@@ -1,0 +1,125 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "fhir": "http://hl7.org/fhir/",
+    "carin": "http://hl7.org/fhir/us/carin-bb/",
+    "pdex": "http://hl7.org/fhir/us/davinci-pdex/",
+    "plannet": "http://hl7.org/fhir/us/davinci-pdex-plan-net/",
+    "usdf": "http://hl7.org/fhir/us/davinci-drug-formulary/",
+    "uscore": "http://hl7.org/fhir/us/core/",
+    "smart": "http://hl7.org/fhir/smart-app-launch/",
+    "ibx": "https://www.ibx.com/ns#",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "email": "schema:email",
+    "parentOrganization": {"@id": "schema:parentOrganization", "@type": "@id"},
+    "subOrganization": {"@id": "schema:subOrganization", "@type": "@id"},
+    "memberOf": {"@id": "schema:memberOf", "@type": "@id"},
+    "areaServed": {"@id": "schema:areaServed", "@type": "@id"},
+    "subjectOf": {"@id": "schema:subjectOf", "@type": "@id"},
+    "Organization": "schema:Organization",
+    "MedicalOrganization": "schema:MedicalOrganization",
+    "Hospital": "schema:Hospital",
+    "InsuranceAgency": "schema:InsuranceAgency",
+    "MedicalEntity": "schema:MedicalEntity",
+    "HealthInsurancePlan": "schema:HealthInsurancePlan",
+    "WebAPI": "schema:WebAPI",
+    "ApiSpecification": "schema:CreativeWork",
+    "ImplementationGuide": "fhir:ImplementationGuide",
+    "CapabilityStatement": "fhir:CapabilityStatement",
+    "Patient": "fhir:Patient",
+    "Coverage": "fhir:Coverage",
+    "ExplanationOfBenefit": "fhir:ExplanationOfBenefit",
+    "Practitioner": "fhir:Practitioner",
+    "Organization_FHIR": "fhir:Organization",
+    "Location": "fhir:Location",
+    "MedicationKnowledge": "fhir:MedicationKnowledge",
+    "List": "fhir:List",
+    "fhirVersion": "ibx:fhirVersion",
+    "implementsProfile": {"@id": "ibx:implementsProfile", "@type": "@id"},
+    "authorizationEndpoint": {"@id": "ibx:authorizationEndpoint", "@type": "@id"},
+    "tokenEndpoint": {"@id": "ibx:tokenEndpoint", "@type": "@id"},
+    "wellKnown": {"@id": "ibx:wellKnown", "@type": "@id"},
+    "capabilityStatementUrl": {"@id": "ibx:capabilityStatementUrl", "@type": "@id"},
+    "baseUrl": {"@id": "ibx:baseUrl", "@type": "@id"},
+    "smartCapabilities": {"@id": "ibx:smartCapabilities", "@container": "@set"}
+  },
+  "@graph": [
+    {
+      "@id": "https://www.ibx.com/#org",
+      "@type": ["Organization", "InsuranceAgency"],
+      "name": "Independence Blue Cross",
+      "url": "https://www.ibx.com",
+      "parentOrganization": "https://www.ibx.com/about-us/affiliates#independence-health-group",
+      "memberOf": "https://www.bcbs.com/#bcbsa",
+      "areaServed": [
+        {"@type": "schema:AdministrativeArea", "name": "Bucks County, Pennsylvania"},
+        {"@type": "schema:AdministrativeArea", "name": "Chester County, Pennsylvania"},
+        {"@type": "schema:AdministrativeArea", "name": "Delaware County, Pennsylvania"},
+        {"@type": "schema:AdministrativeArea", "name": "Montgomery County, Pennsylvania"},
+        {"@type": "schema:AdministrativeArea", "name": "Philadelphia County, Pennsylvania"}
+      ]
+    },
+    {
+      "@id": "https://www.ibx.com/about-us/affiliates#independence-health-group",
+      "@type": "Organization",
+      "name": "Independence Health Group, Inc.",
+      "subOrganization": [
+        "https://www.ibx.com/#org",
+        "https://www.amerihealth.com/#org",
+        "https://www.amerihealthcaritas.com/#org",
+        "https://www.amerihealth.com/administrators#org",
+        "https://www.tandigmhealth.com/#org"
+      ]
+    },
+    {
+      "@id": "https://eapics.ibx.com/patient/v1/fhir#api",
+      "@type": "WebAPI",
+      "name": "Independence Blue Cross Patient Access FHIR API",
+      "baseUrl": "https://eapics.ibx.com/patient/v1/fhir",
+      "capabilityStatementUrl": "https://eapics.ibx.com/patient/v1/fhir/metadata",
+      "wellKnown": "https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration",
+      "authorizationEndpoint": "https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize",
+      "tokenEndpoint": "https://eapics.ibx.com/oauth2/v2/token",
+      "fhirVersion": "4.0.1",
+      "implementsProfile": [
+        "http://hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core|3.1.1",
+        "http://hl7.org/fhir/us/carin-bb/",
+        "http://hl7.org/fhir/us/davinci-pdex/"
+      ],
+      "smartCapabilities": [
+        "client-public",
+        "sso-openid-connect",
+        "launch-standalone",
+        "client-confidential-symmetric",
+        "context-standalone-patient",
+        "permission-offline",
+        "permission-patient"
+      ]
+    },
+    {
+      "@id": "https://eapics.ibx.com/provider/v1/fhir#api",
+      "@type": "WebAPI",
+      "name": "Independence Blue Cross Provider Directory FHIR API",
+      "baseUrl": "https://eapics.ibx.com/provider/v1/fhir",
+      "capabilityStatementUrl": "https://eapics.ibx.com/provider/v1/fhir/metadata",
+      "fhirVersion": "4.0.1",
+      "implementsProfile": [
+        "http://hl7.org/fhir/us/davinci-pdex-plan-net/ImplementationGuide/hl7.fhir.us.davinci-pdex-plan-net"
+      ]
+    },
+    {
+      "@id": "https://eapics.ibx.com/formulary/v1/fhir#api",
+      "@type": "WebAPI",
+      "name": "Independence Blue Cross Drug Formulary FHIR API",
+      "baseUrl": "https://eapics.ibx.com/formulary/v1/fhir",
+      "capabilityStatementUrl": "https://eapics.ibx.com/formulary/v1/fhir/metadata",
+      "fhirVersion": "4.0.1",
+      "implementsProfile": [
+        "http://hl7.org/fhir/us/davinci-drug-formulary/ImplementationGuide/hl7.fhir.us.davinci-drug-formulary"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/independence-blue-cross/refs/heads/main/json-schema/independence-blue-cross-explanation-of-benefit-schema.json",
+  "title": "IBX ExplanationOfBenefit (CARIN BB subset)",
+  "description": "Operational subset of the FHIR R4 ExplanationOfBenefit resource as published by Independence Blue Cross at https://eapics.ibx.com/patient/v1/fhir/ExplanationOfBenefit. Supports the CARIN BB inpatient, outpatient, pharmacy, professional, and oral institutional/professional profiles (CapabilityStatement lists five supported profiles).",
+  "type": "object",
+  "required": ["resourceType", "id", "status", "type", "patient"],
+  "properties": {
+    "resourceType": {"type": "string", "const": "ExplanationOfBenefit"},
+    "id": {"type": "string"},
+    "status": {"type": "string", "enum": ["active", "cancelled", "draft", "entered-in-error"]},
+    "type": {"type": "object", "description": "Claim type (institutional, professional, pharmacy, oral, vision)."},
+    "subType": {"type": "object"},
+    "use": {"type": "string", "enum": ["claim", "preauthorization", "predetermination"]},
+    "patient": {"type": "object", "description": "Reference to Patient."},
+    "billablePeriod": {
+      "type": "object",
+      "properties": {
+        "start": {"type": "string", "format": "date"},
+        "end": {"type": "string", "format": "date"}
+      }
+    },
+    "created": {"type": "string", "format": "date-time"},
+    "insurer": {"type": "object", "description": "Reference to IBX/Keystone/QCC/IAC payer organization."},
+    "provider": {"type": "object"},
+    "outcome": {"type": "string", "enum": ["queued", "complete", "error", "partial"]},
+    "insurance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "focal": {"type": "boolean"},
+          "coverage": {"type": "object"}
+        }
+      }
+    },
+    "item": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "total": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": {"type": "object"},
+          "amount": {
+            "type": "object",
+            "properties": {
+              "value": {"type": "number"},
+              "currency": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "payment": {"type": "object"}
+  },
+  "x-fhir-version": "4.0.1",
+  "x-source-capability-statement": "https://eapics.ibx.com/patient/v1/fhir/metadata",
+  "x-supported-profiles": [
+    "http://hl7.org/fhir/us/carin-bb/StructureDefinition/C4BB-ExplanationOfBenefit-Inpatient-Institutional",
+    "http://hl7.org/fhir/us/carin-bb/StructureDefinition/C4BB-ExplanationOfBenefit-Outpatient-Institutional",
+    "http://hl7.org/fhir/us/carin-bb/StructureDefinition/C4BB-ExplanationOfBenefit-Pharmacy",
+    "http://hl7.org/fhir/us/carin-bb/StructureDefinition/C4BB-ExplanationOfBenefit-Professional-NonClinician",
+    "http://hl7.org/fhir/us/carin-bb/StructureDefinition/C4BB-ExplanationOfBenefit-Oral"
+  ]
+}

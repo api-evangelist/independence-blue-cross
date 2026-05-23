@@ -1,0 +1,169 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Independence Blue Cross
+providerId: independence-blue-cross
+created: '2026-05-23'
+modified: '2026-05-23'
+reconciled: true
+tags:
+  - FHIR
+  - Healthcare
+  - Health Insurance
+  - Medicare Advantage
+  - CHIP
+  - Interoperability
+  - CMS
+  - Patient Access
+  - Provider Directory
+  - Drug Formulary
+description: >-
+  Independence Blue Cross exposes HL7 FHIR R4 APIs (Patient Access,
+  Provider Directory, Drug Formulary) to satisfy the CMS
+  Interoperability and Patient Access final rule (CMS-9115-F). API
+  access is free to registered third-party applications: it is governed
+  by SMART on FHIR / OAuth 2.0, member consent, and a CMS-aligned
+  attestation rather than a commercial price tier. There is no list
+  price, no metered rate card, and no paid subscription. Member
+  health-plan products (commercial, Medicare Advantage, CHIP, dental,
+  vision) are sold through employer brokers, the federal/PA
+  Marketplace, CMS, and the Pennsylvania CHIP program and are out of
+  scope for an API pricing surface.
+notes: >-
+  APIs are provided pursuant to CMS interoperability mandates; no
+  commercial pricing exists. Plan entries describe the free regulatory
+  access surface rather than dollar-denominated tiers. Member-side
+  insurance pricing (premiums, copays, deductibles) is set per
+  product line and is not part of this API plans file.
+sources:
+  - https://devportal.ibx.com/
+  - https://devportal.ibx.com/documentation/
+  - https://www.ibx.com/developer-resources
+  - https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json
+  - https://www.cms.gov/priorities/key-initiatives/burden-reduction/interoperability
+plans:
+  - id: ibx-developer-sandbox
+    name: Developer Sandbox
+    type: freemium
+    description: >-
+      Free sandbox access for testing against the IBX developer portal
+      sandbox services. Sandbox member credentials are issued to
+      registered developers after account activation.
+    entries:
+      - label: Sandbox FHIR requests
+        name: sandbox_requests
+        type: flat
+        metric: request
+        limit: -1
+        timeFrame: usage
+        geo: US
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: FHIR R4 sandbox endpoints (Patient Access, Provider Directory, Drug Formulary)
+      - name: Synthetic patient credentials issued to registered developers
+      - name: Live CapabilityStatements for all three APIs
+      - name: SMART App Launch / OAuth 2.0 / PKCE test flows
+      - name: No commercial cost
+  - id: ibx-production-patient-access
+    name: CMS Patient Access (Production)
+    type: freemium
+    description: >-
+      Production access for third-party member-facing apps under
+      CMS-9115-F. Requires developer registration via
+      https://devportal.ibx.com/cmssignin/, app attestation, and SMART
+      on FHIR / OAuth 2.0 with member consent. In scope for
+      Independence Medicare Advantage and Keystone HMO CHIP members.
+      No fees are charged to the application or member.
+    entries:
+      - label: Patient Access FHIR requests
+        name: patient_access_requests
+        type: flat
+        metric: request
+        limit: -1
+        timeFrame: usage
+        geo: US
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Member-consented FHIR R4 read access
+      - name: SMART App Launch 1.0.0 / OAuth 2.0 / PKCE
+      - name: CARIN BB / Da Vinci PDex / US Core 3.1.1 conformance
+      - name: No commercial price; access is regulatory-free
+      - name: Member consent revocation honored at any time
+  - id: ibx-production-provider-directory
+    name: Provider Directory (Public)
+    type: free
+    description: >-
+      Public Da Vinci PDex Plan-Net Provider Directory FHIR API. No
+      authentication required; intended for member-facing apps,
+      brokers, care navigation tools, and price/transparency apps.
+    entries:
+      - label: Provider Directory FHIR requests
+        name: provider_directory_requests
+        type: flat
+        metric: request
+        limit: -1
+        timeFrame: usage
+        geo: US
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Practitioner, PractitionerRole, Organization, OrganizationAffiliation
+      - name: Location, HealthcareService, InsurancePlan, Endpoint
+      - name: Da Vinci PDex Plan-Net IG conformance
+      - name: Public; no authentication
+  - id: ibx-production-formulary
+    name: Drug Formulary (Public)
+    type: free
+    description: >-
+      Public Da Vinci US Drug Formulary (USDF) FHIR API exposing the
+      IBX covered drug list, tier information, and prior authorization
+      indicators. No authentication required.
+    entries:
+      - label: Drug Formulary FHIR requests
+        name: formulary_requests
+        type: flat
+        metric: request
+        limit: -1
+        timeFrame: usage
+        geo: US
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: MedicationKnowledge and List resources
+      - name: Da Vinci USDF IG conformance
+      - name: Public; no authentication
+  - id: ibx-transparency-in-coverage
+    name: Transparency In Coverage Machine-Readable Files
+    type: free
+    description: >-
+      Monthly machine-readable JSON files of in-network rates, allowed
+      amounts, and prescription drug pricing for three IBX-operated
+      carrier brands (Keystone Health Plan East, QCC Insurance Company,
+      Independence Assurance Co, Inc.). Public bulk download surface
+      driven by the federal Transparency in Coverage rule.
+    entries:
+      - label: TiC file downloads
+        name: tic_downloads
+        type: flat
+        metric: download
+        limit: -1
+        timeFrame: usage
+        geo: US
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: In-network negotiated rates per carrier brand
+      - name: Out-of-network allowed amounts per carrier brand
+      - name: Prescription drug pricing files
+      - name: Monthly refresh cadence
+      - name: Public; no authentication
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

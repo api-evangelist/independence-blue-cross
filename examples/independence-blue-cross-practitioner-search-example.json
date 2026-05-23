@@ -1,0 +1,63 @@
+{
+  "_example": {
+    "description": "Search Practitioners in the IBX Provider Directory by name. No authentication required.",
+    "request": {
+      "method": "GET",
+      "url": "https://eapics.ibx.com/provider/v1/fhir/Practitioner?name=Smith&_count=2",
+      "headers": {
+        "Accept": "application/fhir+json"
+      }
+    },
+    "response_status": 200
+  },
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 2,
+  "link": [
+    {"relation": "self", "url": "https://eapics.ibx.com/provider/v1/fhir/Practitioner?name=Smith&_count=2"}
+  ],
+  "entry": [
+    {
+      "fullUrl": "https://eapics.ibx.com/provider/v1/fhir/Practitioner/example-prac-1",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "example-prac-1",
+        "meta": {"profile": ["http://hl7.org/fhir/us/davinci-pdex-plan-net/StructureDefinition/plannet-Practitioner"]},
+        "identifier": [
+          {"system": "http://hl7.org/fhir/sid/us-npi", "value": "1234567890"}
+        ],
+        "active": true,
+        "name": [{"family": "Smith", "given": ["Jane", "A."], "suffix": ["MD"]}],
+        "gender": "female",
+        "qualification": [
+          {
+            "code": {
+              "coding": [{"system": "http://nucc.org/provider-taxonomy", "code": "207RC0000X", "display": "Cardiovascular Disease"}]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://eapics.ibx.com/provider/v1/fhir/Practitioner/example-prac-2",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "example-prac-2",
+        "meta": {"profile": ["http://hl7.org/fhir/us/davinci-pdex-plan-net/StructureDefinition/plannet-Practitioner"]},
+        "identifier": [
+          {"system": "http://hl7.org/fhir/sid/us-npi", "value": "9876543210"}
+        ],
+        "active": true,
+        "name": [{"family": "Smith", "given": ["John"], "suffix": ["DO"]}],
+        "gender": "male",
+        "qualification": [
+          {
+            "code": {
+              "coding": [{"system": "http://nucc.org/provider-taxonomy", "code": "207R00000X", "display": "Internal Medicine"}]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

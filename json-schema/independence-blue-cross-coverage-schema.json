@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/independence-blue-cross/refs/heads/main/json-schema/independence-blue-cross-coverage-schema.json",
+  "title": "IBX Coverage (CARIN BB subset)",
+  "description": "Operational subset of the FHIR R4 Coverage resource as published by Independence Blue Cross at https://eapics.ibx.com/patient/v1/fhir/Coverage. Anchored to the CARIN for Blue Button Coverage profile.",
+  "type": "object",
+  "required": ["resourceType", "id", "status", "beneficiary"],
+  "properties": {
+    "resourceType": {"type": "string", "const": "Coverage"},
+    "id": {"type": "string"},
+    "status": {"type": "string", "enum": ["active", "cancelled", "draft", "entered-in-error"]},
+    "type": {
+      "type": "object",
+      "description": "Type of coverage (e.g. Medicare Advantage, CHIP, commercial)."
+    },
+    "policyHolder": {"type": "object", "description": "Reference to Patient/Organization."},
+    "subscriber": {"type": "object", "description": "Reference to Patient."},
+    "subscriberId": {"type": "string"},
+    "beneficiary": {"type": "object", "description": "Reference to Patient."},
+    "dependent": {"type": "string"},
+    "relationship": {"type": "object"},
+    "period": {
+      "type": "object",
+      "properties": {
+        "start": {"type": "string", "format": "date"},
+        "end": {"type": "string", "format": "date"}
+      }
+    },
+    "payor": {
+      "type": "array",
+      "items": {"type": "object"},
+      "description": "Reference to the IBX organization that pays for the coverage."
+    },
+    "class": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {"type": "object"},
+          "value": {"type": "string"},
+          "name": {"type": "string"}
+        }
+      }
+    }
+  },
+  "x-fhir-version": "4.0.1",
+  "x-source-capability-statement": "https://eapics.ibx.com/patient/v1/fhir/metadata"
+}

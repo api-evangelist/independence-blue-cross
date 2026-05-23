@@ -1,0 +1,350 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Independence Blue Cross Provider Directory FHIR
+  description: >-
+    Naftiko capability wrapping the Independence Blue Cross public Da
+    Vinci PDex Plan-Net FHIR R4 Provider Directory API. No
+    authentication required. Exposes Practitioner, PractitionerRole,
+    Organization, OrganizationAffiliation, Location, HealthcareService,
+    InsurancePlan, and Endpoint resources for the IBX provider and
+    pharmacy network across southeastern Pennsylvania.
+  tags:
+    - Independence Blue Cross
+    - Provider Directory
+    - Plan-Net
+    - Da Vinci
+    - FHIR
+    - Public
+  created: '2026-05-23'
+  modified: '2026-05-23'
+capability:
+  consumes:
+    - type: http
+      namespace: ibx-provider-directory
+      baseUri: https://eapics.ibx.com/provider/v1/fhir
+      description: >-
+        Independence Blue Cross Da Vinci Plan-Net Provider Directory
+        FHIR R4 endpoint. Publicly queryable. Cache aggressively;
+        Provider Directory data is reference data, not PHI.
+      resources:
+        - name: Practitioner
+          path: /Practitioner
+          operations:
+            - name: searchPractitioner
+              method: GET
+              description: Search Practitioner resources (e.g. by name, npi, specialty)
+              outputRawFormat: json
+              inputParameters:
+                - name: name
+                  in: query
+                  type: string
+                  required: false
+                - name: identifier
+                  in: query
+                  type: string
+                  required: false
+                - name: _count
+                  in: query
+                  type: integer
+                  required: false
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+            - name: readPractitioner
+              method: GET
+              path: /Practitioner/{id}
+              description: Read a Practitioner resource by id
+              outputRawFormat: json
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: PractitionerRole
+          path: /PractitionerRole
+          operations:
+            - name: searchPractitionerRole
+              method: GET
+              description: Search PractitionerRole (specialty, network, location filters)
+              outputRawFormat: json
+              inputParameters:
+                - name: practitioner
+                  in: query
+                  type: string
+                  required: false
+                - name: specialty
+                  in: query
+                  type: string
+                  required: false
+                - name: location
+                  in: query
+                  type: string
+                  required: false
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: Organization
+          path: /Organization
+          operations:
+            - name: searchOrganization
+              method: GET
+              description: Search Organization (e.g. hospitals, group practices)
+              outputRawFormat: json
+              inputParameters:
+                - name: name
+                  in: query
+                  type: string
+                  required: false
+                - name: type
+                  in: query
+                  type: string
+                  required: false
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: OrganizationAffiliation
+          path: /OrganizationAffiliation
+          operations:
+            - name: searchOrganizationAffiliation
+              method: GET
+              description: Search OrganizationAffiliation for network membership and role
+              outputRawFormat: json
+              inputParameters:
+                - name: primary-organization
+                  in: query
+                  type: string
+                  required: false
+                - name: network
+                  in: query
+                  type: string
+                  required: false
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: Location
+          path: /Location
+          operations:
+            - name: searchLocation
+              method: GET
+              description: Search Location resources (e.g. by address, organization)
+              outputRawFormat: json
+              inputParameters:
+                - name: address
+                  in: query
+                  type: string
+                  required: false
+                - name: organization
+                  in: query
+                  type: string
+                  required: false
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: HealthcareService
+          path: /HealthcareService
+          operations:
+            - name: searchHealthcareService
+              method: GET
+              description: Search HealthcareService for services offered by providers and organizations
+              outputRawFormat: json
+              inputParameters:
+                - name: organization
+                  in: query
+                  type: string
+                  required: false
+                - name: service-category
+                  in: query
+                  type: string
+                  required: false
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: InsurancePlan
+          path: /InsurancePlan
+          operations:
+            - name: searchInsurancePlan
+              method: GET
+              description: Search InsurancePlan offerings (Medicare Advantage, CHIP, commercial)
+              outputRawFormat: json
+              inputParameters:
+                - name: name
+                  in: query
+                  type: string
+                  required: false
+                - name: type
+                  in: query
+                  type: string
+                  required: false
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: ibx-provider-directory-rest
+      port: 8082
+      description: REST adapter for the IBX Provider Directory; one resource per FHIR type.
+      resources:
+        - path: /v1/practitioners
+          name: practitioners
+          description: Search and read Practitioners
+          operations:
+            - method: GET
+              name: searchPractitioners
+              description: Search Practitioners
+              call: ibx-provider-directory.searchPractitioner
+              with:
+                name: rest.name
+                identifier: rest.identifier
+                _count: rest._count
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/practitioner-roles
+          name: practitioner-roles
+          description: Search PractitionerRoles
+          operations:
+            - method: GET
+              name: searchPractitionerRoles
+              description: Search PractitionerRoles
+              call: ibx-provider-directory.searchPractitionerRole
+              with:
+                practitioner: rest.practitioner
+                specialty: rest.specialty
+                location: rest.location
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/organizations
+          name: organizations
+          description: Search Organizations
+          operations:
+            - method: GET
+              name: searchOrganizations
+              description: Search Organizations
+              call: ibx-provider-directory.searchOrganization
+              with:
+                name: rest.name
+                type: rest.type
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/locations
+          name: locations
+          description: Search Locations
+          operations:
+            - method: GET
+              name: searchLocations
+              description: Search Locations
+              call: ibx-provider-directory.searchLocation
+              with:
+                address: rest.address
+                organization: rest.organization
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/healthcare-services
+          name: healthcare-services
+          description: Search HealthcareService
+          operations:
+            - method: GET
+              name: searchHealthcareServices
+              description: Search HealthcareService
+              call: ibx-provider-directory.searchHealthcareService
+              with:
+                organization: rest.organization
+                service-category: rest.service_category
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/insurance-plans
+          name: insurance-plans
+          description: Search InsurancePlan
+          operations:
+            - method: GET
+              name: searchInsurancePlans
+              description: Search InsurancePlan
+              call: ibx-provider-directory.searchInsurancePlan
+              with:
+                name: rest.name
+                type: rest.type
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: ibx-provider-directory-mcp
+      port: 9092
+      transport: http
+      description: MCP adapter exposing IBX provider directory as read-only tools.
+      tools:
+        - name: search-practitioners
+          description: Search Practitioners by name, identifier, etc.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-provider-directory.searchPractitioner
+          with:
+            name: tools.name
+            identifier: tools.identifier
+        - name: search-practitioner-roles
+          description: Search PractitionerRoles by specialty, network, location
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-provider-directory.searchPractitionerRole
+          with:
+            practitioner: tools.practitioner
+            specialty: tools.specialty
+            location: tools.location
+        - name: search-organizations
+          description: Search provider Organizations
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-provider-directory.searchOrganization
+          with:
+            name: tools.name
+            type: tools.type
+        - name: search-locations
+          description: Search provider Locations
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-provider-directory.searchLocation
+          with:
+            address: tools.address
+            organization: tools.organization
+        - name: search-healthcare-services
+          description: Search HealthcareService offerings
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-provider-directory.searchHealthcareService
+          with:
+            organization: tools.organization
+            service-category: tools.service_category
+        - name: search-insurance-plans
+          description: Search InsurancePlan offerings
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: ibx-provider-directory.searchInsurancePlan
+          with:
+            name: tools.name
+            type: tools.type
