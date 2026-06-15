@@ -1,0 +1,269 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Independence Blue Cross Provider Directory FHIR API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Provider Directory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Capability Statement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/metadata"
+          },
+          "docs": "Get Capability Statement"
+        },
+        {
+          "info": {
+            "name": "Search Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/Location"
+          },
+          "docs": "Search Location"
+        },
+        {
+          "info": {
+            "name": "Read Location By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/Location/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read Location By ID"
+        },
+        {
+          "info": {
+            "name": "Search Practitioner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/Practitioner"
+          },
+          "docs": "Search Practitioner"
+        },
+        {
+          "info": {
+            "name": "Read Practitioner By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/Practitioner/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read Practitioner By ID"
+        },
+        {
+          "info": {
+            "name": "Search InsurancePlan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/InsurancePlan"
+          },
+          "docs": "Search InsurancePlan"
+        },
+        {
+          "info": {
+            "name": "Read InsurancePlan By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/InsurancePlan/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read InsurancePlan By ID"
+        },
+        {
+          "info": {
+            "name": "Search HealthcareService",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/HealthcareService"
+          },
+          "docs": "Search HealthcareService"
+        },
+        {
+          "info": {
+            "name": "Read HealthcareService By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/HealthcareService/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read HealthcareService By ID"
+        },
+        {
+          "info": {
+            "name": "Search OrganizationAffiliation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/OrganizationAffiliation"
+          },
+          "docs": "Search OrganizationAffiliation"
+        },
+        {
+          "info": {
+            "name": "Read OrganizationAffiliation By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/OrganizationAffiliation/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read OrganizationAffiliation By ID"
+        },
+        {
+          "info": {
+            "name": "Search Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/Organization"
+          },
+          "docs": "Search Organization"
+        },
+        {
+          "info": {
+            "name": "Read Organization By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/Organization/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read Organization By ID"
+        },
+        {
+          "info": {
+            "name": "Search PractitionerRole",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/PractitionerRole"
+          },
+          "docs": "Search PractitionerRole"
+        },
+        {
+          "info": {
+            "name": "Read PractitionerRole By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/PractitionerRole/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read PractitionerRole By ID"
+        },
+        {
+          "info": {
+            "name": "Search Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/Endpoint"
+          },
+          "docs": "Search Endpoint"
+        },
+        {
+          "info": {
+            "name": "Read Endpoint By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/provider/v1/fhir/Endpoint/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read Endpoint By ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

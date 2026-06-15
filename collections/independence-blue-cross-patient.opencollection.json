@@ -1,0 +1,592 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Independence Blue Cross Patient Access FHIR API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize",
+      "accessTokenUrl": "https://eapics.ibx.com/oauth2/v2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patient Access",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Capability Statement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/metadata"
+          },
+          "docs": "Get Capability Statement"
+        },
+        {
+          "info": {
+            "name": "Get SMART Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration"
+          },
+          "docs": "Get SMART Configuration"
+        },
+        {
+          "info": {
+            "name": "Search Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Patient"
+          },
+          "docs": "Search Patient"
+        },
+        {
+          "info": {
+            "name": "Read Patient By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Patient/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read Patient By ID"
+        },
+        {
+          "info": {
+            "name": "Search Coverage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Coverage"
+          },
+          "docs": "Search Coverage"
+        },
+        {
+          "info": {
+            "name": "Search Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Organization"
+          },
+          "docs": "Search Organization"
+        },
+        {
+          "info": {
+            "name": "Read Organization By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Organization/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read Organization By ID"
+        },
+        {
+          "info": {
+            "name": "Search Practitioner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Practitioner"
+          },
+          "docs": "Search Practitioner"
+        },
+        {
+          "info": {
+            "name": "Read Practitioner By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Practitioner/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read Practitioner By ID"
+        },
+        {
+          "info": {
+            "name": "Search Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Location"
+          },
+          "docs": "Search Location"
+        },
+        {
+          "info": {
+            "name": "Read Location By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Location/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read Location By ID"
+        },
+        {
+          "info": {
+            "name": "Search PractitionerRole",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/PractitionerRole"
+          },
+          "docs": "Search PractitionerRole"
+        },
+        {
+          "info": {
+            "name": "Read PractitionerRole By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/PractitionerRole/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read PractitionerRole By ID"
+        },
+        {
+          "info": {
+            "name": "Search AllergyIntolerance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/AllergyIntolerance"
+          },
+          "docs": "Search AllergyIntolerance"
+        },
+        {
+          "info": {
+            "name": "Read AllergyIntolerance By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/AllergyIntolerance/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read AllergyIntolerance By ID"
+        },
+        {
+          "info": {
+            "name": "Search Immunization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Immunization"
+          },
+          "docs": "Search Immunization"
+        },
+        {
+          "info": {
+            "name": "Read Immunization By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Immunization/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read Immunization By ID"
+        },
+        {
+          "info": {
+            "name": "Read MedicationDispense By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/MedicationDispense/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read MedicationDispense By ID"
+        },
+        {
+          "info": {
+            "name": "Search Observation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Observation"
+          },
+          "docs": "Search Observation"
+        },
+        {
+          "info": {
+            "name": "Read Observation By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Observation/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read Observation By ID"
+        },
+        {
+          "info": {
+            "name": "Search DiagnosticReport",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/DiagnosticReport"
+          },
+          "docs": "Search DiagnosticReport"
+        },
+        {
+          "info": {
+            "name": "Read DiagnosticReport By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/DiagnosticReport/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read DiagnosticReport By ID"
+        },
+        {
+          "info": {
+            "name": "Search CarePlan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/CarePlan"
+          },
+          "docs": "Search CarePlan"
+        },
+        {
+          "info": {
+            "name": "Read CarePlan By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/CarePlan/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read CarePlan By ID"
+        },
+        {
+          "info": {
+            "name": "Search Condition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Condition"
+          },
+          "docs": "Search Condition"
+        },
+        {
+          "info": {
+            "name": "Read Condition By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Condition/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read Condition By ID"
+        },
+        {
+          "info": {
+            "name": "Search Encounter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Encounter"
+          },
+          "docs": "Search Encounter"
+        },
+        {
+          "info": {
+            "name": "Read Encounter By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Encounter/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read Encounter By ID"
+        },
+        {
+          "info": {
+            "name": "Search Goal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Goal"
+          },
+          "docs": "Search Goal"
+        },
+        {
+          "info": {
+            "name": "Read Goal By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Goal/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read Goal By ID"
+        },
+        {
+          "info": {
+            "name": "Search Medication",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Medication"
+          },
+          "docs": "Search Medication"
+        },
+        {
+          "info": {
+            "name": "Read Medication By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Medication/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read Medication By ID"
+        },
+        {
+          "info": {
+            "name": "Search MedicationRequest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/MedicationRequest"
+          },
+          "docs": "Search MedicationRequest"
+        },
+        {
+          "info": {
+            "name": "Read MedicationRequest By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/MedicationRequest/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read MedicationRequest By ID"
+        },
+        {
+          "info": {
+            "name": "Search Procedure",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Procedure"
+          },
+          "docs": "Search Procedure"
+        },
+        {
+          "info": {
+            "name": "Read Procedure By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/Procedure/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read Procedure By ID"
+        },
+        {
+          "info": {
+            "name": "Search ExplanationOfBenefit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/ExplanationOfBenefit"
+          },
+          "docs": "Search ExplanationOfBenefit"
+        },
+        {
+          "info": {
+            "name": "Read ExplanationOfBenefit By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/patient/v1/fhir/ExplanationOfBenefit/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read ExplanationOfBenefit By ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

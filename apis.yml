@@ -1,29 +1,20 @@
 aid: independence-blue-cross
 name: Independence Blue Cross
 description: >-
-  Independence Blue Cross (IBX) is the Blue Cross Blue Shield Association
-  licensee for southeastern Pennsylvania (Bucks, Chester, Delaware,
-  Montgomery, and Philadelphia counties) and a subsidiary of Independence
-  Health Group, Inc., the parent holding company that consolidated IBX,
-  AmeriHealth (commercial, including AmeriHealth New Jersey and the
-  AmeriHealth Administrators TPA business), and the AmeriHealth Caritas
-  family of Medicaid managed care plans in 2013. The company has called
-  Philadelphia home for more than 85 years, serves nearly three million
-  members directly, and — through Independence Health Group — supports
-  roughly nine million covered lives across commercial, Medicare
-  Advantage, Medicaid, CHIP, dental, vision, and behavioral health lines
-  of business. Independence Health Group reported consolidated revenue of
-  $36.3 billion for 2025. To satisfy the CMS Interoperability and Patient
-  Access final rule (CMS-9115-F), IBX publishes three HL7 FHIR R4 (4.0.1)
-  APIs from its `eapics.ibx.com` gateway and developer portal at
-  `devportal.ibx.com`: a SMART-on-FHIR / OAuth 2.0 secured Patient Access
-  API for Medicare Advantage and Keystone HMO CHIP members, a public Da
-  Vinci PDex Plan-Net Provider Directory API, and a public Da Vinci US
-  Drug Formulary (USDF) API. The provider also publishes monthly
-  Transparency in Coverage machine-readable files (in-network rates,
-  allowed amounts, prescription drugs) for three carrier brands —
-  Keystone Health Plan East, QCC Insurance Company, and Independence
-  Assurance Co, Inc.
+  Independence Blue Cross (IBX) is the Blue Cross Blue Shield Association licensee for southeastern Pennsylvania (Bucks,
+  Chester, Delaware, Montgomery, and Philadelphia counties) and a subsidiary of Independence Health Group, Inc., the
+  parent holding company that consolidated IBX, AmeriHealth (commercial, including AmeriHealth New Jersey and the
+  AmeriHealth Administrators TPA business), and the AmeriHealth Caritas family of Medicaid managed care plans in 2013.
+  The company has called Philadelphia home for more than 85 years, serves nearly three million members directly, and —
+  through Independence Health Group — supports roughly nine million covered lives across commercial, Medicare Advantage,
+  Medicaid, CHIP, dental, vision, and behavioral health lines of business. Independence Health Group reported
+  consolidated revenue of $36.3 billion for 2025. To satisfy the CMS Interoperability and Patient Access final rule
+  (CMS-9115-F), IBX publishes three HL7 FHIR R4 (4.0.1) APIs from its `eapics.ibx.com` gateway and developer portal at
+  `devportal.ibx.com`: a SMART-on-FHIR / OAuth 2.0 secured Patient Access API for Medicare Advantage and Keystone HMO
+  CHIP members, a public Da Vinci PDex Plan-Net Provider Directory API, and a public Da Vinci US Drug Formulary (USDF)
+  API. The provider also publishes monthly Transparency in Coverage machine-readable files (in-network rates, allowed
+  amounts, prescription drugs) for three carrier brands — Keystone Health Plan East, QCC Insurance Company, and
+  Independence Assurance Co, Inc.
 url: https://raw.githubusercontent.com/api-evangelist/independence-blue-cross/refs/heads/main/apis.yml
 type: Index
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -56,17 +47,13 @@ apis:
   - aid: independence-blue-cross:patient-access-api
     name: Independence Blue Cross Patient Access FHIR API
     description: >-
-      HL7 FHIR R4 (4.0.1) Patient Access API published to satisfy the
-      CMS Interoperability and Patient Access final rule (CMS-9115-F).
-      Enables Independence Medicare Advantage and Keystone HMO CHIP
-      members (or their personal representatives) to consent and share
-      clinical, claims, encounter, coverage, medication, immunization,
-      and demographic data with registered third-party applications.
-      Conforms to the CARIN for Blue Button (CARIN BB), Common Payer
-      Consumer Data Set (CPCDS), US Core 3.1.1, and Da Vinci PDex
-      profiles. Secured by SMART App Launch 1.0.0 over OAuth 2.0 /
-      OpenID Connect; production access requires developer registration
-      and CMS-aligned attestation.
+      HL7 FHIR R4 (4.0.1) Patient Access API published to satisfy the CMS Interoperability and Patient Access final rule
+      (CMS-9115-F). Enables Independence Medicare Advantage and Keystone HMO CHIP members (or their personal
+      representatives) to consent and share clinical, claims, encounter, coverage, medication, immunization, and
+      demographic data with registered third-party applications. Conforms to the CARIN for Blue Button (CARIN BB),
+      Common Payer Consumer Data Set (CPCDS), US Core 3.1.1, and Da Vinci PDex profiles. Secured by SMART App Launch
+      1.0.0 over OAuth 2.0 / OpenID Connect; production access requires developer registration and CMS-aligned
+      attestation.
     humanURL: https://devportal.ibx.com/documentation/
     baseURL: https://eapics.ibx.com/patient/v1/fhir
     tags:
@@ -101,10 +88,6 @@ apis:
         url: openapi/independence-blue-cross-patient-openapi.yml
       - type: SpectralRules
         url: rules/independence-blue-cross-rules.yml
-      - type: NaftikoCapability
-        url: capabilities/independence-blue-cross-patient-access.yaml
-      - type: NaftikoCapability
-        url: capabilities/independence-blue-cross-claims-and-eob.yaml
       - type: JSONSchema
         url: json-schema/independence-blue-cross-patient-schema.json
       - type: JSONSchema
@@ -114,15 +97,11 @@ apis:
   - aid: independence-blue-cross:provider-directory-api
     name: Independence Blue Cross Provider Directory FHIR API
     description: >-
-      HL7 FHIR R4 (4.0.1) Provider Directory API satisfying the CMS
-      Provider Directory requirement of the Interoperability and Patient
-      Access final rule. Published as a Da Vinci PDex Plan-Net server
-      (CapabilityStatement id `ibc-plan-net-metadata`, published
-      2021-05-28). Publishes Practitioner, PractitionerRole,
-      Organization, OrganizationAffiliation, Location,
-      HealthcareService, InsurancePlan, and Endpoint resources for the
-      Independence Blue Cross provider and pharmacy network. Publicly
-      queryable; no authentication or member consent required.
+      HL7 FHIR R4 (4.0.1) Provider Directory API satisfying the CMS Provider Directory requirement of the
+      Interoperability and Patient Access final rule. Published as a Da Vinci PDex Plan-Net server (CapabilityStatement
+      id `ibc-plan-net-metadata`, published 2021-05-28). Publishes Practitioner, PractitionerRole, Organization,
+      OrganizationAffiliation, Location, HealthcareService, InsurancePlan, and Endpoint resources for the Independence
+      Blue Cross provider and pharmacy network. Publicly queryable; no authentication or member consent required.
     humanURL: https://devportal.ibx.com/documentation/
     baseURL: https://eapics.ibx.com/provider/v1/fhir
     tags:
@@ -146,8 +125,6 @@ apis:
         url: openapi/independence-blue-cross-provider-openapi.yml
       - type: SpectralRules
         url: rules/independence-blue-cross-rules.yml
-      - type: NaftikoCapability
-        url: capabilities/independence-blue-cross-provider-directory.yaml
       - type: JSONSchema
         url: json-schema/independence-blue-cross-practitioner-schema.json
       - type: JSONSchema
@@ -157,13 +134,10 @@ apis:
   - aid: independence-blue-cross:formulary-api
     name: Independence Blue Cross Drug Formulary FHIR API
     description: >-
-      HL7 FHIR R4 (4.0.1) Drug Formulary API satisfying the CMS
-      Interoperability drug formulary publication requirement,
-      published as a Da Vinci US Drug Formulary (USDF) server
-      (CapabilityStatement id `usdf-server`, published 2021-06-03).
-      Exposes covered drug lists, tiers, and prior authorization
-      indicators via FHIR `List` and `MedicationKnowledge` resources.
-      Publicly queryable; no authentication required.
+      HL7 FHIR R4 (4.0.1) Drug Formulary API satisfying the CMS Interoperability drug formulary publication requirement,
+      published as a Da Vinci US Drug Formulary (USDF) server (CapabilityStatement id `usdf-server`, published
+      2021-06-03). Exposes covered drug lists, tiers, and prior authorization indicators via FHIR `List` and
+      `MedicationKnowledge` resources. Publicly queryable; no authentication required.
     humanURL: https://devportal.ibx.com/documentation/
     baseURL: https://eapics.ibx.com/formulary/v1/fhir
     tags:
@@ -189,18 +163,13 @@ apis:
         url: openapi/independence-blue-cross-formulary-openapi.yml
       - type: SpectralRules
         url: rules/independence-blue-cross-rules.yml
-      - type: NaftikoCapability
-        url: capabilities/independence-blue-cross-medications-and-formulary.yaml
   - aid: independence-blue-cross:transparency-in-coverage
     name: Independence Blue Cross Transparency In Coverage Data
     description: >-
-      Monthly machine-readable JSON files published under 45 CFR Part
-      Â§147.211 / the Transparency in Coverage rule for three carrier
-      brands operated by Independence Blue Cross: Keystone Health Plan
-      East, QCC Insurance Company, and Independence Assurance Co, Inc.
-      Files cover in-network negotiated rates, out-of-network allowed
-      amounts, and prescription drug pricing across medical, dental,
-      vision, pharmacy, and plan domains.
+      Monthly machine-readable JSON files published under 45 CFR Part Â§147.211 / the Transparency in Coverage rule for
+      three carrier brands operated by Independence Blue Cross: Keystone Health Plan East, QCC Insurance Company, and
+      Independence Assurance Co, Inc. Files cover in-network negotiated rates, out-of-network allowed amounts, and
+      prescription drug pricing across medical, dental, vision, pharmacy, and plan domains.
     humanURL: https://www.ibx.com/resources/for-members/transparency-in-coverage.html
     baseURL: https://www.ibx.com/cmstic/
     tags:
@@ -220,12 +189,9 @@ apis:
   - aid: independence-blue-cross:website
     name: Independence Blue Cross Corporate Website
     description: >-
-      Public corporate website for Independence Blue Cross hosting
-      member, provider, employer, broker, and producer portals; product
-      pages for Medicare Advantage, commercial, dental, and vision; the
-      affiliates / Independence Health Group corporate page; and
-      pointers to the CMS Interoperability developer portal at
-      devportal.ibx.com.
+      Public corporate website for Independence Blue Cross hosting member, provider, employer, broker, and producer
+      portals; product pages for Medicare Advantage, commercial, dental, and vision; the affiliates / Independence
+      Health Group corporate page; and pointers to the CMS Interoperability developer portal at devportal.ibx.com.
     humanURL: https://www.ibx.com
     baseURL: https://www.ibx.com
     tags:
@@ -317,195 +283,151 @@ common:
     data:
       - name: HL7 FHIR R4 Patient Access API
         description: >-
-          SMART on FHIR / OAuth 2.0 secured member access (Medicare
-          Advantage and Keystone HMO CHIP populations) to
-          AllergyIntolerance, CarePlan, Condition, Coverage,
-          DiagnosticReport, Encounter, ExplanationOfBenefit, Goal,
-          Immunization, Location, Medication, MedicationDispense,
-          MedicationRequest, Observation, Organization, Patient,
-          Practitioner, PractitionerRole, and Procedure FHIR R4
-          resources.
+          SMART on FHIR / OAuth 2.0 secured member access (Medicare Advantage and Keystone HMO CHIP populations) to
+          AllergyIntolerance, CarePlan, Condition, Coverage, DiagnosticReport, Encounter, ExplanationOfBenefit, Goal,
+          Immunization, Location, Medication, MedicationDispense, MedicationRequest, Observation, Organization, Patient,
+          Practitioner, PractitionerRole, and Procedure FHIR R4 resources.
       - name: HL7 FHIR R4 Provider Directory API
         description: >-
-          Public, unauthenticated Da Vinci PDex Plan-Net FHIR Provider
-          Directory exposing Practitioner, PractitionerRole,
-          Organization, OrganizationAffiliation, Location,
-          HealthcareService, InsurancePlan, and Endpoint resources for
-          the Independence Blue Cross network.
+          Public, unauthenticated Da Vinci PDex Plan-Net FHIR Provider Directory exposing Practitioner,
+          PractitionerRole, Organization, OrganizationAffiliation, Location, HealthcareService, InsurancePlan, and
+          Endpoint resources for the Independence Blue Cross network.
       - name: HL7 FHIR R4 Drug Formulary API
         description: >-
-          Public Da Vinci USDF Drug Formulary surface exposing
-          MedicationKnowledge and List resources for the Independence
-          Blue Cross covered drug list.
+          Public Da Vinci USDF Drug Formulary surface exposing MedicationKnowledge and List resources for the
+          Independence Blue Cross covered drug list.
       - name: SMART App Launch 1.0.0 OAuth 2.0 with PKCE
         description: >-
-          SMART configuration advertises `client-public`,
-          `sso-openid-connect`, `launch-standalone`,
-          `client-confidential-symmetric`, `context-standalone-patient`,
-          `permission-offline`, and `permission-patient` capabilities.
-          Authorize at `member.ibx.com/patientaccesssvc/oauth2/v1/authorize`,
-          exchange at `eapics.ibx.com/oauth2/v2/token`.
+          SMART configuration advertises `client-public`, `sso-openid-connect`, `launch-standalone`,
+          `client-confidential-symmetric`, `context-standalone-patient`, `permission-offline`, and `permission-patient`
+          capabilities. Authorize at `member.ibx.com/patientaccesssvc/oauth2/v1/authorize`, exchange at
+          `eapics.ibx.com/oauth2/v2/token`.
       - name: CARIN Blue Button / Da Vinci / US Core Conformance
         description: >-
-          Patient Access aligns with CARIN BB, CPCDS, US Core 3.1.1,
-          and Da Vinci PDex. Provider Directory implements Da Vinci
-          PDex Plan-Net. Drug Formulary implements Da Vinci USDF.
+          Patient Access aligns with CARIN BB, CPCDS, US Core 3.1.1, and Da Vinci PDex. Provider Directory implements Da
+          Vinci PDex Plan-Net. Drug Formulary implements Da Vinci USDF.
       - name: Developer Portal Self-Service
         description: >-
-          devportal.ibx.com provides documentation, registration
-          (`/cmssignin/`), sandbox services, and per-app credentials.
-          App onboarding support is at AppOnboardingSupport@ibx.com.
+          devportal.ibx.com provides documentation, registration (`/cmssignin/`), sandbox services, and per-app
+          credentials. App onboarding support is at AppOnboardingSupport@ibx.com.
       - name: Transparency In Coverage Machine-Readable Files
         description: >-
-          Monthly published in-network rate, allowed amount, and
-          prescription drug JSON files for Keystone Health Plan East,
-          QCC Insurance Company, and Independence Assurance Co, Inc.
-          at `www.ibx.com/cmstic/?brand={khpe|qcc|iac}`.
+          Monthly published in-network rate, allowed amount, and prescription drug JSON files for Keystone Health Plan
+          East, QCC Insurance Company, and Independence Assurance Co, Inc. at
+          `www.ibx.com/cmstic/?brand={khpe|qcc|iac}`.
       - name: No Public GitHub Organization
         description: >-
-          Independence Blue Cross does not maintain a public
-          api-evangelist-discoverable GitHub organization for its FHIR
-          developer surface; SDKs, sample code, and documentation are
-          distributed through the dev portal rather than open-source
-          repositories.
+          Independence Blue Cross does not maintain a public api-evangelist-discoverable GitHub organization for its
+          FHIR developer surface; SDKs, sample code, and documentation are distributed through the dev portal rather
+          than open-source repositories.
   - type: UseCases
     data:
       - name: Member Health Record Aggregation
         description: >-
-          Consumer health apps allow Independence Medicare Advantage
-          and Keystone HMO CHIP members to consent to share their
-          clinical, claims, encounter, medication, and immunization
-          history with third-party personal health record (PHR) apps.
+          Consumer health apps allow Independence Medicare Advantage and Keystone HMO CHIP members to consent to share
+          their clinical, claims, encounter, medication, and immunization history with third-party personal health
+          record (PHR) apps.
       - name: Provider Directory Lookups
         description: >-
-          Member-facing tools, broker apps, and care navigation tools
-          query the public Da Vinci Plan-Net Provider Directory FHIR
-          API to find in-network Practitioners, PractitionerRoles,
-          Organizations, and Locations across southeastern PA.
+          Member-facing tools, broker apps, and care navigation tools query the public Da Vinci Plan-Net Provider
+          Directory FHIR API to find in-network Practitioners, PractitionerRoles, Organizations, and Locations across
+          southeastern PA.
       - name: Drug Formulary Browsing
         description: >-
-          Members, prescribers, and pharmacy apps query the public
-          USDF Drug Formulary FHIR API to confirm whether a medication
-          is covered, the tier, and any prior authorization
-          requirements before filling.
+          Members, prescribers, and pharmacy apps query the public USDF Drug Formulary FHIR API to confirm whether a
+          medication is covered, the tier, and any prior authorization requirements before filling.
       - name: Payer-To-Payer Data Sharing
         description: >-
-          When a member switches plans, the Patient Access surface can
-          inform payer-to-payer exchange workflows aligned with Da
-          Vinci PDex to migrate clinical history.
+          When a member switches plans, the Patient Access surface can inform payer-to-payer exchange workflows aligned
+          with Da Vinci PDex to migrate clinical history.
       - name: Price Comparison & Cost Transparency
         description: >-
-          Researchers, employers, and consumer cost-transparency tools
-          ingest the monthly Transparency in Coverage machine-readable
-          files for Keystone Health Plan East, QCC, and IAC to compare
-          in-network rates and allowed amounts.
+          Researchers, employers, and consumer cost-transparency tools ingest the monthly Transparency in Coverage
+          machine-readable files for Keystone Health Plan East, QCC, and IAC to compare in-network rates and allowed
+          amounts.
       - name: Clinical & Quality Reporting
         description: >-
-          Population health partners ingest member-authorized FHIR data
-          to support HEDIS measure capture, risk adjustment,
-          care-gap closure, and SDOH reporting.
+          Population health partners ingest member-authorized FHIR data to support HEDIS measure capture, risk
+          adjustment, care-gap closure, and SDOH reporting.
   - type: Integrations
     data:
       - name: Independence Health Group
         description: >-
-          Independence Blue Cross is a subsidiary of Independence
-          Health Group, Inc., the 2013 holding company that also owns
-          AmeriHealth (commercial) and majority-owns AmeriHealth
-          Caritas (Medicaid managed care).
+          Independence Blue Cross is a subsidiary of Independence Health Group, Inc., the 2013 holding company that also
+          owns AmeriHealth (commercial) and majority-owns AmeriHealth Caritas (Medicaid managed care).
       - name: AmeriHealth Caritas
         description: >-
-          Majority-owned (61.3%) by Independence with Blue Cross Blue
-          Shield of Michigan as a 38.7% co-owner; runs Medicaid managed
-          care, CHIP, D-SNP, LTSS, and Marketplace plans across
-          thirteen states plus DC.
+          Majority-owned (61.3%) by Independence with Blue Cross Blue Shield of Michigan as a 38.7% co-owner; runs
+          Medicaid managed care, CHIP, D-SNP, LTSS, and Marketplace plans across thirteen states plus DC.
       - name: AmeriHealth New Jersey
         description: >-
-          Independence operates AmeriHealth Insurance Company of New
-          Jersey, a commercial payer serving roughly 209,000 New
-          Jersey members.
+          Independence operates AmeriHealth Insurance Company of New Jersey, a commercial payer serving roughly 209,000
+          New Jersey members.
       - name: AmeriHealth Administrators
         description: >-
-          National third-party administrator (TPA) serving self-funded
-          health plans, carriers, and administrators with business
-          process outsourcing.
+          National third-party administrator (TPA) serving self-funded health plans, carriers, and administrators with
+          business process outsourcing.
       - name: Tandigm Health
         description: >-
-          Independence-affiliated value-based primary care enablement
-          company supporting coordinated, proactive care for primary
-          care physicians.
+          Independence-affiliated value-based primary care enablement company supporting coordinated, proactive care for
+          primary care physicians.
       - name: Blue Cross Blue Shield Association
         description: >-
-          Independence Blue Cross is an independent licensee of the
-          Blue Cross Blue Shield Association serving Bucks, Chester,
-          Delaware, Montgomery, and Philadelphia counties in PA.
+          Independence Blue Cross is an independent licensee of the Blue Cross Blue Shield Association serving Bucks,
+          Chester, Delaware, Montgomery, and Philadelphia counties in PA.
       - name: CMS Interoperability Framework
         description: >-
-          APIs exist to satisfy the CMS-9115-F Interoperability and
-          Patient Access final rule for Medicare Advantage and
+          APIs exist to satisfy the CMS-9115-F Interoperability and Patient Access final rule for Medicare Advantage and
           Children's Health Insurance Program (CHIP) populations.
       - name: HL7 FHIR R4
         description: >-
-          All three APIs implement HL7 FHIR 4.0.1 with SMART App
-          Launch 1.0.0 security, CARIN BB, Da Vinci PDex / Plan-Net,
-          and Da Vinci USDF guidance.
+          All three APIs implement HL7 FHIR 4.0.1 with SMART App Launch 1.0.0 security, CARIN BB, Da Vinci PDex /
+          Plan-Net, and Da Vinci USDF guidance.
       - name: SMART on FHIR / OAuth 2.0 / OIDC / PKCE
         description: >-
-          Standard SMART App Launch authorization code flow and PKCE
-          flow back the Patient Access security model. SMART
-          configuration is published at the well-known endpoint on
-          eapics.ibx.com.
+          Standard SMART App Launch authorization code flow and PKCE flow back the Patient Access security model. SMART
+          configuration is published at the well-known endpoint on eapics.ibx.com.
       - name: Carrier Brands
         description: >-
-          Underwriting carriers include Keystone Health Plan East,
-          QCC Insurance Company, Independence Assurance Co, Inc., and
-          Keystone Health Plan East HMO products. Each publishes its
-          own Transparency in Coverage machine-readable files.
+          Underwriting carriers include Keystone Health Plan East, QCC Insurance Company, Independence Assurance Co,
+          Inc., and Keystone Health Plan East HMO products. Each publishes its own Transparency in Coverage
+          machine-readable files.
   - type: Solutions
     data:
       - name: Commercial Health Plans
         description: >-
-          Group commercial coverage for individuals, families, small
-          and mid-sized businesses, large employers, municipalities,
-          unions, and education boards in southeastern Pennsylvania.
+          Group commercial coverage for individuals, families, small and mid-sized businesses, large employers,
+          municipalities, unions, and education boards in southeastern Pennsylvania.
       - name: Medicare Advantage
         description: >-
-          Keystone 65 HMO, Personal Choice 65 PPO, and related
-          Medicare Advantage products including PA and re-entered NJ
-          MA markets in 2024. Patient Access FHIR API is required for
-          this population under CMS-9115-F.
+          Keystone 65 HMO, Personal Choice 65 PPO, and related Medicare Advantage products including PA and re-entered
+          NJ MA markets in 2024. Patient Access FHIR API is required for this population under CMS-9115-F.
       - name: Children's Health Insurance Program (CHIP)
         description: >-
-          Keystone HMO CHIP covers eligible children in southeastern
-          Pennsylvania under the Pennsylvania CHIP program; CHIP
-          members are in scope for the Patient Access API.
+          Keystone HMO CHIP covers eligible children in southeastern Pennsylvania under the Pennsylvania CHIP program;
+          CHIP members are in scope for the Patient Access API.
       - name: Medicaid (Through AmeriHealth Caritas)
         description: >-
-          Medicaid managed care delivered through the AmeriHealth
-          Caritas subsidiary family (Keystone First, AmeriHealth
-          Caritas Pennsylvania, AmeriHealth Caritas DC, AmeriHealth
-          Caritas Delaware, AmeriHealth Caritas Louisiana, AmeriHealth
-          Caritas North Carolina, AmeriHealth Caritas New Hampshire,
-          AmeriHealth Caritas Ohio, AmeriHealth Caritas Florida,
-          First Choice by Select Health of South Carolina, and Blue
-          Cross Complete of Michigan).
+          Medicaid managed care delivered through the AmeriHealth Caritas subsidiary family (Keystone First, AmeriHealth
+          Caritas Pennsylvania, AmeriHealth Caritas DC, AmeriHealth Caritas Delaware, AmeriHealth Caritas Louisiana,
+          AmeriHealth Caritas North Carolina, AmeriHealth Caritas New Hampshire, AmeriHealth Caritas Ohio, AmeriHealth
+          Caritas Florida, First Choice by Select Health of South Carolina, and Blue Cross Complete of Michigan).
       - name: Dental
         description: >-
-          IBX Dental coverage offered through Keystone and United
-          Concordia networks for commercial, Medicare, and individual
-          buyers.
+          IBX Dental coverage offered through Keystone and United Concordia networks for commercial, Medicare, and
+          individual buyers.
       - name: Vision
         description: >-
-          Vision coverage and provider network delivered through
-          partner vision networks for commercial and Medicare buyers.
+          Vision coverage and provider network delivered through partner vision networks for commercial and Medicare
+          buyers.
       - name: Behavioral Health
         description: >-
-          Behavioral health benefits embedded in commercial, Medicare
-          Advantage, and Medicaid lines; PerformCare (operated by
-          AmeriHealth Caritas) supports PA behavioral health.
+          Behavioral health benefits embedded in commercial, Medicare Advantage, and Medicaid lines; PerformCare
+          (operated by AmeriHealth Caritas) supports PA behavioral health.
       - name: Pharmacy Benefits
         description: >-
-          Pharmacy benefits administration including the covered drug
-          list (formulary) surfaced via the Drug Formulary FHIR API.
+          Pharmacy benefits administration including the covered drug list (formulary) surfaced via the Drug Formulary
+          FHIR API.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

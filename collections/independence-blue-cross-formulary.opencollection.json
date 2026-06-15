@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Independence Blue Cross Drug Formulary FHIR API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Formulary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Capability Statement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/formulary/v1/fhir/metadata"
+          },
+          "docs": "Get Capability Statement"
+        },
+        {
+          "info": {
+            "name": "Search List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/formulary/v1/fhir/List"
+          },
+          "docs": "Search List"
+        },
+        {
+          "info": {
+            "name": "Read List By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/formulary/v1/fhir/List/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read List By ID"
+        },
+        {
+          "info": {
+            "name": "Search MedicationKnowledge",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/formulary/v1/fhir/MedicationKnowledge"
+          },
+          "docs": "Search MedicationKnowledge"
+        },
+        {
+          "info": {
+            "name": "Read MedicationKnowledge By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eapics.ibx.com/formulary/v1/fhir/MedicationKnowledge/:rid",
+            "params": [
+              {
+                "name": "rid",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource id"
+              }
+            ]
+          },
+          "docs": "Read MedicationKnowledge By ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
