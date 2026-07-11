@@ -213,6 +213,8 @@ apis:
       - type: ProviderResources
         url: https://www.ibx.com/resources/for-providers/index.html
 common:
+  - type: OAuthScopes
+    url: scopes/independence-blue-cross-scopes.yml
   - type: Portal
     url: https://devportal.ibx.com/
   - type: Website
@@ -428,6 +430,8 @@ common:
         description: >-
           Pharmacy benefits administration including the covered drug list (formulary) surfaced via the Drug Formulary
           FHIR API.
+  - type: Blog
+    url: https://news.ibx.com/feed/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,35 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/independence-blue-cross-patient-openapi.yml
+schemes:
+- name: smart_on_fhir
+  source: openapi/independence-blue-cross-patient-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize
+    tokenUrl: https://eapics.ibx.com/oauth2/v2/token
+scopes:
+- scope: launch/patient
+  description: Patient context launch
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/independence-blue-cross-patient-openapi.yml
+- scope: offline_access
+  description: Long-lived refresh token
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/independence-blue-cross-patient-openapi.yml
+- scope: openid
+  description: OpenID Connect identity
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/independence-blue-cross-patient-openapi.yml
+- scope: patient/*.read
+  description: Read all patient-scoped FHIR resources
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/independence-blue-cross-patient-openapi.yml
