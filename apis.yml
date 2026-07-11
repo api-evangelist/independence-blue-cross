@@ -213,6 +213,10 @@ apis:
       - type: ProviderResources
         url: https://www.ibx.com/resources/for-providers/index.html
 common:
+  - type: DomainSecurity
+    url: security/independence-blue-cross-domain-security.yml
+  - type: Authentication
+    url: authentication/independence-blue-cross-authentication.yml
   - type: OAuthScopes
     url: scopes/independence-blue-cross-scopes.yml
   - type: Portal
