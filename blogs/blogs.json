@@ -1,0 +1,13 @@
+{
+  "repo": "independence-blue-cross",
+  "feeds": [
+    {
+      "source": "https://www.ibx.com/newsroom",
+      "feed_url": "https://news.ibx.com/feed/",
+      "title": "IBX Newsroom",
+      "saved": 2
+    }
+  ],
+  "fetched": "2026-07-11T11:43:46Z",
+  "post_count": 12
+}
