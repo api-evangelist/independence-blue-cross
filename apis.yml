@@ -213,6 +213,8 @@ apis:
       - type: ProviderResources
         url: https://www.ibx.com/resources/for-providers/index.html
 common:
+  - type: AgenticAccess
+    url: agentic-access/independence-blue-cross-agentic-access.yml
   - type: DomainSecurity
     url: security/independence-blue-cross-domain-security.yml
   - type: Authentication
