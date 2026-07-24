@@ -1,11 +1,8 @@
 openapi: 3.0.3
 info:
-  title: Independence Blue Cross Provider Directory FHIR API
+  title: Independence Blue Cross Drug FHIR Formulary Provider Directory API
   version: 1.0.0
-  description: HL7 FHIR R4 (4.0.1) Provider Directory API satisfying the CMS Interoperability Provider Directory requirement,
-    published as a Da Vinci PDex Plan-Net server. Publicly queryable, no authentication required. Surfaces Practitioner, PractitionerRole,
-    Organization, OrganizationAffiliation, Location, HealthcareService, InsurancePlan, and Endpoint resources for the Independence
-    Blue Cross provider and pharmacy network across southeastern Pennsylvania.
+  description: HL7 FHIR R4 (4.0.1) Drug Formulary API satisfying the CMS Interoperability drug formulary publication requirement, published as a Da Vinci US Drug Formulary (USDF) server. Publicly queryable, no authentication required. Exposes the Independence Blue Cross covered drug list, tiers, and prior authorization indicators via FHIR List and MedicationKnowledge resources.
   contact:
     name: Independence Interoperability Support
     email: AppOnboardingSupport@ibx.com
@@ -14,7 +11,7 @@ info:
     name: Independence Developer Portal Terms & Conditions
     url: https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf
 servers:
-- url: https://eapics.ibx.com/provider/v1/fhir
+- url: https://eapics.ibx.com/formulary/v1/fhir
   description: Production FHIR endpoint
 tags:
 - name: Provider Directory

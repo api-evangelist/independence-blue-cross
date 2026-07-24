@@ -1,12 +1,8 @@
 openapi: 3.0.3
 info:
-  title: Independence Blue Cross Patient Access FHIR API
+  title: Independence Blue Cross Drug FHIR Formulary Patient Access API
   version: 1.0.0
-  description: HL7 FHIR R4 (4.0.1) Patient Access API published by Independence Blue Cross to satisfy the CMS Interoperability
-    and Patient Access final rule (CMS-9115-F). Provides member-authorized access to clinical, claims, encounter, coverage,
-    medication, immunization, and demographic resources for Independence Medicare Advantage and Keystone HMO CHIP members.
-    Conforms to the CARIN for Blue Button (CARIN BB), Common Payer Consumer Data Set (CPCDS), US Core 3.1.1, and Da Vinci
-    PDex profiles. Secured by SMART on FHIR / OAuth 2.0 / OpenID Connect with PKCE.
+  description: HL7 FHIR R4 (4.0.1) Drug Formulary API satisfying the CMS Interoperability drug formulary publication requirement, published as a Da Vinci US Drug Formulary (USDF) server. Publicly queryable, no authentication required. Exposes the Independence Blue Cross covered drug list, tiers, and prior authorization indicators via FHIR List and MedicationKnowledge resources.
   contact:
     name: Independence Interoperability Support
     email: AppOnboardingSupport@ibx.com
@@ -15,7 +11,7 @@ info:
     name: Independence Developer Portal Terms & Conditions
     url: https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf
 servers:
-- url: https://eapics.ibx.com/patient/v1/fhir
+- url: https://eapics.ibx.com/formulary/v1/fhir
   description: Production FHIR endpoint
 tags:
 - name: Patient Access
@@ -869,19 +865,3 @@ paths:
         description: FHIR resource id
         schema:
           type: string
-components:
-  securitySchemes:
-    smart_on_fhir:
-      type: oauth2
-      flows:
-        authorizationCode:
-          authorizationUrl: https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize
-          tokenUrl: https://eapics.ibx.com/oauth2/v2/token
-          scopes:
-            launch/patient: Patient context launch
-            patient/*.read: Read all patient-scoped FHIR resources
-            openid: OpenID Connect identity
-            offline_access: Long-lived refresh token
-security:
-- smart_on_fhir:
-  - patient/*.read

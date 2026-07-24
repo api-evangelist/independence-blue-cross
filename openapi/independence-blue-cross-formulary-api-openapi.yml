@@ -1,10 +1,8 @@
 openapi: 3.0.3
 info:
-  title: Independence Blue Cross Drug Formulary FHIR API
+  title: Independence Blue Cross Drug FHIR Formulary API
   version: 1.0.0
-  description: HL7 FHIR R4 (4.0.1) Drug Formulary API satisfying the CMS Interoperability drug formulary publication requirement,
-    published as a Da Vinci US Drug Formulary (USDF) server. Publicly queryable, no authentication required. Exposes the Independence
-    Blue Cross covered drug list, tiers, and prior authorization indicators via FHIR List and MedicationKnowledge resources.
+  description: HL7 FHIR R4 (4.0.1) Drug Formulary API satisfying the CMS Interoperability drug formulary publication requirement, published as a Da Vinci US Drug Formulary (USDF) server. Publicly queryable, no authentication required. Exposes the Independence Blue Cross covered drug list, tiers, and prior authorization indicators via FHIR List and MedicationKnowledge resources.
   contact:
     name: Independence Interoperability Support
     email: AppOnboardingSupport@ibx.com
