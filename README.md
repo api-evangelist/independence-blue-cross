@@ -161,12 +161,6 @@ Monthly machine-readable JSON files published under 45 CFR Part Â§147.211 / th
 - [Postman Collection](collections/independence-blue-cross-provider.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
 - [Open Collection](collections/independence-blue-cross-provider.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-### Independence Blue Cross Corporate Website
-
-Public corporate website for Independence Blue Cross hosting member, provider, employer, broker, and producer portals; product pages for Medicare Advantage, commercial, dental, and vision; the affiliates / Independence Health Group corporate page; and pointers to the CMS Interoperability developer portal at devportal.ibx.com.
-
-- **Human URL:** [https://www.ibx.com](https://www.ibx.com)
-- **Base URL:** `https://www.ibx.com`
 
 #### Tags
 
