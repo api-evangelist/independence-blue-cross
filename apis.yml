@@ -244,6 +244,8 @@ apis:
         url: >-
           http://hl7.org/fhir/us/davinci-drug-formulary/ImplementationGuide/hl7.fhir.us.davinci-drug-formulary
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/independence-blue-cross/overview
   - type: AgenticAccess
     url: agentic-access/independence-blue-cross-agentic-access.yml
   - type: DomainSecurity
