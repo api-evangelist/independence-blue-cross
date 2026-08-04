@@ -1,0 +1,887 @@
+openapi: 3.0.3
+info:
+  title: Independence Blue Cross Patient Access FHIR API
+  version: 1.0.0
+  description: HL7 FHIR R4 (4.0.1) Patient Access API published by Independence Blue Cross to satisfy the CMS Interoperability
+    and Patient Access final rule (CMS-9115-F). Provides member-authorized access to clinical, claims, encounter, coverage,
+    medication, immunization, and demographic resources for Independence Medicare Advantage and Keystone HMO CHIP members.
+    Conforms to the CARIN for Blue Button (CARIN BB), Common Payer Consumer Data Set (CPCDS), US Core 3.1.1, and Da Vinci
+    PDex profiles. Secured by SMART on FHIR / OAuth 2.0 / OpenID Connect with PKCE.
+  contact:
+    name: Independence Interoperability Support
+    email: AppOnboardingSupport@ibx.com
+    url: https://devportal.ibx.com/
+  license:
+    name: Independence Developer Portal Terms & Conditions
+    url: https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf
+servers:
+- url: https://eapics.ibx.com/patient/v1/fhir
+  description: Production FHIR endpoint
+tags:
+- name: Patient Access
+  description: FHIR R4 Patient Access resources for member-authorized access.
+paths:
+  /metadata:
+    get:
+      summary: Get Capability Statement
+      operationId: get_metadata
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /.well-known/smart-configuration:
+    get:
+      summary: Get SMART Configuration
+      operationId: get_.well-known_smart-configuration
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /Patient:
+    get:
+      summary: Search Patient
+      operationId: get_Patient
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /Patient/{rid}:
+    get:
+      summary: Read Patient By ID
+      operationId: get_Patient_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /Coverage:
+    get:
+      summary: Search Coverage
+      operationId: get_Coverage
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /Organization:
+    get:
+      summary: Search Organization
+      operationId: get_Organization
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /Organization/{rid}:
+    get:
+      summary: Read Organization By ID
+      operationId: get_Organization_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /Practitioner:
+    get:
+      summary: Search Practitioner
+      operationId: get_Practitioner
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /Practitioner/{rid}:
+    get:
+      summary: Read Practitioner By ID
+      operationId: get_Practitioner_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /Location:
+    get:
+      summary: Search Location
+      operationId: get_Location
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /Location/{rid}:
+    get:
+      summary: Read Location By ID
+      operationId: get_Location_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /PractitionerRole:
+    get:
+      summary: Search PractitionerRole
+      operationId: get_PractitionerRole
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /PractitionerRole/{rid}:
+    get:
+      summary: Read PractitionerRole By ID
+      operationId: get_PractitionerRole_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /AllergyIntolerance:
+    get:
+      summary: Search AllergyIntolerance
+      operationId: get_AllergyIntolerance
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /AllergyIntolerance/{rid}:
+    get:
+      summary: Read AllergyIntolerance By ID
+      operationId: get_AllergyIntolerance_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /Immunization:
+    get:
+      summary: Search Immunization
+      operationId: get_Immunization
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /Immunization/{rid}:
+    get:
+      summary: Read Immunization By ID
+      operationId: get_Immunization_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /MedicationDispense/{rid}:
+    get:
+      summary: Read MedicationDispense By ID
+      operationId: get_MedicationDispense_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /Observation:
+    get:
+      summary: Search Observation
+      operationId: get_Observation
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /Observation/{rid}:
+    get:
+      summary: Read Observation By ID
+      operationId: get_Observation_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /DiagnosticReport:
+    get:
+      summary: Search DiagnosticReport
+      operationId: get_DiagnosticReport
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /DiagnosticReport/{rid}:
+    get:
+      summary: Read DiagnosticReport By ID
+      operationId: get_DiagnosticReport_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /CarePlan:
+    get:
+      summary: Search CarePlan
+      operationId: get_CarePlan
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /CarePlan/{rid}:
+    get:
+      summary: Read CarePlan By ID
+      operationId: get_CarePlan_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /Condition:
+    get:
+      summary: Search Condition
+      operationId: get_Condition
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /Condition/{rid}:
+    get:
+      summary: Read Condition By ID
+      operationId: get_Condition_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /Encounter:
+    get:
+      summary: Search Encounter
+      operationId: get_Encounter
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /Encounter/{rid}:
+    get:
+      summary: Read Encounter By ID
+      operationId: get_Encounter_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /Goal:
+    get:
+      summary: Search Goal
+      operationId: get_Goal
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /Goal/{rid}:
+    get:
+      summary: Read Goal By ID
+      operationId: get_Goal_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /Medication:
+    get:
+      summary: Search Medication
+      operationId: get_Medication
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /Medication/{rid}:
+    get:
+      summary: Read Medication By ID
+      operationId: get_Medication_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /MedicationRequest:
+    get:
+      summary: Search MedicationRequest
+      operationId: get_MedicationRequest
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /MedicationRequest/{rid}:
+    get:
+      summary: Read MedicationRequest By ID
+      operationId: get_MedicationRequest_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /Procedure:
+    get:
+      summary: Search Procedure
+      operationId: get_Procedure
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /Procedure/{rid}:
+    get:
+      summary: Read Procedure By ID
+      operationId: get_Procedure_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /ExplanationOfBenefit:
+    get:
+      summary: Search ExplanationOfBenefit
+      operationId: get_ExplanationOfBenefit
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /ExplanationOfBenefit/{rid}:
+    get:
+      summary: Read ExplanationOfBenefit By ID
+      operationId: get_ExplanationOfBenefit_rid
+      tags:
+      - Patient Access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+components:
+  securitySchemes:
+    smart_on_fhir:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize
+          tokenUrl: https://eapics.ibx.com/oauth2/v2/token
+          scopes:
+            launch/patient: Patient context launch
+            patient/*.read: Read all patient-scoped FHIR resources
+            openid: OpenID Connect identity
+            offline_access: Long-lived refresh token
+security:
+- smart_on_fhir:
+  - patient/*.read

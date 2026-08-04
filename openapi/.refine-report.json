@@ -1,0 +1,18 @@
+{
+  "provider": "independence-blue-cross",
+  "sources": [
+    "independence-blue-cross-formulary-api-openapi.yml",
+    "independence-blue-cross-patient-access-api-openapi.yml",
+    "independence-blue-cross-provider-directory-api-openapi.yml"
+  ],
+  "outputs": [
+    "independence-blue-cross-formulary-api-openapi.yml",
+    "independence-blue-cross-patient-access-api-openapi.yml",
+    "independence-blue-cross-provider-directory-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

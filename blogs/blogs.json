@@ -5,9 +5,10 @@
       "source": "https://www.ibx.com/newsroom",
       "feed_url": "https://news.ibx.com/feed/",
       "title": "IBX Newsroom",
-      "saved": 2
+      "saved": 0,
+      "error": "parse_failed"
     }
   ],
-  "fetched": "2026-07-11T11:43:46Z",
-  "post_count": 12
+  "fetched": "2026-08-01T15:38:58Z",
+  "post_count": 15
 }

@@ -1,0 +1,130 @@
+openapi: 3.0.3
+info:
+  title: Independence Blue Cross Drug Formulary FHIR API
+  version: 1.0.0
+  description: HL7 FHIR R4 (4.0.1) Drug Formulary API satisfying the CMS Interoperability drug formulary publication requirement,
+    published as a Da Vinci US Drug Formulary (USDF) server. Publicly queryable, no authentication required. Exposes the Independence
+    Blue Cross covered drug list, tiers, and prior authorization indicators via FHIR List and MedicationKnowledge resources.
+  contact:
+    name: Independence Interoperability Support
+    email: AppOnboardingSupport@ibx.com
+    url: https://devportal.ibx.com/
+  license:
+    name: Independence Developer Portal Terms & Conditions
+    url: https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf
+servers:
+- url: https://eapics.ibx.com/formulary/v1/fhir
+  description: Production FHIR endpoint
+tags:
+- name: Formulary
+  description: Public Da Vinci USDF FHIR R4 drug formulary resources.
+paths:
+  /metadata:
+    get:
+      summary: Get Capability Statement
+      operationId: get_metadata
+      tags:
+      - Formulary
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /List:
+    get:
+      summary: Search List
+      operationId: get_List
+      tags:
+      - Formulary
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /List/{rid}:
+    get:
+      summary: Read List By ID
+      operationId: get_List_rid
+      tags:
+      - Formulary
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string
+  /MedicationKnowledge:
+    get:
+      summary: Search MedicationKnowledge
+      operationId: get_MedicationKnowledge
+      tags:
+      - Formulary
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /MedicationKnowledge/{rid}:
+    get:
+      summary: Read MedicationKnowledge By ID
+      operationId: get_MedicationKnowledge_rid
+      tags:
+      - Formulary
+      responses:
+        '200':
+          description: OK
+          content:
+            application/fhir+json: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: rid
+        in: path
+        required: true
+        description: FHIR resource id
+        schema:
+          type: string

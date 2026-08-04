@@ -1,0 +1,1018 @@
+{
+  "info": {
+    "_postman_id": "99e48fd7-752d-4903-968d-4928ca35787e",
+    "name": "Independence Blue Cross Drug FHIR Formulary API",
+    "description": "HL7 FHIR R4 (4.0.1) Drug Formulary API satisfying the CMS Interoperability drug formulary publication requirement, published as a Da Vinci US Drug Formulary (USDF) server. Publicly queryable, no authentication required. Exposes the Independence Blue Cross covered drug list, tiers, and prior authorization indicators via FHIR List and MedicationKnowledge resources.\n\nContact Support:\n Name: Independence Interoperability Support\n Email: AppOnboardingSupport@ibx.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:57:26.000Z",
+    "updatedAt": "2026-07-28T01:57:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-99e48fd7-752d-4903-968d-4928ca35787e"
+  },
+  "item": [
+    {
+      "name": "metadata",
+      "item": [
+        {
+          "name": "Get Capability Statement",
+          "id": "fc749308-1653-42f5-8fc2-6a9c8fe3284b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/metadata",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "metadata"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9adc46d9-9c88-4b93-9577-f9d76029f29d",
+              "name": "OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/metadata",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "metadata"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-9adc46d9-9c88-4b93-9577-f9d76029f29d"
+            },
+            {
+              "id": "cad23439-784b-4c1b-a79a-5b3be1975fd4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/metadata",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "metadata"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-cad23439-784b-4c1b-a79a-5b3be1975fd4"
+            },
+            {
+              "id": "d02524de-511c-465c-b29d-d3a2b455099a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/metadata",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "metadata"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-d02524de-511c-465c-b29d-d3a2b455099a"
+            },
+            {
+              "id": "2f02229e-91f3-4032-8845-2f0a232b85e9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/metadata",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "metadata"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-2f02229e-91f3-4032-8845-2f0a232b85e9"
+            },
+            {
+              "id": "6676d1f3-bdbf-43dd-8553-ffab2c4c5264",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/metadata",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "metadata"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-6676d1f3-bdbf-43dd-8553-ffab2c4c5264"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:27.000Z",
+          "updatedAt": "2026-07-28T01:57:27.000Z",
+          "uid": "35240-fc749308-1653-42f5-8fc2-6a9c8fe3284b"
+        }
+      ],
+      "id": "b21b29df-4beb-4bfe-b351-78c15dc7646b",
+      "createdAt": "2026-07-28T01:57:27.000Z",
+      "updatedAt": "2026-07-28T01:57:27.000Z",
+      "uid": "35240-b21b29df-4beb-4bfe-b351-78c15dc7646b"
+    },
+    {
+      "name": "List",
+      "item": [
+        {
+          "name": "{rid}",
+          "item": [
+            {
+              "name": "Read List By ID",
+              "id": "bb56cecf-ad8a-448d-96a8-80b3f8577167",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/List/:rid",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "List",
+                    ":rid"
+                  ],
+                  "variable": [
+                    {
+                      "id": "22ccf3f0-a886-4a57-924d-d303840edc81",
+                      "key": "rid",
+                      "value": "<string>",
+                      "description": "(Required) FHIR resource id"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "74a578bf-6df3-48dc-a46c-9c4deb71e8b4",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/fhir+json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/List/:rid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "List",
+                        ":rid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "rid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/fhir+json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "",
+                  "createdAt": "2026-07-28T01:57:27.000Z",
+                  "updatedAt": "2026-07-28T01:57:27.000Z",
+                  "uid": "35240-74a578bf-6df3-48dc-a46c-9c4deb71e8b4"
+                },
+                {
+                  "id": "d6b91dac-7309-4ed3-af48-e6f86c55403d",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/List/:rid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "List",
+                        ":rid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "rid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:57:27.000Z",
+                  "updatedAt": "2026-07-28T01:57:27.000Z",
+                  "uid": "35240-d6b91dac-7309-4ed3-af48-e6f86c55403d"
+                },
+                {
+                  "id": "a2a93567-5ae3-4cdf-a2e9-ad137c3cc929",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/List/:rid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "List",
+                        ":rid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "rid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:57:27.000Z",
+                  "updatedAt": "2026-07-28T01:57:27.000Z",
+                  "uid": "35240-a2a93567-5ae3-4cdf-a2e9-ad137c3cc929"
+                },
+                {
+                  "id": "ca915dcc-f5bb-4ae2-baaf-48d0a01c4282",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/List/:rid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "List",
+                        ":rid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "rid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:57:27.000Z",
+                  "updatedAt": "2026-07-28T01:57:27.000Z",
+                  "uid": "35240-ca915dcc-f5bb-4ae2-baaf-48d0a01c4282"
+                },
+                {
+                  "id": "c0324a25-eebb-479d-a149-7b056f1a0fce",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/List/:rid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "List",
+                        ":rid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "rid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:57:27.000Z",
+                  "updatedAt": "2026-07-28T01:57:27.000Z",
+                  "uid": "35240-c0324a25-eebb-479d-a149-7b056f1a0fce"
+                }
+              ],
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-bb56cecf-ad8a-448d-96a8-80b3f8577167"
+            }
+          ],
+          "id": "ebeaeb46-e834-4d7c-9bf9-abf75a531434",
+          "createdAt": "2026-07-28T01:57:27.000Z",
+          "updatedAt": "2026-07-28T01:57:27.000Z",
+          "uid": "35240-ebeaeb46-e834-4d7c-9bf9-abf75a531434"
+        },
+        {
+          "name": "Search List",
+          "id": "d9230e76-2eb4-4926-9fe2-3d9820c72e6a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/List",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "List"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "63619952-fd65-426d-86fd-467c4578b788",
+              "name": "OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/List",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "List"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-63619952-fd65-426d-86fd-467c4578b788"
+            },
+            {
+              "id": "d696db6b-156b-4d16-9042-97637be0908f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/List",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "List"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-d696db6b-156b-4d16-9042-97637be0908f"
+            },
+            {
+              "id": "04bb6a1c-5796-47e5-8031-ffd4c8969760",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/List",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "List"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-04bb6a1c-5796-47e5-8031-ffd4c8969760"
+            },
+            {
+              "id": "6bf06fac-4cdb-4a79-b6cb-862b3ef58d2d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/List",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "List"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-6bf06fac-4cdb-4a79-b6cb-862b3ef58d2d"
+            },
+            {
+              "id": "da05ba62-9312-44fb-9ce2-94a20a1cade7",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/List",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "List"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-da05ba62-9312-44fb-9ce2-94a20a1cade7"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:27.000Z",
+          "updatedAt": "2026-07-28T01:57:27.000Z",
+          "uid": "35240-d9230e76-2eb4-4926-9fe2-3d9820c72e6a"
+        }
+      ],
+      "id": "da0ebfd9-76e5-41e4-806a-2cba9267944b",
+      "createdAt": "2026-07-28T01:57:27.000Z",
+      "updatedAt": "2026-07-28T01:57:27.000Z",
+      "uid": "35240-da0ebfd9-76e5-41e4-806a-2cba9267944b"
+    },
+    {
+      "name": "MedicationKnowledge",
+      "item": [
+        {
+          "name": "{rid}",
+          "item": [
+            {
+              "name": "Read MedicationKnowledge By ID",
+              "id": "1934c33f-4527-4ab7-8a7b-a28857fb012d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/MedicationKnowledge/:rid",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "MedicationKnowledge",
+                    ":rid"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1dbd91bf-7c1c-47f7-a4a9-f0104922f45c",
+                      "key": "rid",
+                      "value": "<string>",
+                      "description": "(Required) FHIR resource id"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "4296c187-27af-4e6d-8179-d89d98e94c1e",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/fhir+json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/MedicationKnowledge/:rid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "MedicationKnowledge",
+                        ":rid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "rid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/fhir+json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "",
+                  "createdAt": "2026-07-28T01:57:27.000Z",
+                  "updatedAt": "2026-07-28T01:57:27.000Z",
+                  "uid": "35240-4296c187-27af-4e6d-8179-d89d98e94c1e"
+                },
+                {
+                  "id": "6c534001-bf08-498d-93c7-47b2b44d465d",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/MedicationKnowledge/:rid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "MedicationKnowledge",
+                        ":rid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "rid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:57:27.000Z",
+                  "updatedAt": "2026-07-28T01:57:27.000Z",
+                  "uid": "35240-6c534001-bf08-498d-93c7-47b2b44d465d"
+                },
+                {
+                  "id": "b05287fd-87be-4d2f-ae3c-87197c007d58",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/MedicationKnowledge/:rid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "MedicationKnowledge",
+                        ":rid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "rid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:57:27.000Z",
+                  "updatedAt": "2026-07-28T01:57:27.000Z",
+                  "uid": "35240-b05287fd-87be-4d2f-ae3c-87197c007d58"
+                },
+                {
+                  "id": "96f63811-bc06-4f9a-b77c-63c05d0c5f14",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/MedicationKnowledge/:rid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "MedicationKnowledge",
+                        ":rid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "rid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:57:27.000Z",
+                  "updatedAt": "2026-07-28T01:57:27.000Z",
+                  "uid": "35240-96f63811-bc06-4f9a-b77c-63c05d0c5f14"
+                },
+                {
+                  "id": "3609c1ca-44bb-4c0e-84b6-063c58200368",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/MedicationKnowledge/:rid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "MedicationKnowledge",
+                        ":rid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "rid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:57:27.000Z",
+                  "updatedAt": "2026-07-28T01:57:27.000Z",
+                  "uid": "35240-3609c1ca-44bb-4c0e-84b6-063c58200368"
+                }
+              ],
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-1934c33f-4527-4ab7-8a7b-a28857fb012d"
+            }
+          ],
+          "id": "47ea4bdc-f847-41ac-a804-d4213dc91320",
+          "createdAt": "2026-07-28T01:57:27.000Z",
+          "updatedAt": "2026-07-28T01:57:27.000Z",
+          "uid": "35240-47ea4bdc-f847-41ac-a804-d4213dc91320"
+        },
+        {
+          "name": "Search MedicationKnowledge",
+          "id": "c4715399-e9b0-4257-a165-c55a686c3bf6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/MedicationKnowledge",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "MedicationKnowledge"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8cc82695-7061-46fe-9388-887c2debe573",
+              "name": "OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/MedicationKnowledge",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "MedicationKnowledge"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-8cc82695-7061-46fe-9388-887c2debe573"
+            },
+            {
+              "id": "719761b5-96e8-4899-a4a6-743a5c1b454f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/MedicationKnowledge",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "MedicationKnowledge"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-719761b5-96e8-4899-a4a6-743a5c1b454f"
+            },
+            {
+              "id": "ae5337b1-931c-4bb4-a948-270890638506",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/MedicationKnowledge",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "MedicationKnowledge"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-ae5337b1-931c-4bb4-a948-270890638506"
+            },
+            {
+              "id": "16f56cae-8334-461e-bb96-17bb3c955ea6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/MedicationKnowledge",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "MedicationKnowledge"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-16f56cae-8334-461e-bb96-17bb3c955ea6"
+            },
+            {
+              "id": "23de2a5b-8847-448d-9bfb-95c19a2c8969",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/MedicationKnowledge",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "MedicationKnowledge"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:57:27.000Z",
+              "updatedAt": "2026-07-28T01:57:27.000Z",
+              "uid": "35240-23de2a5b-8847-448d-9bfb-95c19a2c8969"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:27.000Z",
+          "updatedAt": "2026-07-28T01:57:27.000Z",
+          "uid": "35240-c4715399-e9b0-4257-a165-c55a686c3bf6"
+        }
+      ],
+      "id": "d22486c5-8ba0-4cc1-89f7-e4043dd02fb9",
+      "createdAt": "2026-07-28T01:57:27.000Z",
+      "updatedAt": "2026-07-28T01:57:27.000Z",
+      "uid": "35240-d22486c5-8ba0-4cc1-89f7-e4043dd02fb9"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://eapics.ibx.com/formulary/v1/fhir"
+    }
+  ]
+}
