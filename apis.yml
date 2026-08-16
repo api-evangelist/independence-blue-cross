@@ -54,7 +54,7 @@ tags:
   - Drug Formulary
   - Transparency In Coverage
 created: '2024-01-01'
-modified: '2026-07-25'
+modified: '2026-08-15'
 specificationVersion: '0.19'
 apis:
   - aid: independence-blue-cross:transparency-in-coverage
@@ -85,12 +85,14 @@ apis:
     name: Independence Blue Cross Formulary API
     description: Public Da Vinci USDF FHIR R4 drug formulary resources.
     humanURL: https://devportal.ibx.com/documentation/
-    baseURL: https://eapics.ibx.com/patient/v1/fhir
+    baseURL: https://eapics.ibx.com/formulary/v1/fhir
     tags:
       - Formulary
     properties:
       - type: OpenAPI
         url: openapi/independence-blue-cross-formulary-api-openapi.yml
+      - type: Overlay
+        url: overlays/independence-blue-cross-formulary-api-overlay.yaml
       - type: Portal
         url: https://devportal.ibx.com/
       - type: Documentation
@@ -145,6 +147,8 @@ apis:
     properties:
       - type: OpenAPI
         url: openapi/independence-blue-cross-patient-access-api-openapi.yml
+      - type: Overlay
+        url: overlays/independence-blue-cross-patient-access-api-overlay.yaml
       - type: Portal
         url: https://devportal.ibx.com/
       - type: Documentation
@@ -193,12 +197,14 @@ apis:
     name: Independence Blue Cross Provider Directory API
     description: Public Da Vinci Plan-Net FHIR R4 provider directory resources.
     humanURL: https://devportal.ibx.com/documentation/
-    baseURL: https://eapics.ibx.com/patient/v1/fhir
+    baseURL: https://eapics.ibx.com/provider/v1/fhir
     tags:
       - Provider Directory
     properties:
       - type: OpenAPI
         url: openapi/independence-blue-cross-provider-directory-api-openapi.yml
+      - type: Overlay
+        url: overlays/independence-blue-cross-provider-directory-api-overlay.yaml
       - type: Portal
         url: https://devportal.ibx.com/
       - type: Documentation
@@ -244,6 +250,48 @@ apis:
         url: >-
           http://hl7.org/fhir/us/davinci-drug-formulary/ImplementationGuide/hl7.fhir.us.davinci-drug-formulary
 common:
+  - type: Swagger
+    url: openapi/_original/independence-blue-cross-cms-swagger.json
+  - type: LLMsTxt
+    url: llms/independence-blue-cross-llms.txt
+  - type: WellKnown
+    url: well-known/independence-blue-cross-well-known.yml
+  - type: Packages
+    url: packages/independence-blue-cross-packages.yml
+  - type: MCPServer
+    url: mcp/independence-blue-cross-mcp.yml
+  - type: Conformance
+    url: conformance/independence-blue-cross-conformance.yml
+  - type: Compliance
+    url: https://www.ibx.com/privacy-policy/hipaa-compliance.html
+  - type: ErrorCatalog
+    url: errors/independence-blue-cross-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/independence-blue-cross-lifecycle.yml
+  - type: Conventions
+    url: conventions/independence-blue-cross-conventions.yml
+  - type: DataModel
+    url: data-model/independence-blue-cross-data-model.yml
+  - type: Sandbox
+    url: sandbox/independence-blue-cross-sandbox.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: GettingStarted
+    url: https://www.ibx.com/developer-resources/index.html
+  - type: Support
+    url: https://www.ibx.com/contact-us/index.html
+  - type: Examples
+    url: examples/independence-blue-cross-patient-read-example.json
+  - type: Examples
+    url: examples/independence-blue-cross-coverage-search-example.json
+  - type: Examples
+    url: examples/independence-blue-cross-explanation-of-benefit-search-example.json
+  - type: Examples
+    url: examples/independence-blue-cross-practitioner-search-example.json
+  - type: Examples
+    url: examples/independence-blue-cross-organization-search-example.json
+  - type: Examples
+    url: examples/independence-blue-cross-medication-knowledge-search-example.json
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/independence-blue-cross/overview
   - type: AgenticAccess
@@ -474,3 +522,8 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-15'
+  status: enriched
+  artifacts_added: 21
+  pass: local-v1
