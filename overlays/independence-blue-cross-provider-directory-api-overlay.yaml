@@ -1,0 +1,63 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Independence Blue Cross Provider Directory API
+  version: 1.0.0
+  x-generated: '2026-08-15'
+  x-method: generated
+  x-source: openapi/ + probed provider surfaces; never mutates the harvested spec
+extends: openapi/independence-blue-cross-provider-directory-api-openapi.yml
+actions:
+- target: $.info
+  description: Record API Evangelist provenance and the cross-cutting artifacts derived from this contract.
+  update:
+    x-apievangelist-provider: independence-blue-cross
+    x-apievangelist-artifacts:
+      conventions: conventions/independence-blue-cross-conventions.yml
+      errors: errors/independence-blue-cross-problem-types.yml
+      lifecycle: lifecycle/independence-blue-cross-lifecycle.yml
+      authentication: authentication/independence-blue-cross-authentication.yml
+      scopes: scopes/independence-blue-cross-scopes.yml
+      data_model: data-model/independence-blue-cross-data-model.yml
+      conformance: conformance/independence-blue-cross-conformance.yml
+      well_known: well-known/independence-blue-cross-well-known.yml
+    x-source-contract: https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json
+- target: $.info
+  description: Declare the FHIR profile stack this contract implements, which the raw spec does not state
+    in a machine-readable field.
+  update:
+    x-fhir-version: 4.0.1
+    x-implementation-guides:
+    - http://hl7.org/fhir/us/davinci-pdex-plan-net/
+    x-regulation: CMS-9115-F Interoperability and Patient Access Final Rule
+- target: $.servers
+  description: CORRECTION. The refined spec declares https://eapics.ibx.com/formulary/v1/fhir, but the
+    provider's own published Swagger (https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json, info.description)
+    states the base URL for this API is https://eapics.ibx.com/provider/v1/fhir, and openapi/_original/
+    carries that value. The refine pass propagated the formulary server block onto all three specs. Applying
+    this overlay restores the provider-documented host.
+  update:
+  - url: https://eapics.ibx.com/provider/v1/fhir
+    description: Production FHIR endpoint (provider-documented)
+- target: $.info
+  description: 'Record the runtime semantics an agent needs that the raw contract omits: error envelope,
+    paging, and rate-limit signalling.'
+  update:
+    x-error-envelope:
+      media_type: application/fhir+json
+      resource: OperationOutcome
+      rfc9457: false
+      catalog: errors/independence-blue-cross-problem-types.yml
+    x-pagination:
+      style: fhir-bundle-links
+      follow: Bundle.link[relation=next]
+      page_size_param: _count
+    x-rate-limit-signal:
+      headers: []
+      documented: false
+      note: Terms and Conditions assert limits exist; no numeric limit, header or 429 response is published.
+- target: $.info
+  description: Record that this surface is public and carries no protected health information.
+  update:
+    x-public: true
+    x-phi: false
+    x-auth-required: false

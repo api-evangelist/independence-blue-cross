@@ -1,0 +1,73 @@
+generated: '2026-08-15'
+method: searched
+source: >-
+  https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf,
+  https://www.ibx.com/developer-resources/index.html,
+  https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json,
+  https://eapics.ibx.com/{patient,provider,formulary}/v1/fhir/.well-known/smart-configuration,
+  openapi/_original/*.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  pattern: https://eapics.ibx.com/{patient|provider|formulary}/v1/fhir
+  spec_version: 1.0.0
+  fhir_version: 4.0.1 (R4)
+  docs: null
+  note: >-
+    The version segment is baked into each of the three base URLs and the provider Swagger reports
+    info.version 1.0.0. No versioning policy document is published — there is no statement of how a v2
+    would be introduced, how long v1 would run alongside it, or what constitutes a breaking change.
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  notice_period: none
+  evidence: >-
+    Developer Portal Terms and Conditions section 1: "IBC reserves the right at any time to modify or
+    discontinue, temporarily or permanently, the Developer Portal or Site (or any parts thereof) with
+    or without notice. You agree that IBC will not be liable to you, Your Company, or to any third
+    party for any modification, suspension, or discontinuance". Section 3 adds that IBC "in its sole
+    discretion, may terminate your password, user identification (or any part thereof) or use of the
+    Developer Portal or Site for any reason, including, for lack of use".
+  note: >-
+    This is an explicit disclaimer of any deprecation commitment, not merely a missing policy. No
+    Deprecation pointer is emitted in apis.yml, because emitting one would credit the provider with a
+    policy their own terms disclaim.
+sla:
+  url: null
+  uptime_target: null
+  evidence: >-
+    Developer Portal Terms and Conditions section 8: the Service is provided "on an 'as is' and 'as
+    available' basis" with all warranties expressly disclaimed. No availability target, no support
+    response time, no credits.
+status_page:
+  url: null
+  probed:
+    - url: https://status.ibx.com/
+      status: 000
+      note: DNS does not resolve
+    - url: https://trust.ibx.com/
+      status: 000
+      note: DNS does not resolve
+  note: >-
+    Independence Blue Cross operates no public API status page. Outage and incident communication for
+    the interoperability APIs is not published anywhere machine-readable; the closest surface is the
+    corporate newsroom at https://news.ibx.com/, which is itself behind a bot challenge (HTTP 202).
+    No StatusPage pointer is emitted in apis.yml.
+changelog:
+  url: null
+  note: >-
+    No dated changelog, release-notes feed or version history is published for any of the three APIs.
+    The Terms and Conditions state changes to the terms themselves "will be effective when they are
+    posted on the Developer Portal", with no notification. devportal.ibx.com renders entirely in
+    JavaScript, so even if release notes exist behind the portal they are not fetchable.
+deprecated_operations: []
+deprecated_operations_note: >-
+  No operation in any of the three OpenAPIs carries deprecated: true.
+lifecycle_summary: >-
+  A compliance-driven API surface with a stable, regulator-anchored contract and essentially no
+  published operational lifecycle. The APIs exist because CMS-9115-F requires them, the FHIR R4 and
+  Da Vinci/CARIN implementation guides pin the contract externally, and Independence commits to nothing
+  about change management, availability or notice. For an integrator this means the shape of the data
+  is very predictable (it is HL7's, not IBX's) while the operation of the endpoint is not.

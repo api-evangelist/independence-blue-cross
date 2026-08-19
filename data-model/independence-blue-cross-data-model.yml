@@ -1,0 +1,346 @@
+generated: '2026-08-15'
+method: derived
+source: >-
+  openapi/independence-blue-cross-patient-access-api-openapi.yml,
+  openapi/independence-blue-cross-provider-directory-api-openapi.yml,
+  openapi/independence-blue-cross-formulary-api-openapi.yml,
+  openapi/_original/independence-blue-cross-cms-swagger.json,
+  json-schema/independence-blue-cross-*.json,
+  HL7 FHIR R4 (4.0.1) resource reference semantics
+summary: >-
+  The entity graph is HL7 FHIR R4's, not a proprietary one, so relationships are expressed as FHIR
+  Reference elements (Reference(ResourceType)) rather than opaque id fields. Independence Blue Cross
+  publishes three disjoint-but-overlapping projections of that graph on three separate base paths. The
+  IBX OpenAPIs declare no components.schemas, so the relationships below are derived from the FHIR R4
+  resource definitions the server conforms to, cross-checked against the six curated subset schemas in
+  json-schema/ that this repo already carries.
+id_conventions:
+  style: fhir-logical-id
+  pattern: '{base}/{ResourceType}/{id}'
+  note: >-
+    Resource ids are server-assigned FHIR logical ids with no type prefix and no documented format.
+    An id is only meaningful relative to the base path it came from — a Practitioner id from
+    provider/v1/fhir is not guaranteed resolvable at patient/v1/fhir. Cross-resource links appear as
+    Reference.reference strings of the form "Practitioner/123".
+surfaces:
+  - name: Patient Access
+    base: https://eapics.ibx.com/patient/v1/fhir
+    auth: SMART on FHIR OAuth 2.0 (member consent)
+    entity_count: 19
+  - name: Provider Directory
+    base: https://eapics.ibx.com/provider/v1/fhir
+    auth: none (public)
+    entity_count: 8
+  - name: Drug Formulary
+    base: https://eapics.ibx.com/formulary/v1/fhir
+    auth: none (public)
+    entity_count: 2
+entities:
+  # ---- Patient Access (member-consented) ----
+  - name: Patient
+    surface: patient-access
+    root: true
+    operations: [get_Patient, get_Patient_rid]
+    profile: US Core 3.1.1 Patient
+    schema: json-schema/independence-blue-cross-patient-schema.json
+    note: >-
+      The context anchor. Every other Patient Access resource hangs off it; the SMART token carries
+      context-standalone-patient, so an app sees exactly one Patient.
+  - name: Coverage
+    surface: patient-access
+    operations: [get_Coverage]
+    profile: CARIN Blue Button Coverage
+    schema: json-schema/independence-blue-cross-coverage-schema.json
+  - name: ExplanationOfBenefit
+    surface: patient-access
+    operations: [get_ExplanationOfBenefit, get_ExplanationOfBenefit_rid]
+    profile: CARIN Blue Button / CPCDS
+    schema: json-schema/independence-blue-cross-explanation-of-benefit-schema.json
+    note: The claims and encounter core — the resource CMS-9115-F is really about.
+  - name: AllergyIntolerance
+    surface: patient-access
+    operations: [get_AllergyIntolerance, get_AllergyIntolerance_rid]
+  - name: CarePlan
+    surface: patient-access
+    operations: [get_CarePlan, get_CarePlan_rid]
+  - name: Condition
+    surface: patient-access
+    operations: [get_Condition, get_Condition_rid]
+  - name: DiagnosticReport
+    surface: patient-access
+    operations: [get_DiagnosticReport, get_DiagnosticReport_rid]
+  - name: Encounter
+    surface: patient-access
+    operations: [get_Encounter, get_Encounter_rid]
+  - name: Goal
+    surface: patient-access
+    operations: [get_Goal, get_Goal_rid]
+  - name: Immunization
+    surface: patient-access
+    operations: [get_Immunization, get_Immunization_rid]
+  - name: Medication
+    surface: patient-access
+    operations: [get_Medication, get_Medication_rid]
+  - name: MedicationDispense
+    surface: patient-access
+    operations: [get_MedicationDispense_rid]
+    note: >-
+      GAP — instance read only. The provider publishes no type-level search for MedicationDispense, so
+      an app cannot enumerate dispenses; it can only dereference an id found elsewhere.
+  - name: MedicationRequest
+    surface: patient-access
+    operations: [get_MedicationRequest, get_MedicationRequest_rid]
+  - name: Observation
+    surface: patient-access
+    operations: [get_Observation, get_Observation_rid]
+  - name: Procedure
+    surface: patient-access
+    operations: [get_Procedure, get_Procedure_rid]
+  # ---- shared reference entities (present on BOTH patient and provider bases) ----
+  - name: Organization
+    surface: [patient-access, provider-directory]
+    operations: [get_Organization, get_Organization_rid]
+    schema: json-schema/independence-blue-cross-organization-schema.json
+  - name: Practitioner
+    surface: [patient-access, provider-directory]
+    operations: [get_Practitioner, get_Practitioner_rid]
+    schema: json-schema/independence-blue-cross-practitioner-schema.json
+  - name: PractitionerRole
+    surface: [patient-access, provider-directory]
+    operations: [get_PractitionerRole, get_PractitionerRole_rid]
+    note: The join entity — binds a Practitioner to an Organization, Location and HealthcareService.
+  - name: Location
+    surface: [patient-access, provider-directory]
+    operations: [get_Location, get_Location_rid]
+    schema: json-schema/independence-blue-cross-location-schema.json
+  # ---- Provider Directory only ----
+  - name: InsurancePlan
+    surface: provider-directory
+    operations: [get_InsurancePlan, get_InsurancePlan_rid]
+    profile: Da Vinci Plan-Net InsurancePlan
+  - name: HealthcareService
+    surface: provider-directory
+    operations: [get_HealthcareService, get_HealthcareService_rid]
+  - name: OrganizationAffiliation
+    surface: provider-directory
+    operations: [get_OrganizationAffiliation, get_OrganizationAffiliation_rid]
+  - name: Endpoint
+    surface: provider-directory
+    operations: [get_Endpoint, get_Endpoint_rid]
+  # ---- Drug Formulary only ----
+  - name: MedicationKnowledge
+    surface: formulary
+    operations: [get_MedicationKnowledge, get_MedicationKnowledge_rid]
+    profile: Da Vinci US Drug Formulary FormularyDrug
+    note: Carries the drug, its tier, and prior-authorization / step-therapy indicators.
+  - name: List
+    surface: formulary
+    operations: [get_List, get_List_rid]
+    profile: Da Vinci USDF PayerInsurancePlan drug list
+relationships:
+  - from: Coverage
+    to: Patient
+    cardinality: belongs_to
+    via: beneficiary
+  - from: Coverage
+    to: Organization
+    cardinality: belongs_to
+    via: payor
+  - from: ExplanationOfBenefit
+    to: Patient
+    cardinality: belongs_to
+    via: patient
+  - from: ExplanationOfBenefit
+    to: Coverage
+    cardinality: belongs_to
+    via: insurance.coverage
+  - from: ExplanationOfBenefit
+    to: Organization
+    cardinality: belongs_to
+    via: insurer
+  - from: ExplanationOfBenefit
+    to: Practitioner
+    cardinality: belongs_to
+    via: provider
+  - from: Patient
+    to: ExplanationOfBenefit
+    cardinality: has_many
+    via: ExplanationOfBenefit.patient
+  - from: Patient
+    to: Coverage
+    cardinality: has_many
+    via: Coverage.beneficiary
+  - from: Condition
+    to: Patient
+    cardinality: belongs_to
+    via: subject
+  - from: Condition
+    to: Encounter
+    cardinality: belongs_to
+    via: encounter
+  - from: Observation
+    to: Patient
+    cardinality: belongs_to
+    via: subject
+  - from: Observation
+    to: Encounter
+    cardinality: belongs_to
+    via: encounter
+  - from: DiagnosticReport
+    to: Patient
+    cardinality: belongs_to
+    via: subject
+  - from: DiagnosticReport
+    to: Observation
+    cardinality: has_many
+    via: result
+  - from: Encounter
+    to: Patient
+    cardinality: belongs_to
+    via: subject
+  - from: Encounter
+    to: Location
+    cardinality: has_many
+    via: location.location
+  - from: Encounter
+    to: Practitioner
+    cardinality: has_many
+    via: participant.individual
+  - from: Procedure
+    to: Patient
+    cardinality: belongs_to
+    via: subject
+  - from: CarePlan
+    to: Patient
+    cardinality: belongs_to
+    via: subject
+  - from: CarePlan
+    to: Goal
+    cardinality: has_many
+    via: goal
+  - from: Goal
+    to: Patient
+    cardinality: belongs_to
+    via: subject
+  - from: AllergyIntolerance
+    to: Patient
+    cardinality: belongs_to
+    via: patient
+  - from: Immunization
+    to: Patient
+    cardinality: belongs_to
+    via: patient
+  - from: MedicationRequest
+    to: Patient
+    cardinality: belongs_to
+    via: subject
+  - from: MedicationRequest
+    to: Medication
+    cardinality: belongs_to
+    via: medicationReference
+  - from: MedicationRequest
+    to: Practitioner
+    cardinality: belongs_to
+    via: requester
+  - from: MedicationDispense
+    to: Patient
+    cardinality: belongs_to
+    via: subject
+  - from: MedicationDispense
+    to: MedicationRequest
+    cardinality: has_many
+    via: authorizingPrescription
+  - from: PractitionerRole
+    to: Practitioner
+    cardinality: belongs_to
+    via: practitioner
+  - from: PractitionerRole
+    to: Organization
+    cardinality: belongs_to
+    via: organization
+  - from: PractitionerRole
+    to: Location
+    cardinality: has_many
+    via: location
+  - from: PractitionerRole
+    to: HealthcareService
+    cardinality: has_many
+    via: healthcareService
+  - from: PractitionerRole
+    to: Endpoint
+    cardinality: has_many
+    via: endpoint
+  - from: Practitioner
+    to: PractitionerRole
+    cardinality: has_many
+    via: PractitionerRole.practitioner
+  - from: Organization
+    to: Organization
+    cardinality: belongs_to
+    via: partOf
+  - from: Organization
+    to: Endpoint
+    cardinality: has_many
+    via: endpoint
+  - from: OrganizationAffiliation
+    to: Organization
+    cardinality: belongs_to
+    via: organization
+  - from: OrganizationAffiliation
+    to: Organization
+    cardinality: belongs_to
+    via: participatingOrganization
+  - from: OrganizationAffiliation
+    to: HealthcareService
+    cardinality: has_many
+    via: healthcareService
+  - from: OrganizationAffiliation
+    to: Location
+    cardinality: has_many
+    via: location
+  - from: HealthcareService
+    to: Organization
+    cardinality: belongs_to
+    via: providedBy
+  - from: HealthcareService
+    to: Location
+    cardinality: has_many
+    via: location
+  - from: Location
+    to: Organization
+    cardinality: belongs_to
+    via: managingOrganization
+  - from: InsurancePlan
+    to: Organization
+    cardinality: belongs_to
+    via: ownedBy
+  - from: InsurancePlan
+    to: Organization
+    cardinality: belongs_to
+    via: administeredBy
+  - from: InsurancePlan
+    to: HealthcareService
+    cardinality: has_many
+    via: coverage.network
+  - from: List
+    to: MedicationKnowledge
+    cardinality: has_many
+    via: entry.item
+  - from: MedicationKnowledge
+    to: Organization
+    cardinality: belongs_to
+    via: manufacturer
+traversal_notes:
+  - >-
+    Use _include / _revinclude to hydrate references in one round trip rather than N+1 reads — for
+    example GET /provider/v1/fhir/PractitionerRole?_include=PractitionerRole:practitioner&_include=PractitionerRole:organization.
+  - >-
+    Cross-surface joins are the sharp edge: a Practitioner referenced from a Patient Access
+    ExplanationOfBenefit lives on patient/v1/fhir, and the richly-populated directory record for the
+    same clinician lives on provider/v1/fhir. There is no published identifier crosswalk between the
+    two bases; match on Practitioner.identifier (NPI) rather than on logical id.
+  - >-
+    The formulary surface is disconnected from the other two — MedicationKnowledge on formulary/v1/fhir
+    shares no logical id space with Medication on patient/v1/fhir. Join on drug code (RxNorm/NDC).
+render: null
+render_note: No subway/ diagram exists in this repo; this file is the only entity-graph artifact.

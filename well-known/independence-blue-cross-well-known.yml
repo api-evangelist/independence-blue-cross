@@ -1,0 +1,144 @@
+generated: '2026-08-15'
+method: probed
+source: live GET probes of every apis.yml baseURL host, every OpenAPI servers[] host, and the docs/portal host
+note: >-
+  Every host ROOT /.well-known/* path 404s on ibx.com — there is no security.txt, no OIDC discovery
+  document, no RFC 8414 authorization-server metadata, no /.well-known/api-catalog, no ai-plugin.json
+  and no A2A agent card at the host root. The provider DOES serve a real, spec-defined well-known
+  document: the SMART App Launch `smart-configuration` under each of the three FHIR base paths on
+  eapics.ibx.com. Those three are real JSON documents (verified by parsing, not by status code alone)
+  and are saved verbatim alongside this index. member.ibx.com answers 403 to every anonymous request
+  including /.well-known/*, so nothing could be established there.
+hosts:
+  - host: eapics.ibx.com
+    role: FHIR API gateway (apis.yml baseURL + OpenAPI servers[])
+  - host: devportal.ibx.com
+    role: developer portal / documentation
+  - host: www.ibx.com
+    role: corporate site, Transparency in Coverage files, llms.txt
+  - host: member.ibx.com
+    role: SMART authorization endpoint host (anonymous requests 403)
+documents:
+  # --- REAL HITS: SMART App Launch 1.0.0 configuration, one per FHIR base path ---
+  - path: /patient/v1/fhir/.well-known/smart-configuration
+    host: eapics.ibx.com
+    url: https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration
+    status: 200
+    content_type: application/json
+    file: independence-blue-cross-patient-smart-configuration.json
+    spec: SMART App Launch 1.0.0
+    parsed: json-object
+  - path: /provider/v1/fhir/.well-known/smart-configuration
+    host: eapics.ibx.com
+    url: https://eapics.ibx.com/provider/v1/fhir/.well-known/smart-configuration
+    status: 200
+    content_type: application/json
+    file: independence-blue-cross-provider-smart-configuration.json
+    spec: SMART App Launch 1.0.0
+    parsed: json-object
+  - path: /formulary/v1/fhir/.well-known/smart-configuration
+    host: eapics.ibx.com
+    url: https://eapics.ibx.com/formulary/v1/fhir/.well-known/smart-configuration
+    status: 200
+    content_type: application/json
+    file: independence-blue-cross-formulary-smart-configuration.json
+    spec: SMART App Launch 1.0.0
+    parsed: json-object
+    note: >-
+      DEVIATION — this document is served from eapics.ibx.com but advertises AmeriHealth endpoints
+      (authorization_endpoint https://member.amerihealth.com/patientaccesssvc/oauth2/v1/authorize,
+      token_endpoint https://eapics.amerihealth.com/oauth2/v1/token). AmeriHealth is a sibling brand
+      under the same parent, Independence Health Group, Inc., and the two payers evidently share one
+      FHIR platform codebase. Recorded verbatim as served; a client following this document from the
+      IBX formulary base would be sent to the AmeriHealth authorization server. The formulary API is
+      public and unauthenticated, so this does not gate access, but the pointer is cross-brand.
+  # --- HOST-ROOT MISSES (recorded absences) ---
+  - path: /.well-known/security.txt
+    host: eapics.ibx.com
+    status: 404
+  - path: /.well-known/openid-configuration
+    host: eapics.ibx.com
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    host: eapics.ibx.com
+    status: 404
+  - path: /.well-known/api-catalog
+    host: eapics.ibx.com
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    host: eapics.ibx.com
+    status: 404
+  - path: /patient/v1/fhir/.well-known/openid-configuration
+    host: eapics.ibx.com
+    status: 404
+  - path: /patient/v1/fhir/.well-known/oauth-authorization-server
+    host: eapics.ibx.com
+    status: 404
+  - path: /patient/v1/fhir/.well-known/oauth-protected-resource
+    host: eapics.ibx.com
+    status: 404
+  - path: /.well-known/security.txt
+    host: devportal.ibx.com
+    status: 404
+  - path: /.well-known/openid-configuration
+    host: devportal.ibx.com
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    host: devportal.ibx.com
+    status: 404
+  - path: /.well-known/api-catalog
+    host: devportal.ibx.com
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    host: devportal.ibx.com
+    status: 404
+  - path: /.well-known/security.txt
+    host: www.ibx.com
+    status: 404
+  - path: /security.txt
+    host: www.ibx.com
+    status: 404
+  - path: /.well-known/openid-configuration
+    host: www.ibx.com
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    host: www.ibx.com
+    status: 404
+  - path: /.well-known/api-catalog
+    host: www.ibx.com
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    host: www.ibx.com
+    status: 404
+  - path: /.well-known/security.txt
+    host: member.ibx.com
+    status: 403
+    note: member.ibx.com rejects every anonymous request with 403; nothing could be established here.
+agent_card:
+  probed:
+    - url: https://eapics.ibx.com/.well-known/agent-card.json
+      status: 404
+    - url: https://eapics.ibx.com/.well-known/agent.json
+      status: 404
+    - url: https://devportal.ibx.com/.well-known/agent-card.json
+      status: 404
+    - url: https://devportal.ibx.com/.well-known/agent.json
+      status: 404
+    - url: https://www.ibx.com/.well-known/agent-card.json
+      status: 404
+    - url: https://www.ibx.com/.well-known/agent.json
+      status: 404
+    - url: https://member.ibx.com/.well-known/agent-card.json
+      status: 403
+    - url: https://member.ibx.com/.well-known/agent.json
+      status: 403
+  result: none
+  note: >-
+    No A2A Agent Card is served on any Independence Blue Cross host. Per pipeline policy no a2a/
+    artifact is written and no AgentCard pointer is emitted — an agent card may only ever be recorded
+    when the provider actually serves one.
+security_txt:
+  served: false
+  note: >-
+    RFC 9116 security.txt is absent on all four hosts. No AIPREF, Content-Signal, Web Bot Auth or
+    HTTP Message Signatures surface was found either, so no SecurityTxt pointer is emitted.

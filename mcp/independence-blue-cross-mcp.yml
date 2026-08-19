@@ -1,0 +1,142 @@
+generated: '2026-08-15'
+method: derived
+status: candidate
+source: >-
+  openapi/independence-blue-cross-patient-access-api-openapi.yml,
+  openapi/independence-blue-cross-provider-directory-api-openapi.yml,
+  openapi/independence-blue-cross-formulary-api-openapi.yml
+search_note: >-
+  NO MCP server exists. Searched the web for an Independence Blue Cross / IBX Model Context Protocol
+  server, checked the developer portal and developer-resources page, and probed every IBX host for an
+  MCP or agent surface — /.well-known/ai-plugin.json 404 on eapics.ibx.com, devportal.ibx.com and
+  www.ibx.com; /.well-known/agent-card.json and /.well-known/agent.json 404 on all three (403 on
+  member.ibx.com, which rejects all anonymous requests). Independence Blue Cross has no public GitHub
+  organization and ships no npm/PyPI package. The tools below are a DERIVED CANDIDATE surface computed
+  from the provider's own OpenAPI operations — a proposal for what an MCP server over these FHIR APIs
+  would expose, not something anyone ships today.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: derived
+  note: >-
+    mode is none because Independence Blue Cross publishes neither a remote MCP endpoint nor a local
+    stdio package. No endpoint URL is guessed here. If IBX later ships a server, the Patient Access
+    tools would carry SMART on FHIR OAuth 2.0 (member-consented, patient-context) while the Provider
+    Directory and Formulary tools would need no auth at all — a split that makes the two public APIs
+    by far the easier agent surface to stand up.
+server:
+  name: independence-blue-cross
+  transport: null
+  url: null
+tools:
+  # ---- Provider Directory (public, no auth) ----
+  - name: search_practitioners
+    description: >-
+      Search the Independence Blue Cross in-network provider directory for practitioners by name,
+      specialty, identifier (NPI) or location. Public; no authentication.
+    source_operation: openapi/independence-blue-cross-provider-directory-api-openapi.yml#get_Practitioner
+    auth: none
+  - name: get_practitioner
+    description: Read one practitioner from the provider directory by FHIR logical id.
+    source_operation: openapi/independence-blue-cross-provider-directory-api-openapi.yml#get_Practitioner_rid
+    auth: none
+  - name: search_practitioner_roles
+    description: >-
+      Search PractitionerRole — the join between a clinician, the organization they practise for, the
+      locations they work at, and the services they provide.
+    source_operation: openapi/independence-blue-cross-provider-directory-api-openapi.yml#get_PractitionerRole
+    auth: none
+  - name: search_organizations
+    description: Search in-network organizations (practices, hospitals, facilities).
+    source_operation: openapi/independence-blue-cross-provider-directory-api-openapi.yml#get_Organization
+    auth: none
+  - name: search_locations
+    description: Search in-network practice locations, including address and hours of operation.
+    source_operation: openapi/independence-blue-cross-provider-directory-api-openapi.yml#get_Location
+    auth: none
+  - name: search_healthcare_services
+    description: Search the healthcare services offered at in-network locations.
+    source_operation: openapi/independence-blue-cross-provider-directory-api-openapi.yml#get_HealthcareService
+    auth: none
+  - name: search_insurance_plans
+    description: Search Independence Blue Cross insurance plans and their provider networks.
+    source_operation: openapi/independence-blue-cross-provider-directory-api-openapi.yml#get_InsurancePlan
+    auth: none
+  - name: search_organization_affiliations
+    description: Search affiliations between organizations in the Independence network.
+    source_operation: openapi/independence-blue-cross-provider-directory-api-openapi.yml#get_OrganizationAffiliation
+    auth: none
+  - name: search_endpoints
+    description: Search technical endpoints published for organizations in the directory.
+    source_operation: openapi/independence-blue-cross-provider-directory-api-openapi.yml#get_Endpoint
+    auth: none
+  # ---- Drug Formulary (public, no auth) ----
+  - name: search_formulary_drugs
+    description: >-
+      Search the Independence Blue Cross covered drug list for a medication, returning tier and prior
+      authorization / step therapy indicators. Public; no authentication.
+    source_operation: openapi/independence-blue-cross-formulary-api-openapi.yml#get_MedicationKnowledge
+    auth: none
+  - name: get_formulary_drug
+    description: Read one formulary drug entry by FHIR logical id.
+    source_operation: openapi/independence-blue-cross-formulary-api-openapi.yml#get_MedicationKnowledge_rid
+    auth: none
+  - name: search_formulary_lists
+    description: Search the formulary drug lists published per insurance plan.
+    source_operation: openapi/independence-blue-cross-formulary-api-openapi.yml#get_List
+    auth: none
+  # ---- Patient Access (SMART on FHIR, member consent required) ----
+  - name: get_member_profile
+    description: Read the authenticated member's demographic Patient record.
+    source_operation: openapi/independence-blue-cross-patient-access-api-openapi.yml#get_Patient
+    auth: oauth2 (SMART patient/*.read)
+    consequence: reads protected health information
+  - name: search_member_coverage
+    description: Retrieve the authenticated member's coverage records.
+    source_operation: openapi/independence-blue-cross-patient-access-api-openapi.yml#get_Coverage
+    auth: oauth2 (SMART patient/*.read)
+    consequence: reads protected health information
+  - name: search_member_claims
+    description: >-
+      Retrieve the authenticated member's adjudicated claims and encounter data as CARIN Blue Button
+      ExplanationOfBenefit resources.
+    source_operation: openapi/independence-blue-cross-patient-access-api-openapi.yml#get_ExplanationOfBenefit
+    auth: oauth2 (SMART patient/*.read)
+    consequence: reads protected health information
+  - name: search_member_conditions
+    description: Retrieve the authenticated member's Condition (problem list / diagnosis) records.
+    source_operation: openapi/independence-blue-cross-patient-access-api-openapi.yml#get_Condition
+    auth: oauth2 (SMART patient/*.read)
+    consequence: reads protected health information
+  - name: search_member_medications
+    description: Retrieve the authenticated member's MedicationRequest records.
+    source_operation: openapi/independence-blue-cross-patient-access-api-openapi.yml#get_MedicationRequest
+    auth: oauth2 (SMART patient/*.read)
+    consequence: reads protected health information
+  - name: search_member_observations
+    description: Retrieve the authenticated member's Observation (labs, vitals) records.
+    source_operation: openapi/independence-blue-cross-patient-access-api-openapi.yml#get_Observation
+    auth: oauth2 (SMART patient/*.read)
+    consequence: reads protected health information
+  - name: search_member_immunizations
+    description: Retrieve the authenticated member's Immunization history.
+    source_operation: openapi/independence-blue-cross-patient-access-api-openapi.yml#get_Immunization
+    auth: oauth2 (SMART patient/*.read)
+    consequence: reads protected health information
+  - name: search_member_encounters
+    description: Retrieve the authenticated member's Encounter records.
+    source_operation: openapi/independence-blue-cross-patient-access-api-openapi.yml#get_Encounter
+    auth: oauth2 (SMART patient/*.read)
+    consequence: reads protected health information
+coverage:
+  rest_operations_total: 60
+  tools_proposed: 21
+  tools_published: 0
+note: >-
+  Every proposed tool is read-only, because every one of the 60 published IBX operations is a GET. An
+  MCP server over this surface could not mutate member data even in principle. The Patient Access tools
+  carry PHI and must inherit the member's SMART consent — they are not safe to expose to an agent
+  without a per-member authorization flow and are marked accordingly.

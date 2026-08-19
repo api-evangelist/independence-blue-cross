@@ -1,0 +1,68 @@
+generated: '2026-08-15'
+method: searched
+source: >-
+  https://www.ibx.com/developer-resources/index.html,
+  https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf,
+  https://devportal.ibx.com/
+published: true
+summary: >-
+  Independence Blue Cross runs a developer sandbox, but it is gated behind developer-portal
+  registration and it publishes no test values. There are no public test member ids, no synthetic
+  patient credentials on an open page, no fixture triggers and no time-simulation tooling. Everything
+  below is what the provider actually states; nothing is invented.
+evidence:
+  - source: https://www.ibx.com/developer-resources/index.html
+    quote: >-
+      A Developer Sandbox allows "developers to test their application's connection to the APIs without
+      establishing production access."
+  - source: https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf
+    quote: >-
+      Section 1 — "You and Your Company are being provided access to documentation, registration
+      services, developer sandbox services, and other developer services related to IBC's application
+      programming interfaces". Section 4(c) — you may use "the developer sandbox services to test your
+      application's connection to the APIs."
+environments:
+  - name: Developer Sandbox
+    purpose: Connectivity and SMART App Launch flow testing against synthetic data
+    base_url: null
+    base_url_note: >-
+      NOT PUBLISHED. No sandbox base URL appears in the provider Swagger, in the Terms and Conditions,
+      or on the public developer-resources page. devportal.ibx.com is a JavaScript-rendered SPA that
+      returns no content to a non-executing client, so any sandbox host named inside the portal is not
+      retrievable without a browser session and a registered account.
+    access: registration required
+    registration: https://devportal.ibx.com/cmssignin/
+    cost: free
+  - name: Production
+    purpose: Live member-consented data (Medicare Advantage and Keystone HMO CHIP members only)
+    base_url: https://eapics.ibx.com/patient/v1/fhir
+    access: app registration + attestation + member consent
+    cost: free
+test_credentials:
+  published: false
+  note: >-
+    No test member credentials, synthetic patient ids, test tokens or magic identifiers are published
+    on any public IBX page. Sandbox credentials are issued to a developer only after the company and
+    the member-facing application are registered and the account is activated in the developer portal.
+key_prefixes:
+  published: false
+  note: >-
+    IBX does not use a test-vs-live key-prefix convention. Access is SMART on FHIR OAuth 2.0 bearer
+    tokens issued per registered application, with no documented prefix distinguishing environments.
+test_data_tooling:
+  time_simulation: false
+  fixtures_or_triggers: false
+  test_cards: not-applicable
+  note: >-
+    Not a payments API. The equivalent surface — synthetic FHIR patients — exists inside the sandbox
+    but is not published, so there is no fixture catalog to record.
+public_no_auth_alternative:
+  available: true
+  note: >-
+    The Provider Directory (https://eapics.ibx.com/provider/v1/fhir) and Drug Formulary
+    (https://eapics.ibx.com/formulary/v1/fhir) require no authorization, so a developer can exercise
+    real FHIR search and read semantics against production data without any sandbox at all. This is the
+    practical starting point for anyone integrating IBX. Note that GET /metadata on both bases returned
+    HTTP 400 to anonymous probes on 2026-08-15, so start from a resource search rather than the
+    CapabilityStatement.
+support: mailto:AppOnboardingSupport@ibx.com

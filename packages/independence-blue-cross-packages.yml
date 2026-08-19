@@ -1,0 +1,40 @@
+generated: '2026-08-15'
+method: searched
+source: >-
+  registry.npmjs.org search API, pypi.org/pypi/<pkg>/json, rubygems.org/api/v1/gems/<pkg>.json,
+  https://www.ibx.com/developer-resources, https://devportal.ibx.com/, and the Developer Portal
+  Terms and Conditions PDF (https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf)
+package_count: 0
+packages: []
+note: >-
+  Independence Blue Cross publishes NO first-party client libraries. Searched npm (registry search for
+  "independence blue cross" and "ibx fhir" — only unrelated third-party FHIR packages such as
+  fhirclient and @medplum/* were returned), PyPI (ibx, ibx-fhir, independence-blue-cross all 404) and
+  RubyGems (ibx 404). apis.yml carries no SDK, CLI or SourceCode link to derive candidates from, and
+  the company maintains no public GitHub organization for its FHIR surface — the developer portal
+  distributes documentation and sandbox credentials rather than open-source code. There is also no CDN
+  or unpkg/jsDelivr distribution to read a pinned version from, so there is no version/published date
+  to record anywhere. This is a real, checked zero, not an unchecked gap.
+registries_checked:
+  - registry: npm
+    query: registry.npmjs.org/-/v1/search?text=independence%20blue%20cross
+    first_party_hits: 0
+  - registry: npm
+    query: registry.npmjs.org/-/v1/search?text=ibx%20fhir
+    first_party_hits: 0
+  - registry: pypi
+    query: pypi.org/pypi/ibx/json
+    status: 404
+  - registry: pypi
+    query: pypi.org/pypi/ibx-fhir/json
+    status: 404
+  - registry: pypi
+    query: pypi.org/pypi/independence-blue-cross/json
+    status: 404
+  - registry: rubygems
+    query: rubygems.org/api/v1/gems/ibx.json
+    status: 404
+implication: >-
+  Third-party app developers integrating the IBX Patient Access, Provider Directory and Drug Formulary
+  APIs must use a generic HL7 FHIR R4 client (for example smart-on-fhir/client-js or HAPI FHIR) rather
+  than a vendor SDK. No SDKs pointer is emitted in apis.yml because no official SDK exists.

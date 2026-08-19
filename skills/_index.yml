@@ -1,0 +1,49 @@
+generated: '2026-08-15'
+method: generated
+source: >-
+  openapi/independence-blue-cross-*.yml (operationIds verified against the specs),
+  https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration (live probe),
+  https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf,
+  conventions/independence-blue-cross-conventions.yml,
+  errors/independence-blue-cross-problem-types.yml
+search_note: >-
+  Independence Blue Cross publishes no AGENTS.md, no skills directory and no agent-facing operating
+  guide. devportal.ibx.com is a JavaScript-rendered single-page application that returns no readable
+  content to a non-executing client. These skills are GENERATED from the provider's own OpenAPI
+  operations plus live probes — every operationId referenced was grepped out of the specs in this repo,
+  none are invented.
+skills:
+  - name: independence-blue-cross-find-in-network-provider
+    file: independence-blue-cross-find-in-network-provider.md
+    api: Independence Blue Cross Provider Directory API
+    auth: none
+    phi: false
+    operations: 8
+    summary: >-
+      Public Da Vinci Plan-Net directory walk — Practitioner to PractitionerRole to Organization,
+      Location and HealthcareService, with _include hydration and Bundle paging.
+  - name: independence-blue-cross-check-drug-coverage
+    file: independence-blue-cross-check-drug-coverage.md
+    api: Independence Blue Cross Drug Formulary API
+    auth: none
+    phi: false
+    operations: 4
+    summary: >-
+      Public Da Vinci USDF formulary lookup — is a drug covered, at what tier, with what prior
+      authorization or step therapy restriction, on which plan's List.
+  - name: independence-blue-cross-member-health-record-access
+    file: independence-blue-cross-member-health-record-access.md
+    api: Independence Blue Cross Patient Access API
+    auth: oauth2 / SMART App Launch 1.0.0
+    phi: true
+    operations: 14
+    summary: >-
+      Member-consented CMS-9115-F Patient Access flow — SMART authorization, Patient context anchor,
+      CARIN Blue Button claims via ExplanationOfBenefit, then the US Core clinical record. Includes the
+      consent-revocation and 403 handling rules that make this surface safe to automate.
+start_here: independence-blue-cross-find-in-network-provider
+start_here_reason: >-
+  Two of the three IBX APIs are public and unauthenticated. An agent can exercise real FHIR search and
+  read semantics against the Provider Directory and Drug Formulary with no credentials, no member
+  consent and no PHI exposure. Only reach for the Patient Access skill once you have a registered
+  application and an authorizing member.

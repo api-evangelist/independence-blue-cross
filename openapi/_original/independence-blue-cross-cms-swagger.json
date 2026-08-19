@@ -1,0 +1,2571 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Independence Blue Cross interoperability APIs enable Independence members to consent to have their data shared with third-party applications. The public non-member specific Provider and Pharmacy Directory APIs allow third-party applications to connect to provider and pharmacy directories.\n\nThe Patient Access API conforms to the CARIN for Blue ButtonÂ® Framework and Common Payer Consumer Data Set (CPCDS) standard for patient claim and encounter data, and the U.S. Core Data for Interoperability standard for clinical data, based on the FHIR version 4 specification.\n\nAuthentication & Data Endpoints\nPatient Access API Base URL     https://eapics.ibx.com/patient/v1/fhir\nWell-known URL  https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration\nOAuth2 Authorization Endpoint   https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize\nOAuth2 Token Endpoint           https://eapics.ibx.com/oauth2/v2/token\n\nThe Provider Directory and Formulary APIs conform to the DaVinci Health Level 7Â® (HL7) Fast Healthcare Interoperability Resources (FHIRÂ®) 4.0.1 standards, and does not require authorization to access the data on the server, because customer data is not being shared.\n\nProvider Directory API Base URL     https://eapics.ibx.com/provider/v1/fhir\nFormulary API Base URL             https://eapics.ibx.com/formulary/v1/fhir",
+    "version": "1.0.0",
+    "title": "Indepence Blue Cross Interoperability APIs",
+    "contact": {
+      "email": "AppOnboardingSupport@ibx.com",
+      "name": "Independence Interoperability Support"
+    },
+    "license": {
+      "name": "@2025 Independence Blue Cross",
+      "url": "https://www.ibx.com"
+    }
+  },
+  "host": "eapics.ibx.com",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Patient Access"
+    },
+    {
+      "name": "Formulary"
+    },
+    {
+      "name": "Provider Directory"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/patient/v1/fhir/metadata": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/.well-known/smart-configuration": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Patient": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "_id",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "identifier",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "birthdate",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "family",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "gender",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "given",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Patient/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Coverage": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Organization": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpages",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpagesoffset",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_count",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Organization/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Practitioner": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "identifier",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpages",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpagesoffset",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_count",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Practitioner/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Location": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "address-city",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "address-state",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "address-postalcode",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpages",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpagesoffset",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_count",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Location/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/PractitionerRole": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "specialty",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "practitioner",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpages",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpagesoffset",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_count",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/PractitionerRole/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/AllergyIntolerance": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "patient",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "clinical-status",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/AllergyIntolerance/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Immunization": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "patient",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Immunization/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/MedicationDispense/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Observation": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "patient",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "date",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "code",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Observation/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/DiagnosticReport": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "patient",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "date",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "code",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/DiagnosticReport/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/CarePlan": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "patient",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "date",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/CarePlan/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Condition": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "patient",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "clinical-status",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "onset-date",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "code",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Condition/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Encounter": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "patient",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_id",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "class",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "date",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "identifier",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Encounter/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Goal": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "patient",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "lifecycle-status",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Goal/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Medication": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Medication/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/MedicationRequest": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "patient",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "intent",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "authoredon",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "encounter",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/MedicationRequest/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Procedure": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "patient",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "code",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "date",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/Procedure/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/ExplanationOfBenefit": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "patient",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_id",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_lastUpdated",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "identifier",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "service-date",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpagesoffset",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_count",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpages",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/patient/v1/fhir/ExplanationOfBenefit/{rid}": {
+      "get": {
+        "tags": [
+          "Patient Access"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/formulary/v1/fhir/metadata": {
+      "get": {
+        "tags": [
+          "Formulary"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/formulary/v1/fhir/List": {
+      "get": {
+        "tags": [
+          "Formulary"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "_getpages",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_count",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpagesoffset",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/formulary/v1/fhir/List/{rid}": {
+      "get": {
+        "tags": [
+          "Formulary"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/formulary/v1/fhir/MedicationKnowledge": {
+      "get": {
+        "tags": [
+          "Formulary"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "DrugName",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "DrugTier",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "DrugPlan",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpagesoffset",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_count",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpages",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/formulary/v1/fhir/MedicationKnowledge/{rid}": {
+      "get": {
+        "tags": [
+          "Formulary"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/metadata": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/Location": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "partof",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "organization",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "endpoint",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "address-city",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "address-state",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "address-postalcode",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpages",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_count",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpagesoffset",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/Location/{rid}": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/Practitioner": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "family",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "given",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpages",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_count",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpagesoffset",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/Practitioner/{rid}": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/InsurancePlan": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "administered-by",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "owned-by",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "coverage-area",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "plan-type",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "identifier",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpages",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_count",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpagesoffset",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/InsurancePlan/{rid}": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/HealthcareService": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "location",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "coverage-area",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "organization",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "endpoint",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "service-category",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "service-type",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "specialty",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpages",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_count",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpagesoffset",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/HealthcareService/{rid}": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/OrganizationAffiliation": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "primary-organization",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "participating-organization",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "location",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "service",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "network",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "endpoint",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "specialty",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpages",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_count",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpagesoffset",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/OrganizationAffiliation/{rid}": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/Organization": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "partof",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "endpoint",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "coverage-area",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpages",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_count",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpagesoffset",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/Organization/{rid}": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/PractitionerRole": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "practitioner",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "organization",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "location",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "service",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "network",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "endpoint",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "specialty",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpages",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_count",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_getpagesoffset",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/PractitionerRole/{rid}": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/Endpoint": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "organization",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/provider/v1/fhir/Endpoint/{rid}": {
+      "get": {
+        "tags": [
+          "Provider Directory"
+        ],
+        "consumes": [
+          "application/fhir+json"
+        ],
+        "produces": [
+          "application/fhir+json"
+        ],
+        "parameters": [
+          {
+            "name": "rid",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/fhir+json",
+            "schema": {
+              "example": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

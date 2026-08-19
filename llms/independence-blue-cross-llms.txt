@@ -1,0 +1,24 @@
+# [Independence Blue Cross]
+> Independence Blue Cross (IBX) is the leading health insurance company in southeastern Pennsylvania. Together with our affiliates and subsidiaries, IBX offers a wide range of market-leading health plans and specialty services for national businesses, large employer groups, and small businesses; portable benefits for when you travel or live abroad; Medicare supplemental and Medicare Advantage products; and specialty services such as vision and dental coverage and third-party benefits administration.
+
+- [Health Insurance Plans](https://www.ibx.com/): Quality health insurance plans and resources for individuals, families, and employers and groups.
+- [Contact Independence Blue Cross](https://www.ibx.com/contact-us/index.html): Contact Independence Blue Cross for member inquiries and assistance.
+- [Claims Submission Information](https://www.ibx.com/resources/for-providers/contact-us/claims-submission.html): Submit claims to designated addresses based on service area.
+- [Keystone HMO Plans](https://www.ibx.com/find-a-plan/individuals-and-families/ibx-health-plans/health-plans/keystone-hmo-plans.html): Explore Keystone HMO plans for affordable family health coverage.
+- [Personal Choice PPO Plans](https://www.ibx.com/find-a-plan/individuals-and-families/ibx-health-plans/health-plans/personal-choice-ppo-plans.html): Explore Personal Choice PPO plans for the largest provider network.
+- [Personal Choice EPO Reserve Plans](https://www.ibx.com/find-a-plan/individuals-and-families/ibx-health-plans/health-plans/personal-choice-ppo-plans.html): Explore Personal Choice EPO Reserve plans for coverage under an EPO plan, coupled with a tax-advantaged health savings account (HSA) for any qualified medical expenses.
+- [Personal Choice EPO Catastrophic plan] (https://www.ibx.com/find-a-plan/individuals-and-families/ibx-health-plans/health-plans/personal-choice-epo-catastrophic-plan.html): The Personal Choice EPO Catastrphic health plan is for individuals younger than 30 and those with an extreme financial hardship.
+- [Third-Party Administration Services](https://www.ibx.com/find-a-plan/employers/third-party-administration/index.html): Comprehensive support for self-funded health plans and services.
+- [HIPAA Compliance Policy](https://www.ibx.com/privacy-policy/hipaa-compliance.html): Independence Blue Cross ensures compliance with HIPAA privacy regulations.
+- [ICD-10 Implementation Guide](https://www.ibx.com/pdfs/resources/for-providers/claims-and-billing/putting-icd-10-into-practice.pdf): Comprehensive guide for applying ICD-10 coding guidelines effectively.
+- [Preventive Care Toolkit](https://www.ibx.com/htdocs/custom/business-hub/pdfs/preventive-care/preventive-care-how-to-guide.pdf): Engage employees in preventive care with effective strategies.
+- [Cybersecurity Tips](https://www.ibx.com/resources/for-members/cybersecurity-and-fraud-prevention.html): Essential tips for protecting your health data online.
+- [Find a Health Plan](https://www.ibx.com/find-a-plan/index.html): Explore diverse health plans for individuals and businesses.
+- [Health and Wellness](https://www.ibx.com/stay-healthy/health-and-wellness/index.html): Independence Blue Cross members also get access to a variety of member-exclusive programs, services, discounts, and deals.
+- [Get Care](https://www.ibx.com/get-care/index.html): Independence Blue Cross members can find a provider or facility that's right for them from Independence Blue Cross's extensive network.
+- [Medicare](https://www.ibx.com/medicare/index.html): Independence Blue Cross Medicare offers affordable Medicare health insurance plans in Philadelphia and southeastern Pennsylvania (PA).
+- [Small Business Solutions](https://www.ibx.com/find-a-plan/employers/small-business/index.html): IBX's Blue Solutions® health plans provide cost-effective coverage and help empower small business employees to stay healthier and save money on their health care.
+- [Large Business Solutions](https://www.ibx.com/find-a-plan/employers/large-business/index.html): Independence Blue Cross offers large business employers a comprehensive selection of health insurance plans for their employees.
+- [IBX Member Portal](https://www.ibx.com/login): Members log in to find a doctor, view and print your ID card, verify coverage, and learn more about your health plan.
+- [Careers at Independence Blue Cross](https://www.ibx.com/careers/index.html): View the jobs available at IBX right now, get job-hunting tips, and learn about the internships available at IBX.
+- [Behavioral Health] (https://www.ibx.com/get-care/behavioral-health/index.html):With your Independence Blue Cross health plan, you have behavioral health benefits and access to a large, high-quality behavioral health network that includes psychiatric providers, specialists, and therapists (in-person and virtual).

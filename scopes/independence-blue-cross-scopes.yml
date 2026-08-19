@@ -1,35 +1,93 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/independence-blue-cross-patient-openapi.yml
+generated: '2026-08-15'
+method: probed
+source: >-
+  openapi/_original/independence-blue-cross-patient-openapi.yml,
+  https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration (HTTP 200, live probe 2026-08-15)
+docs: null
+docs_note: >-
+  Independence Blue Cross publishes NO scopes or permissions reference page. devportal.ibx.com is a
+  JavaScript-rendered single-page application serving no content to a non-executing client, and the
+  public developer-resources page names only "OAuth 2.0/Open ID Connect" without enumerating scopes.
+  The scope list below is therefore the union of the OpenAPI securityScheme and the capability flags in
+  the live SMART configuration — not a provider-published reference.
+previous_method: derived
+upgrade_note: >-
+  Upgraded from derived to probed by fetching the live SMART configuration and reconciling its
+  capability flags against the four scopes declared in the spec. No scope was added that is not
+  corroborated by one of those two sources.
+profile: SMART App Launch 1.0.0
+applies_to: Independence Blue Cross Patient Access API only
+applies_to_note: >-
+  The Provider Directory and Drug Formulary APIs are public and unauthenticated; they have no scope
+  surface at all. See authentication/independence-blue-cross-authentication.yml.
 schemes:
-- name: smart_on_fhir
-  source: openapi/independence-blue-cross-patient-openapi.yml
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize
-    tokenUrl: https://eapics.ibx.com/oauth2/v2/token
+  - name: smart_on_fhir
+    source: openapi/_original/independence-blue-cross-patient-openapi.yml
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize
+        tokenUrl: https://eapics.ibx.com/oauth2/v2/token
 scopes:
-- scope: launch/patient
-  description: Patient context launch
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/independence-blue-cross-patient-openapi.yml
-- scope: offline_access
-  description: Long-lived refresh token
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/independence-blue-cross-patient-openapi.yml
-- scope: openid
-  description: OpenID Connect identity
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/independence-blue-cross-patient-openapi.yml
-- scope: patient/*.read
-  description: Read all patient-scoped FHIR resources
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/independence-blue-cross-patient-openapi.yml
+  - scope: launch/patient
+    description: >-
+      SMART standalone launch with a single patient context. The issued token is bound to exactly one
+      member, so type-level searches return only that member's resources.
+    category: launch-context
+    flows:
+      - authorizationCode
+    corroborated_by: 'smart-configuration capability: context-standalone-patient, launch-standalone'
+    sources:
+      - openapi/_original/independence-blue-cross-patient-openapi.yml
+      - https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration
+  - scope: patient/*.read
+    description: >-
+      Read every patient-scoped FHIR R4 resource the Patient Access API exposes — Patient, Coverage,
+      ExplanationOfBenefit, AllergyIntolerance, CarePlan, Condition, DiagnosticReport, Encounter, Goal,
+      Immunization, Medication, MedicationDispense, MedicationRequest, Observation and Procedure. This
+      is a wildcard read scope; there is no published narrower per-resource alternative.
+    category: data-read
+    grants: protected health information
+    flows:
+      - authorizationCode
+    corroborated_by: 'smart-configuration capability: permission-patient'
+    sources:
+      - openapi/_original/independence-blue-cross-patient-openapi.yml
+      - https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration
+  - scope: openid
+    description: OpenID Connect identity for the authenticating member.
+    category: identity
+    flows:
+      - authorizationCode
+    corroborated_by: 'smart-configuration capability: sso-openid-connect'
+    sources:
+      - openapi/_original/independence-blue-cross-patient-openapi.yml
+      - https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration
+  - scope: offline_access
+    description: >-
+      Issue a refresh token so the application can continue reading after the access token expires
+      without re-prompting the member. Token lifetimes are not published, so this is effectively
+      required for any non-interactive refresh.
+    category: session
+    flows:
+      - authorizationCode
+    corroborated_by: 'smart-configuration capability: permission-offline'
+    sources:
+      - openapi/_original/independence-blue-cross-patient-openapi.yml
+      - https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration
+scope_count: 4
+write_scopes: 0
+write_scopes_note: >-
+  There are none. All 60 published operations are GET, so no patient/*.write, user/*.* or system/*.*
+  scope exists on this surface.
+absent_capabilities:
+  - capability: permission-user
+    implication: No user-level (provider-facing) scopes — this API is member-facing only.
+  - capability: permission-v2
+    implication: >-
+      SMART v2 granular scopes (patient/Observation.rs and friends) are not advertised. Only the v1
+      wildcard read scope is available, so an application cannot request least-privilege access to a
+      single resource type.
+  - capability: permission-offline-refresh / client-credentials
+    implication: >-
+      No SMART Backend Services / client_credentials flow. There is no bulk or system-level export
+      surface; every read is bound to one consenting member.

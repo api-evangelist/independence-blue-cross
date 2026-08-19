@@ -1,0 +1,121 @@
+generated: '2026-08-15'
+method: derived
+source: >-
+  openapi/independence-blue-cross-patient-access-api-openapi.yml,
+  openapi/independence-blue-cross-provider-directory-api-openapi.yml,
+  openapi/independence-blue-cross-formulary-api-openapi.yml,
+  openapi/_original/independence-blue-cross-cms-swagger.json,
+  https://eapics.ibx.com/patient/v1/fhir/metadata (live probe, HTTP 400)
+format: fhir-operationoutcome
+format_note: >-
+  NOT RFC 9457. Independence Blue Cross runs HL7 FHIR R4 servers, and the FHIR specification defines its
+  own error envelope: a non-2xx response carries an OperationOutcome resource in application/fhir+json
+  with an issue[] array of {severity, code, details, diagnostics, expression}. There is no
+  application/problem+json media type, no `type` URI and no error-code registry anywhere on the IBX
+  surface. Agents must parse OperationOutcome.issue[].code (an HL7 IssueType value) rather than a
+  provider-specific code.
+envelope:
+  media_type: application/fhir+json
+  resource: OperationOutcome
+  fields:
+    - issue[].severity   # fatal | error | warning | information
+    - issue[].code       # HL7 IssueType, e.g. invalid, security, forbidden, not-found, processing
+    - issue[].details    # CodeableConcept, human text
+    - issue[].diagnostics
+    - issue[].expression # FHIRPath to the offending element
+  code_registry: http://hl7.org/fhir/R4/valueset-issue-type.html
+  note: >-
+    The provider does not publish the OperationOutcome shape itself; it is the FHIR R4 normative
+    envelope every conformant FHIR server returns. The field list above is the specification's, not an
+    invention, and the IBX OpenAPIs declare no response schema for any 4xx.
+problems:
+  - status: 400
+    title: Bad Request
+    fhir_issue_codes:
+      - invalid
+      - structure
+      - value
+      - invariant
+    meaning: >-
+      Malformed FHIR search parameters, an unsupported search modifier, a bad _count/_format value, or a
+      missing required parameter.
+    remediation: >-
+      Validate search parameters against the CapabilityStatement at GET /metadata for the base path you
+      are calling before retrying. Retrying the identical request will not succeed.
+    observed: >-
+      GET https://eapics.ibx.com/patient/v1/fhir/metadata returned HTTP 400 on an anonymous probe
+      (2026-08-15), as did the provider and formulary /metadata endpoints — the CapabilityStatement
+      endpoints documented in apis.yml are not anonymously readable in practice.
+    source_operations:
+      - openapi/independence-blue-cross-patient-access-api-openapi.yml#get_Patient
+      - openapi/independence-blue-cross-provider-directory-api-openapi.yml#get_Practitioner
+      - openapi/independence-blue-cross-formulary-api-openapi.yml#get_MedicationKnowledge
+  - status: 401
+    title: Unauthorized
+    fhir_issue_codes:
+      - login
+      - expired
+      - unknown
+    meaning: >-
+      Missing, malformed or expired SMART on FHIR access token on the Patient Access API.
+    remediation: >-
+      Re-run the SMART App Launch authorization code flow at
+      https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize and exchange at
+      https://eapics.ibx.com/oauth2/v2/token, or refresh using the offline_access refresh token. Token
+      lifetime is not published.
+    applies_to: Patient Access API only (Provider Directory and Formulary are public)
+    source_operations:
+      - openapi/independence-blue-cross-patient-access-api-openapi.yml#get_ExplanationOfBenefit
+      - openapi/independence-blue-cross-patient-access-api-openapi.yml#get_Coverage
+  - status: 403
+    title: Forbidden
+    fhir_issue_codes:
+      - security
+      - forbidden
+      - suppressed
+    meaning: >-
+      The token is valid but the requested resource is outside the granted patient context or the
+      granted SMART scope (patient/*.read), the member has revoked consent, or the application's
+      registered credentials are being used with an unregistered application.
+    remediation: >-
+      Request only patient-context resources for the patient in the token. Re-obtain member consent if
+      it was revoked. Developer Portal Terms section 3 states IBC may revoke credentials used with an
+      application not registered with IBC.
+    source_operations:
+      - openapi/independence-blue-cross-patient-access-api-openapi.yml#get_Patient_rid
+      - openapi/independence-blue-cross-patient-access-api-openapi.yml#get_Observation
+  - status: 404
+    title: Not Found
+    fhir_issue_codes:
+      - not-found
+      - not-supported
+    meaning: >-
+      The FHIR resource instance id does not exist, or the resource type is not supported at that base
+      path. Note that the three base paths expose DIFFERENT resource sets — Location, Practitioner,
+      Organization and PractitionerRole exist on both the patient and provider bases, but
+      InsurancePlan/HealthcareService/OrganizationAffiliation/Endpoint are provider-only and
+      List/MedicationKnowledge are formulary-only.
+    remediation: >-
+      Confirm you are calling the right base URL for the resource type — patient/v1/fhir,
+      provider/v1/fhir or formulary/v1/fhir — then confirm the instance id from a prior search Bundle.
+    source_operations:
+      - openapi/independence-blue-cross-provider-directory-api-openapi.yml#get_InsurancePlan_rid
+      - openapi/independence-blue-cross-formulary-api-openapi.yml#get_List_rid
+coverage:
+  operations_total: 60
+  operations_declaring_4xx: 60
+  distinct_status_codes: 4
+  statuses: [400, 401, 403, 404]
+gaps:
+  - >-
+    No 429 response is declared on any operation despite the Developer Portal Terms stating that use
+    "will be subject to certain limitations on access, calls, or use". An agent cannot tell from the
+    contract what a throttled response looks like.
+  - >-
+    No 5xx responses are declared on any operation.
+  - >-
+    No response schema is attached to any 4xx — the OpenAPIs carry only a status code and a one-word
+    description, so the OperationOutcome body is undocumented by the provider.
+  - >-
+    The provider publishes no error-code reference page; devportal.ibx.com is a JavaScript-rendered
+    single-page application that serves no content to a non-executing client.

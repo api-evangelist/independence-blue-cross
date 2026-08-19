@@ -1,0 +1,138 @@
+generated: '2026-08-15'
+method: derived
+source: >-
+  openapi/_original/*.yml, openapi/_original/independence-blue-cross-cms-swagger.json,
+  https://eapics.ibx.com/{patient,provider,formulary}/v1/fhir/.well-known/smart-configuration (live probes),
+  https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf,
+  HL7 FHIR R4 (4.0.1) normative RESTful API conventions the server implements
+summary: >-
+  Independence Blue Cross does not define house API conventions. It implements the HL7 FHIR R4 RESTful
+  interaction model, so the cross-cutting semantics an agent needs — search, paging, content
+  negotiation, error envelope — are FHIR's rather than IBX's. Everything below is either read directly
+  from the provider's own artifacts or is the FHIR normative behaviour the server's CapabilityStatement
+  binds it to. Where a convention genuinely does not exist on this surface it is recorded as absent
+  rather than assumed.
+auth:
+  style: oauth2-bearer
+  applies_to:
+    - api: Patient Access
+      base: https://eapics.ibx.com/patient/v1/fhir
+      required: true
+      profile: SMART App Launch 1.0.0 authorization code, PKCE for public clients
+      header: 'Authorization: Bearer {access_token}'
+      authorization_endpoint: https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize
+      token_endpoint: https://eapics.ibx.com/oauth2/v2/token
+      scopes: [launch/patient, patient/*.read, openid, offline_access]
+    - api: Provider Directory
+      base: https://eapics.ibx.com/provider/v1/fhir
+      required: false
+      note: >-
+        Provider Swagger info.description — the Provider Directory and Formulary APIs "do not require
+        authorization to access the data on the server, because customer data is not being shared".
+    - api: Drug Formulary
+      base: https://eapics.ibx.com/formulary/v1/fhir
+      required: false
+  cross_link: authentication/independence-blue-cross-authentication.yml
+idempotency:
+  supported: false
+  header: null
+  reason: >-
+    All 60 published operations are HTTP GET — FHIR type-level search and instance read. There is no
+    create, update, delete or $operation exposed, so there is no unsafe request for an idempotency key
+    to protect. GET is idempotent by HTTP semantics, but that is not the same thing as the provider
+    shipping an idempotency mechanism, and no Idempotency-Key (or equivalent) header is documented.
+  note: >-
+    Recorded as an honest absence. No Idempotency pointer is emitted in apis.yml — the read-only surface
+    means there is nothing for one to point at.
+pagination:
+  style: fhir-bundle-links
+  supported: true
+  request_params:
+    - name: _count
+      in: query
+      description: Page size hint for a searchset Bundle (FHIR R4 normative).
+    - name: _offset
+      in: query
+      description: Server-dependent offset paging; presence must be confirmed from the CapabilityStatement.
+  response_shape:
+    resource: Bundle
+    type: searchset
+    fields:
+      - total          # total matches, when the server chooses to compute it
+      - entry[]        # the page of resources
+      - link[]         # relation-typed continuation links
+    relations: [self, next, previous, first, last]
+  note: >-
+    Follow Bundle.link where relation == "next" verbatim; do not construct page URLs by hand. The IBX
+    OpenAPIs declare no response schema, so the Bundle shape is FHIR's normative one rather than a
+    provider-documented one.
+filtering_and_search:
+  style: fhir-search-parameters
+  note: >-
+    Type-level GETs accept FHIR search parameters (for example Patient?identifier=, Practitioner?name=,
+    MedicationKnowledge?code=). The authoritative per-resource parameter list lives in the
+    CapabilityStatement at GET {base}/metadata. WARNING — all three /metadata endpoints returned HTTP
+    400 to anonymous probes on 2026-08-15, so the parameter list is not currently discoverable without
+    a token even for the two public APIs.
+  common_params:
+    - _id
+    - _lastUpdated
+    - _include
+    - _revinclude
+    - _summary
+    - _elements
+field_selection:
+  supported: true
+  style: fhir
+  params: [_elements, _summary]
+  note: FHIR normative; not separately documented by IBX.
+content_negotiation:
+  request_header: 'Accept: application/fhir+json'
+  response_media_type: application/fhir+json
+  alternate: '?_format=json'
+  xml_supported: unknown
+  note: >-
+    Every response in the provider's Swagger and in all three OpenAPIs is declared as
+    application/fhir+json. FHIR R4 also defines application/fhir+xml but IBX does not declare it.
+request_tracing:
+  request_id_header: null
+  correlation_header: null
+  note: >-
+    No request-id or correlation header is documented, and none is declared in any OpenAPI response.
+    An integrator debugging a failed call has no provider-side handle to quote; the only support route
+    is email to AppOnboardingSupport@ibx.com.
+versioning:
+  style: uri-path
+  current: v1
+  cross_link: lifecycle/independence-blue-cross-lifecycle.yml
+errors:
+  envelope: FHIR OperationOutcome in application/fhir+json
+  rfc9457: false
+  statuses: [400, 401, 403, 404]
+  cross_link: errors/independence-blue-cross-problem-types.yml
+rate_limit_signalling:
+  headers_documented: []
+  status_on_exhaustion: null
+  retry_after: false
+  note: >-
+    The Developer Portal Terms and Conditions state that "Your use of the APIs will be subject to
+    certain limitations on access, calls, or use as set forth within these Terms and Conditions, the
+    API documentation, or otherwise", but no numeric limit, no RateLimit-* / X-RateLimit-* header and
+    no 429 response is documented anywhere. An agent cannot detect throttling from the contract.
+  cross_link: rate-limits/independence-blue-cross-rate-limits.yml
+caching:
+  note: >-
+    The Provider Directory and Drug Formulary are public, largely static reference data and are good
+    candidates for aggressive client-side caching. No Cache-Control, ETag or Last-Modified behaviour is
+    documented by the provider, though FHIR R4 defines ETag/If-None-Match on read interactions.
+webhooks_and_events:
+  supported: false
+  note: >-
+    No webhook, event, streaming or FHIR Subscription surface is published. Integration is poll-only.
+consent:
+  model: member-directed, revocable
+  note: >-
+    Patient Access data flows only with the member's explicit consent, granted through the SMART
+    authorization flow, and the member "can stop sharing your data at any time" (IBX interoperability
+    FAQ). Eligible populations are limited to current Keystone HMO CHIP and Medicare Advantage members;
+    Medicare Supplement/Medigap members are explicitly out of scope.

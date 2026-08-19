@@ -1,0 +1,13 @@
+{
+  "authorization_endpoint": "https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize",
+  "token_endpoint": "https://eapics.ibx.com/oauth2/v2/token",
+  "capabilities": [
+    "client-public",
+    "sso-openid-connect",
+    "launch-standalone",
+    "client-confidential-symmetric",
+    "context-standalone-patient",
+    "permission-offline",
+    "permission-patient"
+  ]
+}
