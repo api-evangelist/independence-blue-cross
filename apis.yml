@@ -47,6 +47,28 @@ tags:
   - Pharmacy Benefits
   - Interoperability
   - FHIR
+  - SMART on FHIR
+  - CMS
+  - Patient Access
+  - Provider Directory
+  - Drug Formulary
+  - Transparency In Coverage
+tags_raw:
+  - Healthcare
+  - Health Insurance
+  - Blue Cross Blue Shield
+  - Managed Care
+  - Medicare
+  - Medicare Advantage
+  - Medicaid
+  - CHIP
+  - Commercial
+  - Dental
+  - Vision
+  - Behavioral Health
+  - Pharmacy Benefits
+  - Interoperability
+  - FHIR
   - SMART On FHIR
   - CMS
   - Patient Access
@@ -68,6 +90,11 @@ apis:
     humanURL: https://www.ibx.com/resources/for-members/transparency-in-coverage.html
     baseURL: https://www.ibx.com/cmstic/
     tags:
+      - Transparency In Coverage
+      - Machine-Readable Files
+      - Pricing
+      - Regulatory
+    tags_raw:
       - Transparency In Coverage
       - Machine Readable Files
       - Pricing
