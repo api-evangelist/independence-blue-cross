@@ -18,8 +18,8 @@ edges:
   capability_id: BC-2900.60
   capability_id_l1: BC-2900
   capability_name: Healthcare Interoperability Operations
-  confidence: 0.75
-  evidence: GET /patient/v1/fhir/Patient; GET /patient/v1/fhir/Coverage; GET /patient/v1/fhir/.well-known/smart-configuration
-  reason: CMS Patient Access style FHIR endpoint set (Patient, Coverage, Practitioner, Organization) with
-    SMART configuration discovery — operation of FHIR endpoints for patient-initiated data sharing, i.e.
-    Healthcare Interoperability Operations.
+  confidence: 0.72
+  evidence: GET /patient/v1/fhir/.well-known/smart-configuration; GET /patient/v1/fhir/Patient; GET /patient/v1/fhir/Coverage
+  reason: A SMART-on-FHIR patient-facing endpoint set (Patient, Coverage, Organization, Practitioner,
+    Location) — i.e. operation of FHIR endpoints enabling patient-authorised data sharing, which is healthcare
+    interoperability operations rather than any care or revenue-cycle activity.
