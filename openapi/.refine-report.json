@@ -1,9 +1,10 @@
 {
   "provider": "independence-blue-cross",
   "sources": [
-    "independence-blue-cross-formulary-api-openapi.yml",
-    "independence-blue-cross-patient-access-api-openapi.yml",
-    "independence-blue-cross-provider-directory-api-openapi.yml"
+    "_original/independence-blue-cross-cms-swagger.json",
+    "_original/independence-blue-cross-formulary-openapi.yml",
+    "_original/independence-blue-cross-patient-openapi.yml",
+    "_original/independence-blue-cross-provider-openapi.yml"
   ],
   "outputs": [
     "independence-blue-cross-formulary-api-openapi.yml",
@@ -13,6 +14,19 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (4 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "independence-blue-cross-cms-swagger.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "independence-blue-cross-formulary-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "independence-blue-cross-patient-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "independence-blue-cross-provider-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "tag 'Formulary' spans 2 source specs (independence-blue-cross-cms-swagger.json, independence-blue-cross-formulary-openapi.yml): per-path servers applied",
+    "tag 'Patient Access' spans 2 source specs (independence-blue-cross-cms-swagger.json, independence-blue-cross-patient-openapi.yml): per-path servers applied",
+    "tag 'Provider Directory' spans 2 source specs (independence-blue-cross-cms-swagger.json, independence-blue-cross-provider-openapi.yml): per-path servers applied"
+  ],
+  "skipped": [
+    "independence-blue-cross-formulary-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "independence-blue-cross-patient-access-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "independence-blue-cross-provider-directory-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

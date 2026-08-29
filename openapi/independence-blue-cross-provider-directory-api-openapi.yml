@@ -1,22 +1,654 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Independence Blue Cross Drug FHIR Formulary Provider Directory API
+  title: Independence Blue Cross Provider Directory API
   version: 1.0.0
-  description: HL7 FHIR R4 (4.0.1) Drug Formulary API satisfying the CMS Interoperability drug formulary publication requirement, published as a Da Vinci US Drug Formulary (USDF) server. Publicly queryable, no authentication required. Exposes the Independence Blue Cross covered drug list, tiers, and prior authorization indicators via FHIR List and MedicationKnowledge resources.
-  contact:
-    name: Independence Interoperability Support
-    email: AppOnboardingSupport@ibx.com
-    url: https://devportal.ibx.com/
-  license:
-    name: Independence Developer Portal Terms & Conditions
-    url: https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf
+  description: 'Operations tagged Provider Directory across 2 of this provider''s published API definitions: independence-blue-cross-cms-swagger.json, independence-blue-cross-provider-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://eapics.ibx.com/formulary/v1/fhir
+- url: https://eapics.ibx.com/
+- url: https://eapics.ibx.com/provider/v1/fhir
   description: Production FHIR endpoint
 tags:
 - name: Provider Directory
-  description: Public Da Vinci Plan-Net FHIR R4 provider directory resources.
 paths:
+  /provider/v1/fhir/metadata:
+    get:
+      tags:
+      - Provider Directory
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/Location:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: partof
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: organization
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: endpoint
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: address
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: type
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: address-city
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: address-state
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: address-postalcode
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpages
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _count
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpagesoffset
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/Location/{rid}:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: rid
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/Practitioner:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: name
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: family
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: given
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpages
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _count
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpagesoffset
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/Practitioner/{rid}:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: rid
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/InsurancePlan:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: administered-by
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: owned-by
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: coverage-area
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: name
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: plan-type
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: identifier
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpages
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _count
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpagesoffset
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/InsurancePlan/{rid}:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: rid
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/HealthcareService:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: location
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: coverage-area
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: organization
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: endpoint
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: name
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: service-category
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: service-type
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: specialty
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpages
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _count
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpagesoffset
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/HealthcareService/{rid}:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: rid
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/OrganizationAffiliation:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: primary-organization
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: participating-organization
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: location
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: service
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: network
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: endpoint
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: role
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: specialty
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpages
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _count
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpagesoffset
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/OrganizationAffiliation/{rid}:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: rid
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/Organization:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: partof
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: endpoint
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: address
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: name
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: type
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: coverage-area
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpages
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _count
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpagesoffset
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/Organization/{rid}:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: rid
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/PractitionerRole:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: practitioner
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: organization
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: location
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: service
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: network
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: endpoint
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: role
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: specialty
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpages
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _count
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpagesoffset
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/PractitionerRole/{rid}:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: rid
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/Endpoint:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: organization
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /provider/v1/fhir/Endpoint/{rid}:
+    get:
+      tags:
+      - Provider Directory
+      parameters:
+      - name: rid
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
   /metadata:
     get:
       summary: Get Capability Statement
@@ -36,6 +668,9 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /Location:
     get:
       summary: Search Location
@@ -55,6 +690,9 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /Location/{rid}:
     get:
       summary: Read Location By ID
@@ -81,6 +719,9 @@ paths:
         description: FHIR resource id
         schema:
           type: string
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /Practitioner:
     get:
       summary: Search Practitioner
@@ -100,6 +741,9 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /Practitioner/{rid}:
     get:
       summary: Read Practitioner By ID
@@ -126,6 +770,9 @@ paths:
         description: FHIR resource id
         schema:
           type: string
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /InsurancePlan:
     get:
       summary: Search InsurancePlan
@@ -145,6 +792,9 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /InsurancePlan/{rid}:
     get:
       summary: Read InsurancePlan By ID
@@ -171,6 +821,9 @@ paths:
         description: FHIR resource id
         schema:
           type: string
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /HealthcareService:
     get:
       summary: Search HealthcareService
@@ -190,6 +843,9 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /HealthcareService/{rid}:
     get:
       summary: Read HealthcareService By ID
@@ -216,6 +872,9 @@ paths:
         description: FHIR resource id
         schema:
           type: string
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /OrganizationAffiliation:
     get:
       summary: Search OrganizationAffiliation
@@ -235,6 +894,9 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /OrganizationAffiliation/{rid}:
     get:
       summary: Read OrganizationAffiliation By ID
@@ -261,6 +923,9 @@ paths:
         description: FHIR resource id
         schema:
           type: string
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /Organization:
     get:
       summary: Search Organization
@@ -280,6 +945,9 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /Organization/{rid}:
     get:
       summary: Read Organization By ID
@@ -306,6 +974,9 @@ paths:
         description: FHIR resource id
         schema:
           type: string
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /PractitionerRole:
     get:
       summary: Search PractitionerRole
@@ -325,6 +996,9 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /PractitionerRole/{rid}:
     get:
       summary: Read PractitionerRole By ID
@@ -351,6 +1025,9 @@ paths:
         description: FHIR resource id
         schema:
           type: string
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /Endpoint:
     get:
       summary: Search Endpoint
@@ -370,6 +1047,9 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
   /Endpoint/{rid}:
     get:
       summary: Read Endpoint By ID
@@ -396,3 +1076,9 @@ paths:
         description: FHIR resource id
         schema:
           type: string
+    servers:
+    - url: https://eapics.ibx.com/provider/v1/fhir
+      description: Production FHIR endpoint
+x-refined-from:
+- independence-blue-cross-cms-swagger.json
+- independence-blue-cross-provider-openapi.yml

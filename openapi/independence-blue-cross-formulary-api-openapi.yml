@@ -1,22 +1,144 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Independence Blue Cross Drug FHIR Formulary API
+  title: Independence Blue Cross Formulary API
   version: 1.0.0
-  description: HL7 FHIR R4 (4.0.1) Drug Formulary API satisfying the CMS Interoperability drug formulary publication requirement, published as a Da Vinci US Drug Formulary (USDF) server. Publicly queryable, no authentication required. Exposes the Independence Blue Cross covered drug list, tiers, and prior authorization indicators via FHIR List and MedicationKnowledge resources.
-  contact:
-    name: Independence Interoperability Support
-    email: AppOnboardingSupport@ibx.com
-    url: https://devportal.ibx.com/
-  license:
-    name: Independence Developer Portal Terms & Conditions
-    url: https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf
+  description: 'Operations tagged Formulary across 2 of this provider''s published API definitions: independence-blue-cross-cms-swagger.json, independence-blue-cross-formulary-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
+- url: https://eapics.ibx.com/
 - url: https://eapics.ibx.com/formulary/v1/fhir
   description: Production FHIR endpoint
 tags:
 - name: Formulary
-  description: Public Da Vinci USDF FHIR R4 drug formulary resources.
 paths:
+  /formulary/v1/fhir/metadata:
+    get:
+      tags:
+      - Formulary
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /formulary/v1/fhir/List:
+    get:
+      tags:
+      - Formulary
+      parameters:
+      - name: _getpages
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _count
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpagesoffset
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /formulary/v1/fhir/List/{rid}:
+    get:
+      tags:
+      - Formulary
+      parameters:
+      - name: rid
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /formulary/v1/fhir/MedicationKnowledge:
+    get:
+      tags:
+      - Formulary
+      parameters:
+      - name: DrugName
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: DrugTier
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: DrugPlan
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpagesoffset
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _count
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: _getpages
+        required: false
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/fhir+json
+          content:
+            application/fhir+json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
+  /formulary/v1/fhir/MedicationKnowledge/{rid}:
+    get:
+      tags:
+      - Formulary
+      parameters:
+      - name: rid
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          x-amf-mediaType: application/json
+          content:
+            application/json:
+              schema:
+                example: {}
+    servers:
+    - url: https://eapics.ibx.com/
   /metadata:
     get:
       summary: Get Capability Statement
@@ -36,6 +158,9 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+    servers:
+    - url: https://eapics.ibx.com/formulary/v1/fhir
+      description: Production FHIR endpoint
   /List:
     get:
       summary: Search List
@@ -55,6 +180,9 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+    servers:
+    - url: https://eapics.ibx.com/formulary/v1/fhir
+      description: Production FHIR endpoint
   /List/{rid}:
     get:
       summary: Read List By ID
@@ -81,6 +209,9 @@ paths:
         description: FHIR resource id
         schema:
           type: string
+    servers:
+    - url: https://eapics.ibx.com/formulary/v1/fhir
+      description: Production FHIR endpoint
   /MedicationKnowledge:
     get:
       summary: Search MedicationKnowledge
@@ -100,6 +231,9 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+    servers:
+    - url: https://eapics.ibx.com/formulary/v1/fhir
+      description: Production FHIR endpoint
   /MedicationKnowledge/{rid}:
     get:
       summary: Read MedicationKnowledge By ID
@@ -126,3 +260,9 @@ paths:
         description: FHIR resource id
         schema:
           type: string
+    servers:
+    - url: https://eapics.ibx.com/formulary/v1/fhir
+      description: Production FHIR endpoint
+x-refined-from:
+- independence-blue-cross-cms-swagger.json
+- independence-blue-cross-formulary-openapi.yml
