@@ -289,6 +289,9 @@ apis:
         url: >-
           http://hl7.org/fhir/us/davinci-drug-formulary/ImplementationGuide/hl7.fhir.us.davinci-drug-formulary
 common:
+  - type: CapabilityMap
+    url: capabilities/independence-blue-cross-capability-edges.yml
+    name: Independence Blue Cross Business Capability Map
   - type: Swagger
     url: openapi/_original/independence-blue-cross-cms-swagger.json
   - type: LLMsTxt

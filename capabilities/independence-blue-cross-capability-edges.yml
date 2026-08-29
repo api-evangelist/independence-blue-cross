@@ -1,0 +1,25 @@
+slug: independence-blue-cross
+provider: Independence Blue Cross
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Healthcare Providers
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Patient Access
+  spec_file: independence-blue-cross-patient-access-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: GET /patient/v1/fhir/Patient; GET /patient/v1/fhir/Coverage; GET /patient/v1/fhir/.well-known/smart-configuration
+  reason: CMS Patient Access style FHIR endpoint set (Patient, Coverage, Practitioner, Organization) with
+    SMART configuration discovery — operation of FHIR endpoints for patient-initiated data sharing, i.e.
+    Healthcare Interoperability Operations.
