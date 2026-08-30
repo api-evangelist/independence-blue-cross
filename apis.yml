@@ -59,7 +59,7 @@ tags:
   - Pharmacy Benefits
   - Interoperability
   - FHIR
-  - SMART on FHIR
+  - SMART On FHIR
   - CMS
   - Patient Access
   - Provider Directory
@@ -103,7 +103,7 @@ apis:
     baseURL: https://www.ibx.com/cmstic/
     tags:
       - Transparency In Coverage
-      - Machine-Readable Files
+      - Machine Readable Files
       - Pricing
       - Regulatory
     tags_raw:
