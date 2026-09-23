@@ -1,5 +1,5 @@
-aid: independence-blue-cross
-name: Independence Blue Cross Rules
+x-aid: independence-blue-cross
+x-name: Independence Blue Cross Rules
 description: >-
   Operational rules and Spectral-style guardrails for working with the
   Independence Blue Cross FHIR R4 Patient Access, Provider Directory,
@@ -7,7 +7,7 @@ description: >-
   SMART on FHIR / OAuth 2.0 authentication, HIPAA handling, the
   shared `eapics.ibx.com` gateway routing convention, and the
   read-only posture expected from agents and integrations.
-modified: '2026-05-23'
+x-modified: '2026-05-23'
 rules:
   - id: ibx-fhir-r4-conformance
     name: FHIR R4 (4.0.1) Conformance
@@ -184,6 +184,6 @@ rules:
     applies_to:
       - independence-blue-cross:transparency-in-coverage
     severity: required
-maintainers:
+x-maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

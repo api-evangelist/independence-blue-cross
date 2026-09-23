@@ -22,6 +22,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir metadata
+      x-summary-source: derived
+      operationId: getProviderV1FhirMetadata
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/Location:
@@ -92,6 +96,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir location
+      x-summary-source: derived
+      operationId: getProviderV1FhirLocation
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/Location/{rid}:
@@ -112,6 +120,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir location by rid
+      x-summary-source: derived
+      operationId: getProviderV1FhirLocationByRid
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/Practitioner:
@@ -157,6 +169,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir practitioner
+      x-summary-source: derived
+      operationId: getProviderV1FhirPractitioner
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/Practitioner/{rid}:
@@ -177,6 +193,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir practitioner by rid
+      x-summary-source: derived
+      operationId: getProviderV1FhirPractitionerByRid
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/InsurancePlan:
@@ -237,6 +257,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir insurance plan
+      x-summary-source: derived
+      operationId: getProviderV1FhirInsurancePlan
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/InsurancePlan/{rid}:
@@ -257,6 +281,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir insurance plan by rid
+      x-summary-source: derived
+      operationId: getProviderV1FhirInsurancePlanByRid
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/HealthcareService:
@@ -327,6 +355,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir healthcare service
+      x-summary-source: derived
+      operationId: getProviderV1FhirHealthcareService
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/HealthcareService/{rid}:
@@ -347,6 +379,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir healthcare service by rid
+      x-summary-source: derived
+      operationId: getProviderV1FhirHealthcareServiceByRid
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/OrganizationAffiliation:
@@ -417,6 +453,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir organization affiliation
+      x-summary-source: derived
+      operationId: getProviderV1FhirOrganizationAffiliation
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/OrganizationAffiliation/{rid}:
@@ -437,6 +477,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir organization affiliation by rid
+      x-summary-source: derived
+      operationId: getProviderV1FhirOrganizationAffiliationByRid
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/Organization:
@@ -497,6 +541,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir organization
+      x-summary-source: derived
+      operationId: getProviderV1FhirOrganization
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/Organization/{rid}:
@@ -517,6 +565,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir organization by rid
+      x-summary-source: derived
+      operationId: getProviderV1FhirOrganizationByRid
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/PractitionerRole:
@@ -587,6 +639,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir practitioner role
+      x-summary-source: derived
+      operationId: getProviderV1FhirPractitionerRole
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/PractitionerRole/{rid}:
@@ -607,6 +663,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir practitioner role by rid
+      x-summary-source: derived
+      operationId: getProviderV1FhirPractitionerRoleByRid
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/Endpoint:
@@ -627,6 +687,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir endpoint
+      x-summary-source: derived
+      operationId: getProviderV1FhirEndpoint
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /provider/v1/fhir/Endpoint/{rid}:
@@ -647,6 +711,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get provider fhir endpoint by rid
+      x-summary-source: derived
+      operationId: getProviderV1FhirEndpointByRid
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /metadata:

@@ -22,6 +22,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get formulary fhir metadata
+      x-summary-source: derived
+      operationId: getFormularyV1FhirMetadata
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /formulary/v1/fhir/List:
@@ -52,6 +56,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get formulary fhir list
+      x-summary-source: derived
+      operationId: getFormularyV1FhirList
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /formulary/v1/fhir/List/{rid}:
@@ -72,6 +80,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get formulary fhir list by rid
+      x-summary-source: derived
+      operationId: getFormularyV1FhirListByRid
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /formulary/v1/fhir/MedicationKnowledge:
@@ -117,6 +129,10 @@ paths:
             application/fhir+json:
               schema:
                 example: {}
+      summary: Get formulary fhir medication knowledge
+      x-summary-source: derived
+      operationId: getFormularyV1FhirMedicationKnowledge
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /formulary/v1/fhir/MedicationKnowledge/{rid}:
@@ -137,6 +153,10 @@ paths:
             application/json:
               schema:
                 example: {}
+      summary: Get formulary fhir medication knowledge by rid
+      x-summary-source: derived
+      operationId: getFormularyV1FhirMedicationKnowledgeByRid
+      x-operation-id-source: derived
     servers:
     - url: https://eapics.ibx.com/
   /metadata:
