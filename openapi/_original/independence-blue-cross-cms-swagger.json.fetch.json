@@ -1,0 +1,12 @@
+{
+ "url": "https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json",
+ "requested_url": "https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json",
+ "status": 200,
+ "content_type": "application/json;charset=UTF-8",
+ "bytes": 61690,
+ "sha256": "986461e586a53f1c0dc70d408fcbef2160956570d354742376d7b8a5fb063745",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
