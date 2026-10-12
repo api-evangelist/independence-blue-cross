@@ -1,104 +1,194 @@
+generated: '2026-10-12'
+method: generated
+source: apis.yml
+vocabulary:
+  name: Independence Blue Cross Vocabulary
+  description: Operational vocabulary that maps the Independence Blue Cross surface area (commercial, Medicare Advantage,
+    Keystone HMO CHIP, dental, vision, behavioral health, pharmacy benefits) and its FHIR-based developer surface
+    to the API Evangelist taxonomy. Aligns concepts, services, tools, and standards used across Independence Blue
+    Cross and the Independence Health Group corporate family.
+  terms:
+  - term: Blue Cross Blue Shield Licensee
+    definition: Independence is an independent licensee of the Blue Cross Blue Shield Association.
+    tags:
+    - concepts
+  - term: Commercial Health Insurance
+    definition: Group commercial coverage for individuals, families, small/mid/large employers in southeastern PA.
+    tags:
+    - concepts
+  - term: Medicare Advantage
+    definition: Independence Keystone 65 HMO and Personal Choice 65 PPO Medicare Advantage products.
+    tags:
+    - concepts
+  - term: Children's Health Insurance Program (CHIP)
+    definition: Keystone HMO CHIP covers eligible Pennsylvania children.
+    tags:
+    - concepts
+  - term: Medicaid Managed Care
+    definition: Delivered through the AmeriHealth Caritas subsidiary family (Keystone First, etc.).
+    tags:
+    - concepts
+  - term: Dental Insurance
+    definition: IBX Dental coverage including Keystone and United Concordia network options.
+    tags:
+    - concepts
+  - term: Vision Insurance
+    definition: Vision benefits offered alongside commercial and Medicare products.
+    tags:
+    - concepts
+  - term: Behavioral Health
+    definition: Behavioral health benefits embedded in commercial, MA, and Medicaid lines.
+    tags:
+    - concepts
+  - term: Pharmacy Benefits
+    definition: Drug coverage including the IBX-published Drug Formulary FHIR API.
+    tags:
+    - concepts
+  - term: Patient Access API
+    definition: CMS-mandated FHIR R4 read API for member clinical, claims, and coverage data.
+    tags:
+    - concepts
+  - term: Provider Directory API
+    definition: CMS-mandated FHIR R4 public directory of contracted Practitioners, Organizations, and Locations.
+    tags:
+    - concepts
+  - term: Drug Formulary API
+    definition: CMS-mandated FHIR R4 public drug formulary surface.
+    tags:
+    - concepts
+  - term: SMART on FHIR / OAuth 2.0
+    definition: Authorization framework securing the Patient Access surface.
+    tags:
+    - concepts
+  - term: PKCE Flow
+    definition: Authorization Code with Proof Key for Code Exchange for mobile/SPA clients.
+    tags:
+    - concepts
+  - term: CARIN Blue Button
+    definition: Implementation guide for consumer-directed payer data exchange (ExplanationOfBenefit).
+    tags:
+    - concepts
+  - term: Common Payer Consumer Data Set (CPCDS)
+    definition: CARIN BB underlying data set for adjudicated claim and encounter data.
+    tags:
+    - concepts
+  - term: Da Vinci PDex
+    definition: Payer Data Exchange implementation guide for clinical payer-to-payer data sharing.
+    tags:
+    - concepts
+  - term: Da Vinci PDex Plan-Net
+    definition: Implementation guide for FHIR R4 payer provider directories; IBX Provider Directory conforms.
+    tags:
+    - concepts
+  - term: Da Vinci US Drug Formulary (USDF)
+    definition: Implementation guide for FHIR R4 drug formulary publication; IBX Formulary conforms.
+    tags:
+    - concepts
+  - term: USCDI v1 / US Core 3.1.1
+    definition: Core data set referenced by the IBX Patient Access CapabilityStatement.
+    tags:
+    - concepts
+  - term: Transparency In Coverage Machine-Readable Files
+    definition: Monthly JSON files of in-network rates, allowed amounts, and prescription drug pricing per carrier
+      brand.
+    tags:
+    - concepts
+  - term: IBX Member Portal
+    definition: IBX Member Portal
+    tags:
+    - services
+  - term: IBX Provider Resources
+    definition: IBX Provider Resources
+    tags:
+    - services
+  - term: IBX Developer Portal
+    definition: IBX Developer Portal
+    tags:
+    - services
+  - term: IBX Newsroom
+    definition: IBX Newsroom
+    tags:
+    - services
+  - term: IBX Transparency In Coverage Index (KHPE)
+    definition: IBX Transparency In Coverage Index (KHPE)
+    tags:
+    - services
+  - term: IBX Transparency In Coverage Index (QCC)
+    definition: IBX Transparency In Coverage Index (QCC)
+    tags:
+    - services
+  - term: IBX Transparency In Coverage Index (IAC)
+    definition: IBX Transparency In Coverage Index (IAC)
+    tags:
+    - services
+  - term: SMART App Launcher (HL7)
+    definition: SMART App Launcher (HL7)
+    tags:
+    - tools
+  - term: HAPI FHIR Validator
+    definition: HAPI FHIR Validator
+    tags:
+    - tools
+  - term: Inferno (ONC) FHIR test harness
+    definition: Inferno (ONC) FHIR test harness
+    tags:
+    - tools
+  - term: Postman
+    definition: Postman
+    tags:
+    - tools
+  - term: Spectral (linting)
+    definition: Spectral (linting)
+    tags:
+    - tools
+  - term: HL7 FHIR R4 (4.0.1)
+    definition: HL7 FHIR R4 (4.0.1)
+    tags:
+    - standards
+  - term: SMART App Launch 1.0.0
+    definition: SMART App Launch 1.0.0
+    tags:
+    - standards
+  - term: US Core 3.1.1
+    definition: US Core 3.1.1
+    tags:
+    - standards
+  - term: CARIN Blue Button
+    definition: CARIN Blue Button
+    tags:
+    - standards
+  - term: Da Vinci PDex
+    definition: Da Vinci PDex
+    tags:
+    - standards
+  - term: Da Vinci PDex Plan-Net
+    definition: Da Vinci PDex Plan-Net
+    tags:
+    - standards
+  - term: Da Vinci US Drug Formulary
+    definition: Da Vinci US Drug Formulary
+    tags:
+    - standards
+  - term: USCDI v1
+    definition: USCDI v1
+    tags:
+    - standards
+  - term: CMS Interoperability and Patient Access Final Rule (CMS-9115-F)
+    definition: CMS Interoperability and Patient Access Final Rule (CMS-9115-F)
+    tags:
+    - standards
+  - term: HIPAA Privacy & Security Rules
+    definition: HIPAA Privacy & Security Rules
+    tags:
+    - standards
 name: Independence Blue Cross Vocabulary
-description: >-
-  Operational vocabulary that maps the Independence Blue Cross surface
-  area (commercial, Medicare Advantage, Keystone HMO CHIP, dental,
-  vision, behavioral health, pharmacy benefits) and its FHIR-based
-  developer surface to the API Evangelist taxonomy. Aligns concepts,
-  services, tools, and standards used across Independence Blue Cross
-  and the Independence Health Group corporate family.
+description: Operational vocabulary that maps the Independence Blue Cross surface area (commercial, Medicare Advantage,
+  Keystone HMO CHIP, dental, vision, behavioral health, pharmacy benefits) and its FHIR-based developer surface
+  to the API Evangelist taxonomy. Aligns concepts, services, tools, and standards used across Independence Blue
+  Cross and the Independence Health Group corporate family.
 modified: '2026-05-23'
 provider: Independence Blue Cross
 providerId: independence-blue-cross
-concepts:
-  - name: Blue Cross Blue Shield Licensee
-    description: Independence is an independent licensee of the Blue Cross Blue Shield Association.
-  - name: Commercial Health Insurance
-    description: Group commercial coverage for individuals, families, small/mid/large employers in southeastern PA.
-  - name: Medicare Advantage
-    description: Independence Keystone 65 HMO and Personal Choice 65 PPO Medicare Advantage products.
-  - name: Children's Health Insurance Program (CHIP)
-    description: Keystone HMO CHIP covers eligible Pennsylvania children.
-  - name: Medicaid Managed Care
-    description: Delivered through the AmeriHealth Caritas subsidiary family (Keystone First, etc.).
-  - name: Dental Insurance
-    description: IBX Dental coverage including Keystone and United Concordia network options.
-  - name: Vision Insurance
-    description: Vision benefits offered alongside commercial and Medicare products.
-  - name: Behavioral Health
-    description: Behavioral health benefits embedded in commercial, MA, and Medicaid lines.
-  - name: Pharmacy Benefits
-    description: Drug coverage including the IBX-published Drug Formulary FHIR API.
-  - name: Patient Access API
-    description: CMS-mandated FHIR R4 read API for member clinical, claims, and coverage data.
-  - name: Provider Directory API
-    description: CMS-mandated FHIR R4 public directory of contracted Practitioners, Organizations, and Locations.
-  - name: Drug Formulary API
-    description: CMS-mandated FHIR R4 public drug formulary surface.
-  - name: SMART on FHIR / OAuth 2.0
-    description: Authorization framework securing the Patient Access surface.
-  - name: PKCE Flow
-    description: Authorization Code with Proof Key for Code Exchange for mobile/SPA clients.
-  - name: CARIN Blue Button
-    description: Implementation guide for consumer-directed payer data exchange (ExplanationOfBenefit).
-  - name: Common Payer Consumer Data Set (CPCDS)
-    description: CARIN BB underlying data set for adjudicated claim and encounter data.
-  - name: Da Vinci PDex
-    description: Payer Data Exchange implementation guide for clinical payer-to-payer data sharing.
-  - name: Da Vinci PDex Plan-Net
-    description: Implementation guide for FHIR R4 payer provider directories; IBX Provider Directory conforms.
-  - name: Da Vinci US Drug Formulary (USDF)
-    description: Implementation guide for FHIR R4 drug formulary publication; IBX Formulary conforms.
-  - name: USCDI v1 / US Core 3.1.1
-    description: Core data set referenced by the IBX Patient Access CapabilityStatement.
-  - name: Transparency In Coverage Machine-Readable Files
-    description: Monthly JSON files of in-network rates, allowed amounts, and prescription drug pricing per carrier brand.
-services:
-  - name: IBX Member Portal
-    url: https://www.ibx.com/login
-  - name: IBX Provider Resources
-    url: https://www.ibx.com/resources/for-providers/index.html
-  - name: IBX Developer Portal
-    url: https://devportal.ibx.com/
-  - name: IBX Newsroom
-    url: https://news.ibx.com/
-  - name: IBX Transparency In Coverage Index (KHPE)
-    url: https://www.ibx.com/cmstic/?brand=khpe
-  - name: IBX Transparency In Coverage Index (QCC)
-    url: https://www.ibx.com/cmstic/?brand=qcc
-  - name: IBX Transparency In Coverage Index (IAC)
-    url: https://www.ibx.com/cmstic/?brand=iac
-tools:
-  - name: SMART App Launcher (HL7)
-    url: https://hl7.org/fhir/smart-app-launch/1.0.0/
-  - name: HAPI FHIR Validator
-    url: https://hapifhir.io/
-  - name: Inferno (ONC) FHIR test harness
-    url: https://inferno.healthit.gov/
-  - name: Postman
-    url: https://www.postman.com/
-  - name: Spectral (linting)
-    url: https://stoplight.io/open-source/spectral
-standards:
-  - name: HL7 FHIR R4 (4.0.1)
-    url: https://hl7.org/fhir/R4/
-  - name: SMART App Launch 1.0.0
-    url: https://hl7.org/fhir/smart-app-launch/1.0.0/
-  - name: US Core 3.1.1
-    url: https://hl7.org/fhir/us/core/STU3.1.1/
-  - name: CARIN Blue Button
-    url: https://hl7.org/fhir/us/carin-bb/history.html
-  - name: Da Vinci PDex
-    url: https://hl7.org/fhir/us/davinci-pdex/history.html
-  - name: Da Vinci PDex Plan-Net
-    url: http://hl7.org/fhir/us/davinci-pdex-plan-net/ImplementationGuide/hl7.fhir.us.davinci-pdex-plan-net
-  - name: Da Vinci US Drug Formulary
-    url: http://hl7.org/fhir/us/davinci-drug-formulary/ImplementationGuide/hl7.fhir.us.davinci-drug-formulary
-  - name: USCDI v1
-    url: https://www.healthit.gov/isp/united-states-core-data-interoperability-uscdi#uscdi-v1
-  - name: CMS Interoperability and Patient Access Final Rule (CMS-9115-F)
-    url: https://www.cms.gov/priorities/key-initiatives/burden-reduction/interoperability
-  - name: HIPAA Privacy & Security Rules
-    url: https://www.hhs.gov/hipaa/for-professionals/index.html
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com

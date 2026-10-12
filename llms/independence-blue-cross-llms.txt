@@ -1,24 +1,89 @@
-# [Independence Blue Cross]
-> Independence Blue Cross (IBX) is the leading health insurance company in southeastern Pennsylvania. Together with our affiliates and subsidiaries, IBX offers a wide range of market-leading health plans and specialty services for national businesses, large employer groups, and small businesses; portable benefits for when you travel or live abroad; Medicare supplemental and Medicare Advantage products; and specialty services such as vision and dental coverage and third-party benefits administration.
+# Independence Blue Cross (IBX)
 
-- [Health Insurance Plans](https://www.ibx.com/): Quality health insurance plans and resources for individuals, families, and employers and groups.
-- [Contact Independence Blue Cross](https://www.ibx.com/contact-us/index.html): Contact Independence Blue Cross for member inquiries and assistance.
-- [Claims Submission Information](https://www.ibx.com/resources/for-providers/contact-us/claims-submission.html): Submit claims to designated addresses based on service area.
-- [Keystone HMO Plans](https://www.ibx.com/find-a-plan/individuals-and-families/ibx-health-plans/health-plans/keystone-hmo-plans.html): Explore Keystone HMO plans for affordable family health coverage.
-- [Personal Choice PPO Plans](https://www.ibx.com/find-a-plan/individuals-and-families/ibx-health-plans/health-plans/personal-choice-ppo-plans.html): Explore Personal Choice PPO plans for the largest provider network.
-- [Personal Choice EPO Reserve Plans](https://www.ibx.com/find-a-plan/individuals-and-families/ibx-health-plans/health-plans/personal-choice-ppo-plans.html): Explore Personal Choice EPO Reserve plans for coverage under an EPO plan, coupled with a tax-advantaged health savings account (HSA) for any qualified medical expenses.
-- [Personal Choice EPO Catastrophic plan] (https://www.ibx.com/find-a-plan/individuals-and-families/ibx-health-plans/health-plans/personal-choice-epo-catastrophic-plan.html): The Personal Choice EPO Catastrphic health plan is for individuals younger than 30 and those with an extreme financial hardship.
-- [Third-Party Administration Services](https://www.ibx.com/find-a-plan/employers/third-party-administration/index.html): Comprehensive support for self-funded health plans and services.
-- [HIPAA Compliance Policy](https://www.ibx.com/privacy-policy/hipaa-compliance.html): Independence Blue Cross ensures compliance with HIPAA privacy regulations.
-- [ICD-10 Implementation Guide](https://www.ibx.com/pdfs/resources/for-providers/claims-and-billing/putting-icd-10-into-practice.pdf): Comprehensive guide for applying ICD-10 coding guidelines effectively.
-- [Preventive Care Toolkit](https://www.ibx.com/htdocs/custom/business-hub/pdfs/preventive-care/preventive-care-how-to-guide.pdf): Engage employees in preventive care with effective strategies.
-- [Cybersecurity Tips](https://www.ibx.com/resources/for-members/cybersecurity-and-fraud-prevention.html): Essential tips for protecting your health data online.
-- [Find a Health Plan](https://www.ibx.com/find-a-plan/index.html): Explore diverse health plans for individuals and businesses.
-- [Health and Wellness](https://www.ibx.com/stay-healthy/health-and-wellness/index.html): Independence Blue Cross members also get access to a variety of member-exclusive programs, services, discounts, and deals.
-- [Get Care](https://www.ibx.com/get-care/index.html): Independence Blue Cross members can find a provider or facility that's right for them from Independence Blue Cross's extensive network.
-- [Medicare](https://www.ibx.com/medicare/index.html): Independence Blue Cross Medicare offers affordable Medicare health insurance plans in Philadelphia and southeastern Pennsylvania (PA).
-- [Small Business Solutions](https://www.ibx.com/find-a-plan/employers/small-business/index.html): IBX's Blue Solutions® health plans provide cost-effective coverage and help empower small business employees to stay healthier and save money on their health care.
-- [Large Business Solutions](https://www.ibx.com/find-a-plan/employers/large-business/index.html): Independence Blue Cross offers large business employers a comprehensive selection of health insurance plans for their employees.
-- [IBX Member Portal](https://www.ibx.com/login): Members log in to find a doctor, view and print your ID card, verify coverage, and learn more about your health plan.
-- [Careers at Independence Blue Cross](https://www.ibx.com/careers/index.html): View the jobs available at IBX right now, get job-hunting tips, and learn about the internships available at IBX.
-- [Behavioral Health] (https://www.ibx.com/get-care/behavioral-health/index.html):With your Independence Blue Cross health plan, you have behavioral health benefits and access to a large, high-quality behavioral health network that includes psychiatric providers, specialists, and therapists (in-person and virtual).
+> Independence Blue Cross (IBX) is a health insurer serving Philadelphia and southeastern Pennsylvania. IBX offers individual and family health plans, Medicare plans, employer-sponsored coverage, member services, care resources, and information for brokers and health care providers.
+
+Individual and family health plans from IBX are available to eligible Pennsylvania residents in Bucks, Chester, Delaware, Montgomery, and Philadelphia counties. Plan availability, benefits, provider networks, drug coverage, costs, and eligibility can vary by plan, location, and plan year. For decisions about a member's specific coverage, use the applicable plan documents or member account, or contact IBX.
+
+## Start Here
+
+- [IBX home](https://www.ibx.com/ ): Overview of Independence Blue Cross plans, care resources, member services, and organizational information.
+- [Contact IBX](https://www.ibx.com/contact-us/index.html ): Contact information for members, individuals and families, Medicare customers, employers, providers, and brokers.
+- [IBX site map](https://www.ibx.com/sitemap/index.html ): Full human-readable directory of https://ibx.com.
+
+## Individual and Family Health Insurance
+
+- [Individual and family health plans](https://www.ibx.com/find-a-plan/individuals-and-families/index.html ): Starting point for learning about, comparing, and enrolling in individual and family coverage.
+- [IBX health plans](https://www.ibx.com/find-a-plan/individuals-and-families/ibx-health-plans/index.html ): Overview of medical, dental, vision, HSA-compatible, and other plan options.
+- [Individual health plan options](https://www.ibx.com/find-a-plan/individuals-and-families/ibx-health-plans/health-plans/index.html ): Information about IBX HMO, PPO, EPO, tiered-network, and HSA-compatible plans.
+- [Health plan comparison chart](https://www.ibx.com/find-a-plan/individuals-and-families/ibx-health-plans/health-plans/health-plans-comparison-chart.html ): Side-by-side comparison of benefits and common in-network costs for individual plans.
+- [How to enroll in health insurance](https://www.ibx.com/find-a-plan/individuals-and-families/how-to-enroll/index.html ): Enrollment overview covering Open Enrollment, Special Enrollment, and qualifying life events.
+- [Open Enrollment](https://www.ibx.com/find-a-plan/individuals-and-families/how-to-enroll/open-enrollment.html ): Timing, eligibility, and steps for enrolling in or changing individual and family coverage during Open Enrollment.
+- [Special Enrollment period](https://www.ibx.com/find-a-plan/individuals-and-families/how-to-enroll/special-enrollment.html ): Qualifying life events and enrollment outside the annual Open Enrollment period.
+- [Individual and family health insurance FAQ](https://www.ibx.com/find-a-plan/individuals-and-families/faq/index.html ): Answers about coverage, plans, prescriptions, dental and vision benefits, enrollment, payment, and plan management.
+
+## Health Insurance Education
+
+- [Health insurance basics](https://www.ibx.com/find-a-plan/individuals-and-families/health-insurance-basics/index.html ): Hub for understanding coverage, plan types, costs, and common health insurance terms.
+- [How health insurance works](https://www.ibx.com/find-a-plan/individuals-and-families/health-insurance-basics/the-basics.html ): Explanation of premiums, cost sharing, provider networks, metal levels, plan selection, and the IBX service area.
+- [What is an HMO?](https://www.ibx.com/find-a-plan/individuals-and-families/health-insurance-basics/what-is-an-hmo.html ): How HMO plans work, including primary care physicians, referrals, networks, costs, advantages, and limitations.
+- [What is a PPO?](https://www.ibx.com/find-a-plan/individuals-and-families/health-insurance-basics/what-is-a-ppo.html ): How PPO plans work, including provider choice, out-of-network coverage, referrals, and costs.
+- [What is an EPO?](https://www.ibx.com/find-a-plan/individuals-and-families/health-insurance-basics/what-is-an-epo.html ): How EPO plans work and how they compare with HMO and PPO coverage.
+- [HMO vs. PPO](https://www.ibx.com/find-a-plan/individuals-and-families/health-insurance-basics/hmo-vs-ppo-basics.html ): Comparison of HMO and PPO networks, referrals, flexibility, and costs.
+- [How much does health insurance cost?](https://www.ibx.com/find-a-plan/individuals-and-families/health-insurance-basics/how-much-does-health-insurance-cost.html ): Explanation of premiums, deductibles, copays, coinsurance, and out-of-pocket maximums.
+- [Health insurance terms](https://www.ibx.com/find-a-plan/individuals-and-families/health-insurance-basics/health-insurance-terms.html ): Glossary of common health insurance and coverage terminology.
+
+## Medicare
+
+- [IBX Medicare](https://www.ibx.com/medicare/index.html ): Starting point for IBX Medicare plans, benefits, care resources, and member information.
+- [Medicare basics](https://www.ibx.com/medicare/find-a-medicare-plan/medicare-basics/index.html ): Hub for understanding Medicare coverage, costs, enrollment milestones, and plan choices.
+- [Medicare explained](https://www.ibx.com/medicare/find-a-medicare-plan/medicare-basics/get-the-basics.html ): Overview of Original Medicare, Medicare Advantage, prescription drug coverage, Medigap, and enrollment periods.
+- [Medicare Advantage plans](https://www.ibx.com/medicare/find-a-medicare-plan/medicare-advantage-plans.html ): IBX Medicare Advantage plan types, coverage, costs, prescription benefits, and eligibility in southeastern Pennsylvania.
+- [Medicare Supplement plans](https://www.ibx.com/medicare/find-a-medicare-plan/medicare-supplement-plans.html ): IBX Medicare Supplement, or Medigap, coverage in Pennsylvania.
+- [How much does Medicare cost?](https://www.ibx.com/medicare/find-a-medicare-plan/medicare-basics/how-much-does-medicare-cost.html ): Explanation of Medicare premiums, deductibles, copays, coinsurance, and other costs.
+- [Medicare Advantage vs. Medigap](https://www.ibx.com/medicare/find-a-medicare-plan/medicare-basics/medicare-advantage-vs-medigap.html ): Comparison of Medicare Advantage and Medicare Supplement coverage.
+- [Turning 65 checklist](https://www.ibx.com/medicare/find-a-medicare-plan/medicare-basics/turning-65-checklist.html ): Planning timeline for people approaching Medicare eligibility.
+- [Working past 65](https://www.ibx.com/medicare/find-a-medicare-plan/medicare-basics/working-past-65.html ): Medicare considerations for people who continue working after age 65.
+- [Medicare member resources](https://www.ibx.com/medicare/resources/for-members/index.html ): Help with Medicare benefits, plan access, savings programs, and member support.
+
+## Find Care and Prescription Information
+
+- [Find doctors and health care providers](https://www.ibx.com/get-care/find-doctors-and-health-care-providers/index.html ): Search resources for doctors, hospitals, pharmacies, dentists, vision providers, medical equipment, and specialty services.
+- [Where to go for care](https://www.ibx.com/get-care/find-doctors-and-health-care-providers/where-to-go-for-care.html ): Guidance on primary care, urgent care, retail clinics, virtual care, and emergency care.
+- [Virtual visits](https://www.ibx.com/get-care/find-doctors-and-health-care-providers/virtual-visits.html ): Information about accessing eligible virtual medical care.
+- [Prescription drug information](https://www.ibx.com/get-care/prescription-drug-information/index.html ): Formulary, in-network pharmacy, prescription benefit management, and cost-saving resources.
+- [Behavioral health](https://www.ibx.com/get-care/behavioral-health/index.html ): Mental health and substance use care, benefits, networks, and care-navigation support for IBX members.
+
+## Members and Wellness
+
+- [Member resources](https://www.ibx.com/resources/for-members/index.html ): Starting point for managing coverage, payments, costs, member tools, and account access.
+- [IBX member website and app](https://www.ibx.com/resources/for-members/member-website.html ): Overview of digital tools for claims, ID cards, benefits, provider search, cost estimates, and health resources.
+- [Estimate health care costs](https://www.ibx.com/resources/for-members/cost-estimator.html ): Information about the Care Cost Estimator and comparing estimated out-of-pocket costs.
+- [Make a payment](https://www.ibx.com/resources/for-members/make-a-payment.html ): Available methods for paying an individual health insurance premium.
+- [Health and wellness](https://www.ibx.com/stay-healthy/health-and-wellness/index.html ): Member wellness programs, health coaching, preventive care, nutrition, maternity, and savings resources.
+- [Preventive care](https://www.ibx.com/stay-healthy/health-and-wellness/preventive-care.html ): Preventive screenings, services, and resources available through eligible plans.
+- [Maternity health resources](https://www.ibx.com/stay-healthy/health-and-wellness/maternity-health-resources.html ): Pregnancy and postpartum support and benefits for eligible IBX members.
+
+## Employers, Brokers, and Providers
+
+- [Employer health plans](https://www.ibx.com/find-a-plan/employers/index.html ): Overview of medical, pharmacy, dental, vision, Medicare, and administrative solutions for businesses.
+- [Small business health insurance](https://www.ibx.com/find-a-plan/employers/small-business/index.html ): Health and workplace benefit options for businesses with 2–50 employees.
+- [Large business health insurance](https://www.ibx.com/find-a-plan/employers/large-business/index.html ): Health and workplace benefit options for organizations with 51 or more employees.
+- [Third-party administration](https://www.ibx.com/find-a-plan/employers/third-party-administration/index.html ): Self-funded health plan administration through Independence Administrators.
+- [Employer resources](https://www.ibx.com/resources/for-employers/index.html ): Account, plan-management, workplace wellness, and business resources for employer groups.
+- [Broker resources](https://www.ibx.com/resources/for-brokers/index.html ): Support, account-management tools, sales resources, and information for IBX brokers.
+- [Provider resources](https://www.ibx.com/resources/for-providers/index.html ): Starting point for provider policies, tools, claims, patient management, and network participation.
+- [Provider policies and guidelines](https://www.ibx.com/resources/for-providers/policies-and-guidelines/index.html ): Medical and pharmacy policies, clinical guidelines, and service preapproval information.
+- [Provider tools and resources](https://www.ibx.com/resources/for-providers/tools-and-resources/index.html ): Provider portals, forms, systems, and operational resources.
+- [Provider claims and billing](https://www.ibx.com/resources/for-providers/claims-and-billing/index.html ): Claims submission, billing, EDI, and registration resources.
+- [Provider patient management](https://www.ibx.com/resources/for-providers/patient-management/index.html ): Standards of care, preventive programs, and patient-support resources.
+
+## Optional
+
+- [About Independence Blue Cross](https://www.ibx.com/about-us/index.html ): Company, mission, regional presence, affiliates, reports, and community information.
+- [IBX Insights](https://insights.ibx.com/ ): Consumer and member education about health insurance, health care, and well-being on an IBX subdomain.
+- [IBX Newsroom](https://news.ibx.com/ ): Corporate announcements, community news, leadership information, and media resources on an IBX subdomain.
+- [Careers at IBX](https://www.ibx.com/careers/index.html ): Employment, workplace, benefits, and early-career information.
+- [Legal information](https://www.ibx.com/legal-information/index.html ): Terms, notices, and legal information for IBX websites and services.
+- [Privacy policy](https://www.ibx.com/privacy-policy/index.html ): Privacy practices and related notices.
+- [Anti-fraud resources](https://www.ibx.com/anti-fraud/index.html ): Information about identifying and reporting health care fraud.
+- [Developer resources](https://www.ibx.com/developer-resources/index.html ): API and interoperability resources for approved health care data access.

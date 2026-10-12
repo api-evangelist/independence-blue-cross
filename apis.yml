@@ -1,5 +1,7 @@
 aid: independence-blue-cross
+
 name: Independence Blue Cross
+
 description: >-
   Independence Blue Cross (IBX) is the Blue Cross Blue Shield Association licensee for southeastern Pennsylvania (Bucks,
   Chester, Delaware, Montgomery, and Philadelphia counties) and a subsidiary of Independence Health Group, Inc., the
@@ -15,8 +17,11 @@ description: >-
   API. The provider also publishes monthly Transparency in Coverage machine-readable files (in-network rates, allowed
   amounts, prescription drugs) for three carrier brands — Keystone Health Plan East, QCC Insurance Company, and
   Independence Assurance Co, Inc.
+
 url: https://raw.githubusercontent.com/api-evangelist/independence-blue-cross/refs/heads/main/apis.yml
+
 type: Index
+
 deliveryModel:
   model: saas
   open_source: false
@@ -29,6 +34,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -42,7 +48,9 @@ accessModel:
     - authentication
   generated: '2026-07-22'
   method: derived
+
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/independence-blue-cross.png
+
 tags:
   - Healthcare
   - Health Insurance
@@ -65,6 +73,7 @@ tags:
   - Provider Directory
   - Drug Formulary
   - Transparency In Coverage
+
 tags_raw:
   - Healthcare
   - Health Insurance
@@ -87,208 +96,30 @@ tags_raw:
   - Provider Directory
   - Drug Formulary
   - Transparency In Coverage
+
 created: '2024-01-01'
+
 modified: '2026-08-15'
+
 specificationVersion: '0.23'
-apis:
-  - aid: independence-blue-cross:transparency-in-coverage
-    name: Independence Blue Cross Transparency In Coverage Data
-    description: >-
-      Monthly machine-readable JSON files published under 45 CFR Part Â§147.211 / the Transparency in Coverage
-      rule for three carrier brands operated by Independence Blue Cross: Keystone Health Plan East, QCC
-      Insurance Company, and Independence Assurance Co, Inc. Files cover in-network negotiated rates, out-of-network
-      allowed amounts, and prescription drug pricing across medical, dental, vision, pharmacy, and plan
-      domains.
-    humanURL: https://www.ibx.com/resources/for-members/transparency-in-coverage.html
-    baseURL: https://www.ibx.com/cmstic/
-    tags:
-      - Transparency In Coverage
-      - Machine-Readable Files
-      - Pricing
-      - Regulatory
-    tags_raw:
-      - Transparency In Coverage
-      - Machine Readable Files
-      - Pricing
-      - Regulatory
-    properties:
-      - type: Index
-        url: https://www.ibx.com/cmstic/?brand=khpe
-      - type: Index
-        url: https://www.ibx.com/cmstic/?brand=qcc
-      - type: Index
-        url: https://www.ibx.com/cmstic/?brand=iac
-      - type: Regulation
-        url: https://www.cms.gov/healthplan-price-transparency
-  - aid: independence-blue-cross:independence-blue-cross-formulary-api
-    name: Independence Blue Cross Formulary API
-    description: Public Da Vinci USDF FHIR R4 drug formulary resources.
-    humanURL: https://devportal.ibx.com/documentation/
-    baseURL: https://eapics.ibx.com/formulary/v1/fhir
-    tags:
-      - Formulary
-    properties:
-      - type: OpenAPI
-        url: openapi/independence-blue-cross-formulary-api-openapi.yml
-      - type: Overlay
-        url: overlays/independence-blue-cross-formulary-api-overlay.yaml
-      - type: Portal
-        url: https://devportal.ibx.com/
-      - type: Documentation
-        url: https://devportal.ibx.com/documentation/
-      - type: Swagger
-        url: https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json
-      - type: CapabilityStatement
-        url: https://eapics.ibx.com/patient/v1/fhir/metadata
-      - type: SmartConfiguration
-        url: https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration
-      - type: AuthorizeURL
-        url: https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize
-      - type: TokenURL
-        url: https://eapics.ibx.com/oauth2/v2/token
-      - type: Registration
-        url: https://devportal.ibx.com/cmssignin/
-      - type: TermsOfService
-        url: https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf
-      - type: ContactEmail
-        url: mailto:AppOnboardingSupport@ibx.com
-      - type: SpectralRules
-        url: rules/independence-blue-cross-rules.yml
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-patient-schema.json
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-coverage-schema.json
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-explanation-of-benefit-schema.json
-      - type: CapabilityStatement
-        url: https://eapics.ibx.com/provider/v1/fhir/metadata
-      - type: ImplementationGuide
-        url: >-
-          http://hl7.org/fhir/us/davinci-pdex-plan-net/ImplementationGuide/hl7.fhir.us.davinci-pdex-plan-net
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-practitioner-schema.json
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-organization-schema.json
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-location-schema.json
-      - type: CapabilityStatement
-        url: https://eapics.ibx.com/formulary/v1/fhir/metadata
-      - type: ImplementationGuide
-        url: >-
-          http://hl7.org/fhir/us/davinci-drug-formulary/ImplementationGuide/hl7.fhir.us.davinci-drug-formulary
-  - aid: independence-blue-cross:independence-blue-cross-patient-access-api
-    name: Independence Blue Cross Patient Access API
-    description: FHIR R4 Patient Access resources for member-authorized access.
-    humanURL: https://devportal.ibx.com/documentation/
-    baseURL: https://eapics.ibx.com/patient/v1/fhir
-    tags:
-      - Patient Access
-    properties:
-      - type: OpenAPI
-        url: openapi/independence-blue-cross-patient-access-api-openapi.yml
-      - type: Overlay
-        url: overlays/independence-blue-cross-patient-access-api-overlay.yaml
-      - type: Portal
-        url: https://devportal.ibx.com/
-      - type: Documentation
-        url: https://devportal.ibx.com/documentation/
-      - type: Swagger
-        url: https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json
-      - type: CapabilityStatement
-        url: https://eapics.ibx.com/patient/v1/fhir/metadata
-      - type: SmartConfiguration
-        url: https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration
-      - type: AuthorizeURL
-        url: https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize
-      - type: TokenURL
-        url: https://eapics.ibx.com/oauth2/v2/token
-      - type: Registration
-        url: https://devportal.ibx.com/cmssignin/
-      - type: TermsOfService
-        url: https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf
-      - type: ContactEmail
-        url: mailto:AppOnboardingSupport@ibx.com
-      - type: SpectralRules
-        url: rules/independence-blue-cross-rules.yml
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-patient-schema.json
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-coverage-schema.json
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-explanation-of-benefit-schema.json
-      - type: CapabilityStatement
-        url: https://eapics.ibx.com/provider/v1/fhir/metadata
-      - type: ImplementationGuide
-        url: >-
-          http://hl7.org/fhir/us/davinci-pdex-plan-net/ImplementationGuide/hl7.fhir.us.davinci-pdex-plan-net
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-practitioner-schema.json
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-organization-schema.json
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-location-schema.json
-      - type: CapabilityStatement
-        url: https://eapics.ibx.com/formulary/v1/fhir/metadata
-      - type: ImplementationGuide
-        url: >-
-          http://hl7.org/fhir/us/davinci-drug-formulary/ImplementationGuide/hl7.fhir.us.davinci-drug-formulary
-  - aid: independence-blue-cross:independence-blue-cross-provider-directory-api
-    name: Independence Blue Cross Provider Directory API
-    description: Public Da Vinci Plan-Net FHIR R4 provider directory resources.
-    humanURL: https://devportal.ibx.com/documentation/
-    baseURL: https://eapics.ibx.com/provider/v1/fhir
-    tags:
-      - Provider Directory
-    properties:
-      - type: OpenAPI
-        url: openapi/independence-blue-cross-provider-directory-api-openapi.yml
-      - type: Overlay
-        url: overlays/independence-blue-cross-provider-directory-api-overlay.yaml
-      - type: Portal
-        url: https://devportal.ibx.com/
-      - type: Documentation
-        url: https://devportal.ibx.com/documentation/
-      - type: Swagger
-        url: https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json
-      - type: CapabilityStatement
-        url: https://eapics.ibx.com/patient/v1/fhir/metadata
-      - type: SmartConfiguration
-        url: https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration
-      - type: AuthorizeURL
-        url: https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize
-      - type: TokenURL
-        url: https://eapics.ibx.com/oauth2/v2/token
-      - type: Registration
-        url: https://devportal.ibx.com/cmssignin/
-      - type: TermsOfService
-        url: https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf
-      - type: ContactEmail
-        url: mailto:AppOnboardingSupport@ibx.com
-      - type: SpectralRules
-        url: rules/independence-blue-cross-rules.yml
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-patient-schema.json
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-coverage-schema.json
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-explanation-of-benefit-schema.json
-      - type: CapabilityStatement
-        url: https://eapics.ibx.com/provider/v1/fhir/metadata
-      - type: ImplementationGuide
-        url: >-
-          http://hl7.org/fhir/us/davinci-pdex-plan-net/ImplementationGuide/hl7.fhir.us.davinci-pdex-plan-net
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-practitioner-schema.json
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-organization-schema.json
-      - type: JSONSchema
-        url: json-schema/independence-blue-cross-location-schema.json
-      - type: CapabilityStatement
-        url: https://eapics.ibx.com/formulary/v1/fhir/metadata
-      - type: ImplementationGuide
-        url: >-
-          http://hl7.org/fhir/us/davinci-drug-formulary/ImplementationGuide/hl7.fhir.us.davinci-drug-formulary
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+
 common:
+  - type: Spectral
+    url: rules/independence-blue-cross-rules.yml
+  - type: Spectral
+    url: rules/independence-blue-cross-jsonschema-spectral-rules.yml
+  - type: JSONLD
+    url: json-ld/independence-blue-cross-context.jsonld
+  - type: Deprecation
+    url: lifecycle/independence-blue-cross-lifecycle.yml
+  - type: Hosts
+    url: hosts/independence-blue-cross-hosts.yml
+  - type: Vendors
+    url: vendors/independence-blue-cross-vendors.yml
   - type: CapabilityMap
     url: capabilities/independence-blue-cross-capability-edges.yml
     name: Independence Blue Cross Business Capability Map
@@ -298,8 +129,6 @@ common:
     url: llms/independence-blue-cross-llms.txt
   - type: WellKnown
     url: well-known/independence-blue-cross-well-known.yml
-  - type: Packages
-    url: packages/independence-blue-cross-packages.yml
   - type: X-MCPServerCandidate
     url: mcp/independence-blue-cross-mcp.yml
     note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
@@ -562,11 +391,207 @@ common:
           FHIR API.
   - type: Blog
     url: https://news.ibx.com/feed/
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+
+apis:
+  - aid: independence-blue-cross:transparency-in-coverage
+    name: Independence Blue Cross Transparency In Coverage Data
+    description: >-
+      Monthly machine-readable JSON files published under 45 CFR Part Â§147.211 / the Transparency in Coverage
+      rule for three carrier brands operated by Independence Blue Cross: Keystone Health Plan East, QCC
+      Insurance Company, and Independence Assurance Co, Inc. Files cover in-network negotiated rates, out-of-network
+      allowed amounts, and prescription drug pricing across medical, dental, vision, pharmacy, and plan
+      domains.
+    humanURL: https://www.ibx.com/resources/for-members/transparency-in-coverage.html
+    baseURL: https://www.ibx.com/cmstic/
+    tags:
+      - Transparency In Coverage
+      - Machine-Readable Files
+      - Pricing
+      - Regulatory
+    tags_raw:
+      - Transparency In Coverage
+      - Machine Readable Files
+      - Pricing
+      - Regulatory
+    properties:
+      - type: Index
+        url: https://www.ibx.com/cmstic/?brand=khpe
+      - type: Index
+        url: https://www.ibx.com/cmstic/?brand=qcc
+      - type: Index
+        url: https://www.ibx.com/cmstic/?brand=iac
+      - type: Regulation
+        url: https://www.cms.gov/healthplan-price-transparency
+  - aid: independence-blue-cross:independence-blue-cross-formulary-api
+    name: Independence Blue Cross Formulary API
+    description: Public Da Vinci USDF FHIR R4 drug formulary resources.
+    humanURL: https://devportal.ibx.com/documentation/
+    baseURL: https://eapics.ibx.com/formulary/v1/fhir
+    tags:
+      - Formulary
+    properties:
+      - type: OpenAPI
+        url: openapi/independence-blue-cross-formulary-api-openapi.yml
+      - type: Overlay
+        url: overlays/independence-blue-cross-formulary-api-overlay.yaml
+      - type: Portal
+        url: https://devportal.ibx.com/
+      - type: Documentation
+        url: https://devportal.ibx.com/documentation/
+      - type: Swagger
+        url: https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json
+      - type: CapabilityStatement
+        url: https://eapics.ibx.com/patient/v1/fhir/metadata
+      - type: SmartConfiguration
+        url: https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration
+      - type: AuthorizeURL
+        url: https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize
+      - type: TokenURL
+        url: https://eapics.ibx.com/oauth2/v2/token
+      - type: Registration
+        url: https://devportal.ibx.com/cmssignin/
+      - type: TermsOfService
+        url: https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf
+      - type: ContactEmail
+        url: mailto:AppOnboardingSupport@ibx.com
+      - type: SpectralRules
+        url: rules/independence-blue-cross-rules.yml
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-patient-schema.json
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-coverage-schema.json
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-explanation-of-benefit-schema.json
+      - type: CapabilityStatement
+        url: https://eapics.ibx.com/provider/v1/fhir/metadata
+      - type: ImplementationGuide
+        url: >-
+          http://hl7.org/fhir/us/davinci-pdex-plan-net/ImplementationGuide/hl7.fhir.us.davinci-pdex-plan-net
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-practitioner-schema.json
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-organization-schema.json
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-location-schema.json
+      - type: CapabilityStatement
+        url: https://eapics.ibx.com/formulary/v1/fhir/metadata
+      - type: ImplementationGuide
+        url: >-
+          http://hl7.org/fhir/us/davinci-drug-formulary/ImplementationGuide/hl7.fhir.us.davinci-drug-formulary
+  - aid: independence-blue-cross:independence-blue-cross-patient-access-api
+    name: Independence Blue Cross Patient Access API
+    description: FHIR R4 Patient Access resources for member-authorized access.
+    humanURL: https://devportal.ibx.com/documentation/
+    baseURL: https://eapics.ibx.com/patient/v1/fhir
+    tags:
+      - Patient Access
+    properties:
+      - type: OpenAPI
+        url: openapi/independence-blue-cross-patient-access-api-openapi.yml
+      - type: Overlay
+        url: overlays/independence-blue-cross-patient-access-api-overlay.yaml
+      - type: Portal
+        url: https://devportal.ibx.com/
+      - type: Documentation
+        url: https://devportal.ibx.com/documentation/
+      - type: Swagger
+        url: https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json
+      - type: CapabilityStatement
+        url: https://eapics.ibx.com/patient/v1/fhir/metadata
+      - type: SmartConfiguration
+        url: https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration
+      - type: AuthorizeURL
+        url: https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize
+      - type: TokenURL
+        url: https://eapics.ibx.com/oauth2/v2/token
+      - type: Registration
+        url: https://devportal.ibx.com/cmssignin/
+      - type: TermsOfService
+        url: https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf
+      - type: ContactEmail
+        url: mailto:AppOnboardingSupport@ibx.com
+      - type: SpectralRules
+        url: rules/independence-blue-cross-rules.yml
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-patient-schema.json
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-coverage-schema.json
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-explanation-of-benefit-schema.json
+      - type: CapabilityStatement
+        url: https://eapics.ibx.com/provider/v1/fhir/metadata
+      - type: ImplementationGuide
+        url: >-
+          http://hl7.org/fhir/us/davinci-pdex-plan-net/ImplementationGuide/hl7.fhir.us.davinci-pdex-plan-net
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-practitioner-schema.json
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-organization-schema.json
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-location-schema.json
+      - type: CapabilityStatement
+        url: https://eapics.ibx.com/formulary/v1/fhir/metadata
+      - type: ImplementationGuide
+        url: >-
+          http://hl7.org/fhir/us/davinci-drug-formulary/ImplementationGuide/hl7.fhir.us.davinci-drug-formulary
+  - aid: independence-blue-cross:independence-blue-cross-provider-directory-api
+    name: Independence Blue Cross Provider Directory API
+    description: Public Da Vinci Plan-Net FHIR R4 provider directory resources.
+    humanURL: https://devportal.ibx.com/documentation/
+    baseURL: https://eapics.ibx.com/provider/v1/fhir
+    tags:
+      - Provider Directory
+    properties:
+      - type: OpenAPI
+        url: openapi/independence-blue-cross-provider-directory-api-openapi.yml
+      - type: Overlay
+        url: overlays/independence-blue-cross-provider-directory-api-overlay.yaml
+      - type: Portal
+        url: https://devportal.ibx.com/
+      - type: Documentation
+        url: https://devportal.ibx.com/documentation/
+      - type: Swagger
+        url: https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json
+      - type: CapabilityStatement
+        url: https://eapics.ibx.com/patient/v1/fhir/metadata
+      - type: SmartConfiguration
+        url: https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration
+      - type: AuthorizeURL
+        url: https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize
+      - type: TokenURL
+        url: https://eapics.ibx.com/oauth2/v2/token
+      - type: Registration
+        url: https://devportal.ibx.com/cmssignin/
+      - type: TermsOfService
+        url: https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf
+      - type: ContactEmail
+        url: mailto:AppOnboardingSupport@ibx.com
+      - type: SpectralRules
+        url: rules/independence-blue-cross-rules.yml
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-patient-schema.json
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-coverage-schema.json
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-explanation-of-benefit-schema.json
+      - type: CapabilityStatement
+        url: https://eapics.ibx.com/provider/v1/fhir/metadata
+      - type: ImplementationGuide
+        url: >-
+          http://hl7.org/fhir/us/davinci-pdex-plan-net/ImplementationGuide/hl7.fhir.us.davinci-pdex-plan-net
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-practitioner-schema.json
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-organization-schema.json
+      - type: JSONSchema
+        url: json-schema/independence-blue-cross-location-schema.json
+      - type: CapabilityStatement
+        url: https://eapics.ibx.com/formulary/v1/fhir/metadata
+      - type: ImplementationGuide
+        url: >-
+          http://hl7.org/fhir/us/davinci-drug-formulary/ImplementationGuide/hl7.fhir.us.davinci-drug-formulary
 x-enrichment:
-  date: '2026-08-15'
+  date: '2026-10-12'
   status: enriched
-  artifacts_added: 21
-  pass: local-v1
+  artifacts_added: 1
+  pass: local-v5
