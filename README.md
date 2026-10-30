@@ -1,4 +1,4 @@
-# Independence Blue Cross (independence-blue-cross)
+# Independence Blue Cross
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,228 +66,199 @@
 
 Independence Blue Cross (IBX) is the Blue Cross Blue Shield Association licensee for southeastern Pennsylvania (Bucks, Chester, Delaware, Montgomery, and Philadelphia counties) and a subsidiary of Independence Health Group, Inc., the parent holding company that consolidated IBX, AmeriHealth (commercial, including AmeriHealth New Jersey and the AmeriHealth Administrators TPA business), and the AmeriHealth Caritas family of Medicaid managed care plans in 2013. The company has called Philadelphia home for more than 85 years, serves nearly three million members directly, and — through Independence Health Group — supports roughly nine million covered lives across commercial, Medicare Advantage, Medicaid, CHIP, dental, vision, and behavioral health lines of business. Independence Health Group reported consolidated revenue of $36.3 billion for 2025. To satisfy the CMS Interoperability and Patient Access final rule (CMS-9115-F), IBX publishes three HL7 FHIR R4 (4.0.1) APIs from its `eapics.ibx.com` gateway and developer portal at `devportal.ibx.com`: a SMART-on-FHIR / OAuth 2.0 secured Patient Access API for Medicare Advantage and Keystone HMO CHIP members, a public Da Vinci PDex Plan-Net Provider Directory API, and a public Da Vinci US Drug Formulary (USDF) API. The provider also publishes monthly Transparency in Coverage machine-readable files (in-network rates, allowed amounts, prescription drugs) for three carrier brands — Keystone Health Plan East, QCC Insurance Company, and Independence Assurance Co, Inc.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/independence-blue-cross/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/independence-blue-cross/refs/heads/main/apis.yml)
+**Areas:** Healthcare · Health Insurance · Blue Cross Blue Shield · Managed Care · Medicare · Medicare Advantage · Medicaid · CHIP · Commercial · Dental · Vision · Behavioral Health
 
-## Scope
+## Independence Blue Cross on APIs.io
 
-- **Type:** Index
+Everything profiled for Independence Blue Cross is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/independence-blue-cross/](https://apis.io/providers/independence-blue-cross/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-- Healthcare
-- Health Insurance
-- Blue Cross Blue Shield
-- Managed Care
-- Medicare
-- Medicare Advantage
-- Medicaid
-- CHIP
-- Commercial
-- Dental
-- Vision
-- Behavioral Health
-- Pharmacy Benefits
-- Interoperability
-- FHIR
-- SMART On FHIR
-- CMS
-- Patient Access
-- Provider Directory
-- Drug Formulary
-- Transparency In Coverage
+- [Independence Blue Cross Transparency In Coverage Data](https://apis.io/apis/independence-blue-cross/transparency-in-coverage/) — Monthly machine-readable JSON files published under 45 CFR Part Â§147.211 / the Transparency in Coverage rule for three carrier brands operated by…
+- [Independence Blue Cross Formulary API](https://apis.io/apis/independence-blue-cross/independence-blue-cross-formulary-api/) — Public Da Vinci USDF FHIR R4 drug formulary resources.
+- [Independence Blue Cross Patient Access API](https://apis.io/apis/independence-blue-cross/independence-blue-cross-patient-access-api/) — FHIR R4 Patient Access resources for member-authorized access.
+- [Independence Blue Cross Provider Directory API](https://apis.io/apis/independence-blue-cross/independence-blue-cross-provider-directory-api/) — Public Da Vinci Plan-Net FHIR R4 provider directory resources.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-05-23
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Independence Blue Cross Patient Access FHIR API
+Model Context Protocol servers that expose the API to agents.
 
-HL7 FHIR R4 (4.0.1) Patient Access API published to satisfy the CMS Interoperability and Patient Access final rule (CMS-9115-F). Enables Independence Medicare Advantage and Keystone HMO CHIP members (or their personal representatives) to consent and share clinical, claims, encounter, coverage, medication, immunization, and demographic data with registered third-party applications. Conforms to the CARIN for Blue Button (CARIN BB), Common Payer Consumer Data Set (CPCDS), US Core 3.1.1, and Da Vinci PDex profiles. Secured by SMART App Launch 1.0.0 over OAuth 2.0 / OpenID Connect; production access requires developer registration and CMS-aligned attestation.
+- [independence-blue-cross](https://apis.io/servers/independence-blue-cross/independence-blue-cross/)
 
-- **Human URL:** [https://devportal.ibx.com/documentation/](https://devportal.ibx.com/documentation/)
-- **Base URL:** `https://eapics.ibx.com/patient/v1/fhir`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Patient Access
-- FHIR
-- SMART On FHIR
-- Medicare Advantage
-- CHIP
-- CMS
+- [Independence Blue Cross Agentic Access](https://apis.io/agentic-access/independence-blue-cross/independence-blue-cross-agentic-access/)
 
-#### Properties
+#### JSON Schema (6)
 
-- [Portal](https://devportal.ibx.com/)
-- [Documentation](https://devportal.ibx.com/documentation/)
-- [Swagger](https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json)
-- [Capability Statement](https://eapics.ibx.com/patient/v1/fhir/metadata)
-- [Smart Configuration](https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration)
-- [Authorize U R L](https://member.ibx.com/patientaccesssvc/oauth2/v1/authorize)
-- [Token U R L](https://eapics.ibx.com/oauth2/v2/token)
-- [Registration](https://devportal.ibx.com/cmssignin/)
-- [Terms of Service](https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf)
-- [Contact Email](mailto:AppOnboardingSupport@ibx.com)
-- [OpenAPI](openapi/independence-blue-cross-patient-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/independence-blue-cross-patient.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/independence-blue-cross-patient.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Spectral Rules](rules/independence-blue-cross-rules.yml)
-- [JSON Schema](json-schema/independence-blue-cross-patient-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/independence-blue-cross-coverage-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/independence-blue-cross-explanation-of-benefit-schema.json) — [JSON Schema](https://json-schema.org/specification)
+The data models the API reads and writes.
 
-### Independence Blue Cross Provider Directory FHIR API
+- [IBX Coverage (CARIN BB subset)](https://apis.io/schemas/independence-blue-cross/independence-blue-cross-coverage/)
+- [IBX ExplanationOfBenefit (CARIN BB subset)](https://apis.io/schemas/independence-blue-cross/independence-blue-cross-explanation-of-benefit/)
+- [IBX Location (Da Vinci Plan-Net subset)](https://apis.io/schemas/independence-blue-cross/independence-blue-cross-location/)
+- [IBX Organization (Da Vinci Plan-Net subset)](https://apis.io/schemas/independence-blue-cross/independence-blue-cross-organization/)
+- [IBX Patient (US Core 3.1.1 subset)](https://apis.io/schemas/independence-blue-cross/independence-blue-cross-patient/)
+- [IBX Practitioner (Da Vinci Plan-Net subset)](https://apis.io/schemas/independence-blue-cross/independence-blue-cross-practitioner/)
 
-HL7 FHIR R4 (4.0.1) Provider Directory API satisfying the CMS Provider Directory requirement of the Interoperability and Patient Access final rule. Published as a Da Vinci PDex Plan-Net server (CapabilityStatement id `ibc-plan-net-metadata`, published 2021-05-28). Publishes Practitioner, PractitionerRole, Organization, OrganizationAffiliation, Location, HealthcareService, InsurancePlan, and Endpoint resources for the Independence Blue Cross provider and pharmacy network. Publicly queryable; no authentication or member consent required.
+#### JSON Structure (1)
 
-- **Human URL:** [https://devportal.ibx.com/documentation/](https://devportal.ibx.com/documentation/)
-- **Base URL:** `https://eapics.ibx.com/provider/v1/fhir`
+Data models expressed in JSON Structure.
 
-#### Tags
+- [Independence Blue Cross Health Plan Structure](https://apis.io/json-structure/independence-blue-cross/independence-blue-cross-health-plan-structure/)
 
-- Provider Directory
-- FHIR
-- Da Vinci
-- Plan-Net
-- CMS
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Portal](https://devportal.ibx.com/)
-- [Documentation](https://devportal.ibx.com/documentation/)
-- [Swagger](https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json)
-- [Capability Statement](https://eapics.ibx.com/provider/v1/fhir/metadata)
-- [Implementation Guide](http://hl7.org/fhir/us/davinci-pdex-plan-net/ImplementationGuide/hl7.fhir.us.davinci-pdex-plan-net)
-- [OpenAPI](openapi/independence-blue-cross-provider-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/independence-blue-cross-provider.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/independence-blue-cross-provider.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Spectral Rules](rules/independence-blue-cross-rules.yml)
-- [JSON Schema](json-schema/independence-blue-cross-practitioner-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/independence-blue-cross-organization-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/independence-blue-cross-location-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [Independence Blue Cross Context](https://apis.io/jsonld/independence-blue-cross/independence-blue-cross-context/)
 
-### Independence Blue Cross Drug Formulary FHIR API
+#### Vocabulary (1)
 
-HL7 FHIR R4 (4.0.1) Drug Formulary API satisfying the CMS Interoperability drug formulary publication requirement, published as a Da Vinci US Drug Formulary (USDF) server (CapabilityStatement id `usdf-server`, published 2021-06-03). Exposes covered drug lists, tiers, and prior authorization indicators via FHIR `List` and `MedicationKnowledge` resources. Publicly queryable; no authentication required.
+The provider's domain terms, defined.
 
-- **Human URL:** [https://devportal.ibx.com/documentation/](https://devportal.ibx.com/documentation/)
-- **Base URL:** `https://eapics.ibx.com/formulary/v1/fhir`
+- [Independence Blue Cross Vocabulary](https://apis.io/vocabularies/independence-blue-cross/independence-blue-cross-vocabulary/)
 
-#### Tags
+#### Examples (6)
 
-- Formulary
-- Drug Formulary
-- FHIR
-- Da Vinci
-- USDF
-- CMS
-- Pharmacy Benefits
+Example requests and responses.
 
-#### Properties
+- [Independence Blue Cross Coverage Search Example](https://apis.io/examples/independence-blue-cross/independence-blue-cross-coverage-search-example/)
+- [Independence Blue Cross Explanation Of Benefit Search Example](https://apis.io/examples/independence-blue-cross/independence-blue-cross-explanation-of-benefit-search-example/)
+- [Independence Blue Cross Medication Knowledge Search Example](https://apis.io/examples/independence-blue-cross/independence-blue-cross-medication-knowledge-search-example/)
+- [Independence Blue Cross Organization Search Example](https://apis.io/examples/independence-blue-cross/independence-blue-cross-organization-search-example/)
+- [Independence Blue Cross Patient Read Example](https://apis.io/examples/independence-blue-cross/independence-blue-cross-patient-read-example/)
+- [Independence Blue Cross Practitioner Search Example](https://apis.io/examples/independence-blue-cross/independence-blue-cross-practitioner-search-example/)
 
-- [Portal](https://devportal.ibx.com/)
-- [Documentation](https://devportal.ibx.com/documentation/)
-- [Swagger](https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json)
-- [Capability Statement](https://eapics.ibx.com/formulary/v1/fhir/metadata)
-- [Implementation Guide](http://hl7.org/fhir/us/davinci-drug-formulary/ImplementationGuide/hl7.fhir.us.davinci-drug-formulary)
-- [OpenAPI](openapi/independence-blue-cross-formulary-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/independence-blue-cross-formulary.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/independence-blue-cross-formulary.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Spectral Rules](rules/independence-blue-cross-rules.yml)
+#### Collections (9)
 
-### Independence Blue Cross Transparency In Coverage Data
+Postman and Open Collection request collections.
 
-Monthly machine-readable JSON files published under 45 CFR Part Â§147.211 / the Transparency in Coverage rule for three carrier brands operated by Independence Blue Cross: Keystone Health Plan East, QCC Insurance Company, and Independence Assurance Co, Inc. Files cover in-network negotiated rates, out-of-network allowed amounts, and prescription drug pricing across medical, dental, vision, pharmacy, and plan domains.
+- [Independence Blue Cross Drug Formulary FHIR API](https://apis.io/collections/independence-blue-cross/open-independence-blue-cross-formulary/)
+- [Independence Blue Cross Drug FHIR Formulary API](https://apis.io/collections/independence-blue-cross/open-independence-blue-cross-formulary-api/)
+- [Independence Blue Cross Patient Access FHIR API](https://apis.io/collections/independence-blue-cross/open-independence-blue-cross-patient/)
+- [Independence Blue Cross Drug FHIR Formulary Patient Access API](https://apis.io/collections/independence-blue-cross/open-independence-blue-cross-patient-access-api/)
+- [Independence Blue Cross Provider Directory FHIR API](https://apis.io/collections/independence-blue-cross/open-independence-blue-cross-provider/)
+- [Independence Blue Cross Drug FHIR Formulary Provider Directory API](https://apis.io/collections/independence-blue-cross/open-independence-blue-cross-provider-directory-api/)
+- [Independence Blue Cross Drug FHIR Formulary API](https://apis.io/collections/independence-blue-cross/postman-independence-blue-cross-formulary-api/)
+- [Independence Blue Cross Drug FHIR Formulary Patient Access API](https://apis.io/collections/independence-blue-cross/postman-independence-blue-cross-patient-access-api/)
+- [Independence Blue Cross Drug FHIR Formulary Provider Directory API](https://apis.io/collections/independence-blue-cross/postman-independence-blue-cross-provider-directory-api/)
 
-- **Human URL:** [https://www.ibx.com/resources/for-members/transparency-in-coverage.html](https://www.ibx.com/resources/for-members/transparency-in-coverage.html)
-- **Base URL:** `https://www.ibx.com/cmstic/`
+#### Overlays (3)
 
-#### Tags
+OpenAPI overlays, including conversational phrasing for each operation.
 
-- Transparency In Coverage
-- Machine Readable Files
-- Pricing
-- Regulatory
+- [Independence Blue Cross Formulary Api Overlay](https://apis.io/overlays/independence-blue-cross/independence-blue-cross-formulary-api-overlay/)
+- [Independence Blue Cross Patient Access Api Overlay](https://apis.io/overlays/independence-blue-cross/independence-blue-cross-patient-access-api-overlay/)
+- [Independence Blue Cross Provider Directory Api Overlay](https://apis.io/overlays/independence-blue-cross/independence-blue-cross-provider-directory-api-overlay/)
 
-#### Properties
+#### Governance rules (2)
 
-- [Index](https://www.ibx.com/cmstic/?brand=khpe)
-- [Index](https://www.ibx.com/cmstic/?brand=qcc)
-- [Index](https://www.ibx.com/cmstic/?brand=iac)
-- [Regulation](https://www.cms.gov/healthplan-price-transparency)
-- [Postman Collection](collections/independence-blue-cross-formulary.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/independence-blue-cross-formulary.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/independence-blue-cross-patient.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/independence-blue-cross-patient.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/independence-blue-cross-provider.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/independence-blue-cross-provider.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Spectral rulesets for the provider's contracts.
 
+- [Independence Blue Cross — jsonschema rules](https://apis.io/rules/independence-blue-cross/independence-blue-cross-jsonschema-spectral-rules/)
+- [Independence Blue Cross API Rules](https://apis.io/rules/independence-blue-cross/independence-blue-cross-rules/)
 
-#### Tags
+#### Security (2)
 
-- Website
-- Corporate
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Independence Blue Cross Authentication](https://apis.io/security/independence-blue-cross/independence-blue-cross-authentication/)
+- [Independence Blue Cross Domain Security](https://apis.io/security/independence-blue-cross/independence-blue-cross-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Independence Blue Cross Scopes](https://apis.io/scopes/independence-blue-cross/independence-blue-cross-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Independence Blue Cross Plans Pricing](https://apis.io/plans/independence-blue-cross/independence-blue-cross-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Independence Blue Cross Rate Limits](https://apis.io/rate-limits/independence-blue-cross/independence-blue-cross-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Independence Blue Cross Finops](https://apis.io/finops/independence-blue-cross/independence-blue-cross-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.ibx.com)
-- [About Us](https://www.ibx.com/about-us)
-- [Affiliates](https://www.ibx.com/about-us/affiliates)
-- [Annual Reports](https://www.ibx.com/about-us/annual-reports)
-- [Newsroom](https://news.ibx.com/)
-- [Developer Portal](https://devportal.ibx.com/)
-- [Provider Resources](https://www.ibx.com/resources/for-providers/index.html)
-- [Postman Collection](collections/independence-blue-cross-formulary.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/independence-blue-cross-formulary.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/independence-blue-cross-patient.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/independence-blue-cross-patient.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/independence-blue-cross-provider.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/independence-blue-cross-provider.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Portal](https://devportal.ibx.com/)
-- [Website](https://www.ibx.com)
 - [Documentation](https://devportal.ibx.com/documentation/)
-- [Swagger](https://www.ibx.com/scripts/custom/swagger/cmsSwagger.json)
-- [Authentication](https://eapics.ibx.com/patient/v1/fhir/.well-known/smart-configuration)
-- [Registration](https://devportal.ibx.com/cmssignin/)
-- [Terms of Service](https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf)
-- [Privacy Policy](https://www.ibx.com/privacy-policy)
-- [Login](https://www.ibx.com/login)
-- [C M S Final Rule](https://www.cms.gov/priorities/key-initiatives/burden-reduction/interoperability)
-- [C A R I N Blue Button](https://hl7.org/fhir/us/carin-bb/history.html)
-- [Da Vinci P Dex](https://hl7.org/fhir/us/davinci-pdex/history.html)
-- [Da Vinci Plan Net](http://hl7.org/fhir/us/davinci-pdex-plan-net/ImplementationGuide/hl7.fhir.us.davinci-pdex-plan-net)
-- [Da Vinci U S D F](http://hl7.org/fhir/us/davinci-drug-formulary/ImplementationGuide/hl7.fhir.us.davinci-drug-formulary)
-- [U S Core](https://hl7.org/fhir/us/core/STU3.1.1/)
-- [S M A R T App Launch](https://hl7.org/fhir/smart-app-launch/1.0.0/)
-- [Affiliates](https://www.ibx.com/about-us/affiliates)
-- [Contact Us](mailto:AppOnboardingSupport@ibx.com)
-- [Contact Support](https://www.ibx.com/contact-us)
-- [News Blog](https://news.ibx.com/)
-- [Transparency In Coverage](https://www.ibx.com/resources/for-members/transparency-in-coverage.html)
-- [Facebook](https://www.facebook.com/ibx)
-- [Twitter](https://www.twitter.com/ibx)
-- [YouTube](https://www.youtube.com/ibxphilly)
-- [Instagram](https://www.instagram.com/ibxfearless/)
-- [Pinterest](https://pinterest.com/IBXBlueCross/)
-- [Anti Fraud](https://www.ibx.com/anti-fraud)
-- [Plans](plans/independence-blue-cross-plans-pricing.yml)
-- [Rate Limits](rate-limits/independence-blue-cross-rate-limits.yml)
-- [Fin Ops](finops/independence-blue-cross-finops.yml)
-- [Vocabulary](vocabulary/independence-blue-cross-vocabulary.yml)
-- [J S O N L D Context](json-ld/independence-blue-cross-context.jsonld)
-- [JSON Structure](json-structure/independence-blue-cross-health-plan-structure.json)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Solutions](undefined)
+- [Getting started](https://www.ibx.com/developer-resources/index.html)
+- [Support](https://www.ibx.com/contact-us/index.html)
+- [Blog](https://news.ibx.com/feed/)
+- [Compliance](https://www.ibx.com/privacy-policy/hipaa-compliance.html)
+- [Terms of service](https://www.ibx.com/htdocs/custom/tnc/Developer%20Portal%20TandC.pdf)
+- [Privacy policy](https://www.ibx.com/privacy-policy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 54.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 58.8 |
+| Contract governance | 31.8 |
+| Operational transparency | 15.8 |
+| Developer ergonomics | 57.7 |
+| Access clarity | 43.4 |
+
+**Agent readiness 35.9** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | na |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 47.7** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/independence-blue-cross/](https://apis.io/providers/independence-blue-cross/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Independence Blue Cross: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/independence-blue-cross/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
